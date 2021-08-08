@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Controllers
+﻿namespace OfficeBoard.Server.Features
 {
     using Microsoft.AspNetCore.Mvc;
 

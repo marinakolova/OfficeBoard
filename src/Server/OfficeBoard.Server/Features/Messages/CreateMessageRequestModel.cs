@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Models.Messages
+﻿namespace OfficeBoard.Server.Features.Messages
 {
     using System.ComponentModel.DataAnnotations;
 
