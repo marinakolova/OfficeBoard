@@ -2,8 +2,6 @@
 
 Web application for office communication - interactive web board for sharing important messages from managers and supervisors to their teams.
 
-:dart:  My project for the Angular course at SoftUni. (August 2021) 
-
 ## :hammer_and_pick: Built With
 
 - ASP.NET Core 5.0 for back-end.
@@ -17,7 +15,7 @@ Web application for office communication - interactive web board for sharing imp
 - Run the OfficeBoard.Server App.
 
 ### 2. Client 
-- Check the `apiUrl` in Client's `src\environments\environment.ts` - it should be the one on which the Server App is running. If you changed the port in the Server's `Program.cs`, you should change it here too.
+- Check the `apiUrl` in Client's `src\environments\environment.ts` - it should be the one on which the Server App is running. If you have changed the localhost port in the Server's `Program.cs`, you should change it here too.
 - Go to the Client's `src\app` directory and run `ng serve` for a dev server. 
 - Navigate to `http://localhost:4200/`.
 
