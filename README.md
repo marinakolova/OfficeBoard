@@ -5,19 +5,20 @@ Web application for office communication - interactive web board for sharing imp
 ## :hammer_and_pick: Built With
 
 - ASP.NET Core 5.0 for back-end.
+- MS SQL Server Express for database system.
 - Angular for the client-side.
 
 ## :gear: Application Configurations
 
 ### 1. Server
-- Check the connection string in Server's `appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
-- Check the `UseUrls()` in Server's `Program.cs`. You may change the localhost port, if you need so.
-- Run the OfficeBoard.Server App.
+- The connection string is in `appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
+- The app is set to use `https://localhost:44390`. If you need to change that, you may do it in the `UseUrls()` in `Program.cs`.
+- Run the OfficeBoard.Server App. You should see SwaggerUI in your browser.
 
 ### 2. Client 
-- Check the `apiUrl` in Client's `src\environments\environment.ts` - it should be the one on which the Server App is running. If you have changed the localhost port in the Server's `Program.cs`, you should change it here too.
-- Go to the Client's `src\app` directory and run `ng serve` for a dev server. 
-- Navigate to `http://localhost:4200/`.
+- The `apiUrl` in the file `Client\src\environments\environment.ts` should be the one on which the OfficeBoard.Server App is running.
+- Go to directory `Client\src\app` and run `ng serve` for a dev server. 
+- Navigate to `http://localhost:4200/` and enjoy OfficeBoard's client-side.
 
 ## License
 
