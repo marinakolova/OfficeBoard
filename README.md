@@ -16,8 +16,9 @@ Web application for office communication - interactive web board for sharing imp
 - Run the OfficeBoard.Server App. You should see SwaggerUI in your browser.
 
 ### 2. Client 
-- The `apiUrl` in the file `Client\src\environments\environment.ts` should be the one on which the OfficeBoard.Server App is running.
-- Go to directory `Client\src\app` and run `ng serve` for a dev server. 
+- The `apiUrl` in the file `Client/src/environments/environment.ts` should be the one on which the OfficeBoard.Server App is running.
+- Run `npm install` in the `Client` directory.
+- Run `ng serve` for a dev server. 
 - Navigate to `http://localhost:4200/` and enjoy OfficeBoard's client-side.
 
 ## License
