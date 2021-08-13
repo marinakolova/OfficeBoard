@@ -1,5 +1,6 @@
 ﻿namespace OfficeBoard.Server.Features.Messages
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -12,6 +13,15 @@
 
         public MessagesController(IMessagesService messagesService)
             => this.messagesService = messagesService;
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IEnumerable<MessageListingResponseModel>> Mine()
+        {
+            var userId = this.User.GetId();
+
+            return await this.messagesService.GetAllByUser(userId);
+        }
 
         [Authorize]
         [HttpPost]

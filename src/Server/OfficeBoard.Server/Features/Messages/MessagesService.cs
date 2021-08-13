@@ -1,7 +1,10 @@
 ﻿namespace OfficeBoard.Server.Features.Messages
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using OfficeBoard.Server.Data;
     using OfficeBoard.Server.Data.Models;
 
@@ -28,5 +31,17 @@
 
             return message.Id;
         }
+
+        public async Task<IEnumerable<MessageListingResponseModel>> GetAllByUser(string userId)
+             => await this.data
+                    .Messages
+                    .Where(x => x.UserId == userId)
+                    .Select(x => new MessageListingResponseModel
+                    {
+                        Id = x.Id,
+                        Title = x.Title,
+                        UserName = x.User.UserName,
+                    })
+                    .ToListAsync();
     }
 }
