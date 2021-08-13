@@ -17,6 +17,8 @@ import { DetailsMessageComponent } from './details-message/details-message.compo
 import { ListMessagesByUserComponent } from './list-messages-by-user/list-messages-by-user.component';
 import { EditMessageComponent } from './edit-message/edit-message.component';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ErrorInterceptorService } from './services/error-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthService, 

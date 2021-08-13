@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from '../services/message.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MessageService } from '../services/message.service';
 export class CreatepostComponent implements OnInit {
   messageForm: FormGroup;
   
-  constructor(private fb: FormBuilder, private messageService: MessageService) { 
+  constructor(private fb: FormBuilder, private messageService: MessageService, private router: Router) { 
     this.messageForm = this.fb.group({
       'Title': ['', Validators.required],
       'Content': ['', Validators.required],
@@ -23,7 +24,7 @@ export class CreatepostComponent implements OnInit {
 
   create() {
     this.messageService.create(this.messageForm.value).subscribe(res => {
-      console.log(res);
+      this.router.navigate(["/messages"]);
     });
   }
 
