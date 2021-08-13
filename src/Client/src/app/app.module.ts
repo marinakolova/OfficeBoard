@@ -13,6 +13,8 @@ import { MessageService } from './services/message.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ListMessagesComponent } from './list-messages/list-messages.component';
+import { DetailsMessageComponent } from './details-message/details-message.component';
+import { ListMessagesByUserComponent } from './list-messages-by-user/list-messages-by-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ListMessagesComponent } from './list-messages/list-messages.component';
     LoginComponent,
     RegisterComponent,
     CreatepostComponent,
-    ListMessagesComponent
+    ListMessagesComponent,
+    ListMessagesByUserComponent,
+    DetailsMessageComponent    
   ],
   imports: [
     BrowserModule,

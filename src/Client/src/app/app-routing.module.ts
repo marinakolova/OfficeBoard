@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreatepostComponent } from './createpost/createpost.component';
+import { DetailsMessageComponent } from './details-message/details-message.component';
+import { ListMessagesByUserComponent } from './list-messages-by-user/list-messages-by-user.component';
 import { ListMessagesComponent } from './list-messages/list-messages.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'create', component: CreatepostComponent, canActivate: [AuthGuardService] },
   { path: 'messages', component: ListMessagesComponent, canActivate: [AuthGuardService] },
+  { path: 'messages/user/:id', component: ListMessagesByUserComponent, canActivate: [AuthGuardService] },
+  { path: 'messages/:id', component: DetailsMessageComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

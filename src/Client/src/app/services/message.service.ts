@@ -24,4 +24,8 @@ export class MessageService {
   getMessagesByUser(userId: string): Observable<Array<Message>> {
     return this.http.get<Array<Message>>(this.messagesPath + `/user/${userId}`);
   }
+
+  getMessageDetails(id: number): Observable<Message> {
+    return this.http.get<Message>(this.messagesPath + `/${id}`);
+  }
 }
