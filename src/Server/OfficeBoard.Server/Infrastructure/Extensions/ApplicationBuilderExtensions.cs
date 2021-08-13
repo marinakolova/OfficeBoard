@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Infrastructure
+﻿namespace OfficeBoard.Server.Infrastructure.Extensions
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.EntityFrameworkCore;

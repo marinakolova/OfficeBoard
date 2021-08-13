@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Infrastructure
+﻿namespace OfficeBoard.Server.Infrastructure.Extensions
 {
     using System.Text;
 
@@ -13,6 +13,7 @@
     using OfficeBoard.Server.Data.Models;
     using OfficeBoard.Server.Features.Identity;
     using OfficeBoard.Server.Features.Messages;
+    using OfficeBoard.Server.Infrastructure.Filters;
 
     public static class ServiceCollectionExtensions
     {
@@ -79,7 +80,7 @@
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
             => services
                 .AddTransient<IIdentityService, IdentityService>()
-                .AddTransient<IMessagesService, MessagesService>();
+                .AddTransient<IMessageService, MessageService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>
@@ -92,5 +93,11 @@
                         Version = "v1",
                     });
             });
+
+        public static void AddApiControllers(this IServiceCollection services)
+            => services
+                .AddControllers(options => options
+                    .Filters
+                    .Add<ModelOrNotFoundActionFilter>());
     }
 }

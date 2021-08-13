@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using OfficeBoard.Server.Data.Models;
+    using OfficeBoard.Server.Features.Identity.Models;
 
     public class IdentityController : ApiController
     {

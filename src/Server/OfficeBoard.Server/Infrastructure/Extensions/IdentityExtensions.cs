@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Infrastructure
+﻿namespace OfficeBoard.Server.Infrastructure.Extensions
 {
     using System.Linq;
     using System.Security.Claims;

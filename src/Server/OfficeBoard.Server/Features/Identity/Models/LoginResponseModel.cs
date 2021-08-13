@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Features.Identity
+﻿namespace OfficeBoard.Server.Features.Identity.Models
 {
     public class LoginResponseModel
     {

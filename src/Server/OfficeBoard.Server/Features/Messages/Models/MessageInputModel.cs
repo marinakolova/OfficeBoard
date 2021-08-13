@@ -1,10 +1,10 @@
-﻿namespace OfficeBoard.Server.Features.Messages
+﻿namespace OfficeBoard.Server.Features.Messages.Models
 {
     using System.ComponentModel.DataAnnotations;
 
     using static OfficeBoard.Server.Data.Validation.Message;
 
-    public class CreateMessageRequestModel
+    public class MessageInputModel
     {
         [Required]
         [MaxLength(MaxTtileLength)]

@@ -3,10 +3,14 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public interface IMessagesService
+    using OfficeBoard.Server.Features.Messages.Models;
+
+    public interface IMessageService
     {
         public Task<int> Create(string title, string content, string imageUrl, string userId);
 
-        public Task<IEnumerable<MessageListingResponseModel>> GetAllByUser(string userId);
+        public Task<IEnumerable<MessageListingModel>> GetAllByUser(string userId);
+
+        public Task<MessageDetailsModel> GetById(int id);
     }
 }

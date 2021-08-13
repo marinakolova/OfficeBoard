@@ -2,12 +2,10 @@
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using OfficeBoard.Server.Data;
-    using OfficeBoard.Server.Infrastructure;
+    using OfficeBoard.Server.Infrastructure.Extensions;
 
     public class Startup
     {
@@ -23,7 +21,7 @@
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
                 .AddApplicationServices()
                 .AddSwagger()
-                .AddControllers();
+                .AddApiControllers();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
