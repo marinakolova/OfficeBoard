@@ -16,6 +16,7 @@ import { ListMessagesComponent } from './list-messages/list-messages.component';
 import { DetailsMessageComponent } from './details-message/details-message.component';
 import { ListMessagesByUserComponent } from './list-messages-by-user/list-messages-by-user.component';
 import { EditMessageComponent } from './edit-message/edit-message.component';
+import { ErrorInterceptorService } from './services/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,11 @@ import { EditMessageComponent } from './edit-message/edit-message.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true,
     },
   ],
