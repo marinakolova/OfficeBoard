@@ -13,7 +13,9 @@
 
         public Task<bool> Delete(int id, string userId);
 
-        public Task<IEnumerable<MessageListingServiceModel>> GetAllByUser(string userId);
+        public Task<IEnumerable<MessageDetailsServiceModel>> GetAll();
+
+        public Task<IEnumerable<MessageDetailsServiceModel>> GetAllByUser(string userId);
 
         public Task<MessageDetailsServiceModel> GetById(int id);
     }

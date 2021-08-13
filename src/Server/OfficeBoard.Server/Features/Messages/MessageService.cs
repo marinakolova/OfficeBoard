@@ -65,14 +65,30 @@
             return true;
         }
 
-        public async Task<IEnumerable<MessageListingServiceModel>> GetAllByUser(string userId)
+        public async Task<IEnumerable<MessageDetailsServiceModel>> GetAll()
             => await this.data
                 .Messages
-                .Where(x => x.UserId == userId)
-                .Select(x => new MessageListingServiceModel
+                .Select(x => new MessageDetailsServiceModel
                 {
                     Id = x.Id,
                     Title = x.Title,
+                    Content = x.Content,
+                    ImageUrl = x.ImageUrl,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                })
+                .ToListAsync();
+
+        public async Task<IEnumerable<MessageDetailsServiceModel>> GetAllByUser(string userId)
+            => await this.data
+                .Messages
+                .Where(x => x.UserId == userId)
+                .Select(x => new MessageDetailsServiceModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    ImageUrl = x.ImageUrl,
                     UserId = userId,
                     UserName = x.User.UserName,
                 })

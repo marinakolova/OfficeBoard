@@ -19,7 +19,14 @@
             => this.messageService = messagesService;
 
         [HttpGet]
-        public async Task<IEnumerable<MessageListingServiceModel>> Mine()
+        public async Task<IEnumerable<MessageDetailsServiceModel>> All()
+        {
+            return await this.messageService.GetAll();
+        }
+
+        [HttpGet]
+        [Route("profile")]
+        public async Task<IEnumerable<MessageDetailsServiceModel>> Mine()
         {
             var userId = this.User.GetId();
 
