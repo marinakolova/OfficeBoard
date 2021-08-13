@@ -4,7 +4,7 @@
 
     using static OfficeBoard.Server.Data.Validation.Message;
 
-    public class MessageInputModel
+    public class MessageCreateRequestModel
     {
         [Required]
         [MaxLength(MaxTtileLength)]

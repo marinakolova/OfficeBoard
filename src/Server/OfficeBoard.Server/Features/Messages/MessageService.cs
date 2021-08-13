@@ -33,11 +33,32 @@
             return message.Id;
         }
 
-        public async Task<IEnumerable<MessageListingModel>> GetAllByUser(string userId)
+        public async Task<bool> Update(int id, string title, string content, string imageUrl, string userId)
+        {
+            var message = await this.data
+                .Messages
+                .Where(x => x.Id == id && x.UserId == userId)
+                .FirstOrDefaultAsync();
+
+            if (message == null)
+            {
+                return false;
+            }
+
+            message.Title = title;
+            message.Content = content;
+            message.ImageUrl = imageUrl;
+
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<IEnumerable<MessageListingServiceModel>> GetAllByUser(string userId)
             => await this.data
                     .Messages
                     .Where(x => x.UserId == userId)
-                    .Select(x => new MessageListingModel
+                    .Select(x => new MessageListingServiceModel
                     {
                         Id = x.Id,
                         Title = x.Title,
@@ -46,11 +67,11 @@
                     })
                     .ToListAsync();
 
-        public async Task<MessageDetailsModel> GetById(int id)
+        public async Task<MessageDetailsServiceModel> GetById(int id)
             => await this.data
                     .Messages
                     .Where(x => x.Id == id)
-                    .Select(x => new MessageDetailsModel
+                    .Select(x => new MessageDetailsServiceModel
                     {
                         Id = x.Id,
                         Title = x.Title,

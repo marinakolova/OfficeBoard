@@ -9,8 +9,10 @@
     {
         public Task<int> Create(string title, string content, string imageUrl, string userId);
 
-        public Task<IEnumerable<MessageListingModel>> GetAllByUser(string userId);
+        public Task<bool> Update(int id, string title, string content, string imageUrl, string userId);
 
-        public Task<MessageDetailsModel> GetById(int id);
+        public Task<IEnumerable<MessageListingServiceModel>> GetAllByUser(string userId);
+
+        public Task<MessageDetailsServiceModel> GetById(int id);
     }
 }

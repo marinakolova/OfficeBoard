@@ -17,7 +17,7 @@
             => this.messageService = messagesService;
 
         [HttpGet]
-        public async Task<IEnumerable<MessageListingModel>> Mine()
+        public async Task<IEnumerable<MessageListingServiceModel>> Mine()
         {
             var userId = this.User.GetId();
 
@@ -25,11 +25,12 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult<MessageDetailsModel>> Details(int id)
+        [Route("{id}")]
+        public async Task<ActionResult<MessageDetailsServiceModel>> Details(int id)
             => await this.messageService.GetById(id);
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create(MessageInputModel model)
+        public async Task<ActionResult<int>> Create(MessageCreateRequestModel model)
         {
             var userId = this.User.GetId();
 
@@ -40,6 +41,26 @@
                 userId);
 
             return this.Created(nameof(this.Create), messageId);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(MessageUpdateRequestModel model)
+        {
+            var userId = this.User.GetId();
+
+            var updated = await this.messageService.Update(
+                model.Id,
+                model.Title,
+                model.Content,
+                model.ImageUrl,
+                userId);
+
+            if (!updated)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Ok();
         }
     }
 }

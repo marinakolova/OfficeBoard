@@ -1,6 +1,6 @@
 ﻿namespace OfficeBoard.Server.Features.Messages.Models
 {
-    public class MessageListingModel
+    public class MessageListingServiceModel
     {
         public int Id { get; set; }
 
