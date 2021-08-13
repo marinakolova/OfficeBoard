@@ -25,6 +25,13 @@
         }
 
         [HttpGet]
+        [Route("user")]
+        public async Task<IEnumerable<MessageDetailsServiceModel>> ByUser(string userId)
+        {
+            return await this.messageService.GetAllByUser(userId);
+        }
+
+        [HttpGet]
         [Route("profile")]
         public async Task<IEnumerable<MessageDetailsServiceModel>> Mine()
         {
