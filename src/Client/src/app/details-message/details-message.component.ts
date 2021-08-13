@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/Message';
 import { MessageService } from '../services/message.service';
+import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-details-message',
@@ -15,13 +16,17 @@ export class DetailsMessageComponent implements OnInit {
 
   constructor(private messageService: MessageService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void { 
-    this.route.params.subscribe(res => {
-      this.id = res['id'];
-      this.messageService.getMessageDetails(this.id).subscribe(res => {
-        this.message = res;
-      });
-    });   
+  ngOnInit(): void {
+    this.fetchData();
   }
 
+  fetchData() {
+    this.route.params.pipe(map(params => {
+      const id = params['id'];
+      return id
+    }), mergeMap(id => this.messageService.getMessageDetails(id))).subscribe(res => {
+      this.message = res;
+    });
+  }
+  
 }
