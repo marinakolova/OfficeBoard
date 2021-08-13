@@ -25,7 +25,7 @@
         }
 
         [HttpGet]
-        [Route("user")]
+        [Route("user/{userId}")]
         public async Task<IEnumerable<MessageDetailsServiceModel>> ByUser(string userId)
         {
             return await this.messageService.GetAllByUser(userId);
