@@ -28,4 +28,12 @@ export class MessageService {
   getMessageDetails(id: number): Observable<Message> {
     return this.http.get<Message>(this.messagesPath + `/${id}`);
   }
+
+  deleteMessage(id: number) {
+    return this.http.delete(this.messagesPath + `/${id}`);
+  }
+
+  editMessage(id: number) {
+    
+  }
 }

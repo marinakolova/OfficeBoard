@@ -15,8 +15,22 @@ export class ListMessagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchMessages();
+  }
+
+  fetchMessages() {
     this.messageService.getAllMessages().subscribe(messages => {
       this.messages = messages;
     })
+  }
+
+  deleteMessage(id: number) {
+    this.messageService.deleteMessage(id).subscribe(res => {
+      this.fetchMessages();
+    });
+  }
+
+  editMessage(id: number) {
+
   }
 }

@@ -11,8 +11,8 @@
                             <a routerLink="/messages/user/{{message.userId}}">{{message.userName}}</a>
                         </small></p>
                     <a routerLink="/messages/{{message.id}}" class="btn btn-primary">See message info</a>
-                    <button class="btn btn-warning"> Edit</button>
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-warning ml-2" (click)="editMessage(message.id)"> Edit</button>
+                    <button class="btn btn-danger ml-2" (click)="deleteMessage(message.id)">Delete</button>
                 </div>
             </div>
         </div>
