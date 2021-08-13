@@ -29,11 +29,11 @@ export class MessageService {
     return this.http.get<Message>(this.messagesPath + `/${id}`);
   }
 
-  deleteMessage(id: number) {
-    return this.http.delete(this.messagesPath + `/${id}`);
+  editMessage(data: any) {
+    return this.http.put(this.messagesPath, data);
   }
 
-  editMessage(id: number) {
-    
-  }
+  deleteMessage(id: number) {
+    return this.http.delete(this.messagesPath + `/${id}`);
+  }  
 }

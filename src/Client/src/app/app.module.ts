@@ -15,6 +15,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ListMessagesComponent } from './list-messages/list-messages.component';
 import { DetailsMessageComponent } from './details-message/details-message.component';
 import { ListMessagesByUserComponent } from './list-messages-by-user/list-messages-by-user.component';
+import { EditMessageComponent } from './edit-message/edit-message.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListMessagesByUserComponent } from './list-messages-by-user/list-messag
     CreatepostComponent,
     ListMessagesComponent,
     ListMessagesByUserComponent,
-    DetailsMessageComponent    
+    DetailsMessageComponent,
+    EditMessageComponent    
   ],
   imports: [
     BrowserModule,

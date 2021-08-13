@@ -13,16 +13,15 @@ export class DetailsMessageComponent implements OnInit {
   id!: number;
   message!: Message;
 
-  constructor(private messageService: MessageService, private route: ActivatedRoute) { 
+  constructor(private messageService: MessageService, private route: ActivatedRoute) { }
+
+  ngOnInit(): void { 
     this.route.params.subscribe(res => {
       this.id = res['id'];
       this.messageService.getMessageDetails(this.id).subscribe(res => {
         this.message = res;
       });
-    });
-  }
-
-  ngOnInit(): void {    
+    });   
   }
 
 }
