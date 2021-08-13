@@ -13,9 +13,6 @@ export class MessageService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   create(data: any): Observable<any> {
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.authService.getToken()}`);
-    
-    return this.http.post(this.messagePath, data, {headers});
+    return this.http.post(this.messagePath, data);
   }
 }
