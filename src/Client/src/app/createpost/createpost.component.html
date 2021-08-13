@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form [formGroup]='messageForm' (ngSubmit)='create()'>
+                <h1>Create Message</h1>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="Title">
+                </div>
+                <div *ngIf="title?.touched && title?.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea type="text" class="form-control" formControlName="Content"></textarea>
+                </div>
+                <div *ngIf="content?.touched && content?.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <div class="form-group">
+                    <label>ImageUrl</label>
+                    <input type="text" class="form-control" formControlName="ImageUrl">
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
