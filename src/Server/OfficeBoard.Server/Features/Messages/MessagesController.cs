@@ -8,6 +8,8 @@
     using OfficeBoard.Server.Features.Messages.Models;
     using OfficeBoard.Server.Infrastructure.Extensions;
 
+    using static OfficeBoard.Server.Infrastructure.WebConstants;
+
     [Authorize]
     public class MessagesController : ApiController
     {
@@ -25,7 +27,7 @@
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route(Id)]
         public async Task<ActionResult<MessageDetailsServiceModel>> Details(int id)
             => await this.messageService.GetById(id);
 
@@ -56,6 +58,22 @@
                 userId);
 
             if (!updated)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Ok();
+        }
+
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var userId = this.User.GetId();
+
+            var deleted = await this.messageService.Delete(id, userId);
+
+            if (!deleted)
             {
                 return this.BadRequest();
             }

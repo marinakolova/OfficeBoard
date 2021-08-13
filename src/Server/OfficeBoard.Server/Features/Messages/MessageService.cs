@@ -27,7 +27,6 @@
             };
 
             this.data.Add(message);
-
             await this.data.SaveChangesAsync();
 
             return message.Id;
@@ -35,10 +34,7 @@
 
         public async Task<bool> Update(int id, string title, string content, string imageUrl, string userId)
         {
-            var message = await this.data
-                .Messages
-                .Where(x => x.Id == id && x.UserId == userId)
-                .FirstOrDefaultAsync();
+            var message = await this.GetMessageByIdAndUserId(id, userId);
 
             if (message == null)
             {
@@ -54,32 +50,53 @@
             return true;
         }
 
+        public async Task<bool> Delete(int id, string userId)
+        {
+            var message = await this.GetMessageByIdAndUserId(id, userId);
+
+            if (message == null)
+            {
+                return false;
+            }
+
+            this.data.Messages.Remove(message);
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<IEnumerable<MessageListingServiceModel>> GetAllByUser(string userId)
             => await this.data
-                    .Messages
-                    .Where(x => x.UserId == userId)
-                    .Select(x => new MessageListingServiceModel
-                    {
-                        Id = x.Id,
-                        Title = x.Title,
-                        UserId = userId,
-                        UserName = x.User.UserName,
-                    })
-                    .ToListAsync();
+                .Messages
+                .Where(x => x.UserId == userId)
+                .Select(x => new MessageListingServiceModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    UserId = userId,
+                    UserName = x.User.UserName,
+                })
+                .ToListAsync();
 
         public async Task<MessageDetailsServiceModel> GetById(int id)
             => await this.data
-                    .Messages
-                    .Where(x => x.Id == id)
-                    .Select(x => new MessageDetailsServiceModel
-                    {
-                        Id = x.Id,
-                        Title = x.Title,
-                        Content = x.Content,
-                        ImageUrl = x.ImageUrl,
-                        UserId = x.UserId,
-                        UserName = x.User.UserName,
-                    })
-                    .FirstOrDefaultAsync();
+                .Messages
+                .Where(x => x.Id == id)
+                .Select(x => new MessageDetailsServiceModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    ImageUrl = x.ImageUrl,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                })
+                .FirstOrDefaultAsync();
+
+        private async Task<Message> GetMessageByIdAndUserId(int id, string userId)
+            => await this.data
+                .Messages
+                .Where(x => x.Id == id && x.UserId == userId)
+                .FirstOrDefaultAsync();
     }
 }

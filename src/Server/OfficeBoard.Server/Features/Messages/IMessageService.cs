@@ -11,6 +11,8 @@
 
         public Task<bool> Update(int id, string title, string content, string imageUrl, string userId);
 
+        public Task<bool> Delete(int id, string userId);
+
         public Task<IEnumerable<MessageListingServiceModel>> GetAllByUser(string userId);
 
         public Task<MessageDetailsServiceModel> GetById(int id);
