@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3" *ngFor="let message of messages">
+            <div class="card">
+                <img class="card-img-top img-thumbnail img-fluid" [src]="message.imageUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{message.title}}</h5>
+                    <p class="card-text">{{message.content}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">Author: 
+                        {{message.userName}}
+                        </small></p>
+                    <a href="#" class="btn btn-primary">See message info</a>
+                    <button class="btn btn-warning"> Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

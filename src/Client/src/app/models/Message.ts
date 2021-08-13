@@ -1,6 +1,8 @@
 export interface Message {
-    Id: number,
-    Title: string,
-    Content: string,
-    ImageUrl: string,
+    id: number,
+    title: string,
+    content: string,
+    imageUrl: string,
+    userId: string,
+    userName: string
 }

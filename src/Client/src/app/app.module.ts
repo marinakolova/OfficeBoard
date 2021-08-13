@@ -12,13 +12,15 @@ import { CreatepostComponent } from './createpost/createpost.component';
 import { MessageService } from './services/message.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ListMessagesComponent } from './list-messages/list-messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CreatepostComponent
+    CreatepostComponent,
+    ListMessagesComponent
   ],
   imports: [
     BrowserModule,
