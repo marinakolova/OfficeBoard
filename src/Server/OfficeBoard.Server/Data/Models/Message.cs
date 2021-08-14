@@ -2,9 +2,11 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using OfficeBoard.Server.Data.Models.Base;
+
     using static OfficeBoard.Server.Data.Validation.Message;
 
-    public class Message
+    public class Message : DeletableEntity
     {
         public int Id { get; set; }
 

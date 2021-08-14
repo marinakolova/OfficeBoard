@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using OfficeBoard.Server.Features.Messages.Models;
-    using OfficeBoard.Server.Infrastructure.Extensions;
+    using OfficeBoard.Server.Infrastructure.Services;
 
     using static OfficeBoard.Server.Infrastructure.WebConstants;
 
@@ -14,9 +14,15 @@
     public class MessagesController : ApiController
     {
         private readonly IMessageService messageService;
+        private readonly ICurrentUserService currentUserService;
 
-        public MessagesController(IMessageService messagesService)
-            => this.messageService = messagesService;
+        public MessagesController(
+            IMessageService messagesService,
+            ICurrentUserService currentUserService)
+        {
+            this.messageService = messagesService;
+            this.currentUserService = currentUserService;
+        }
 
         [HttpGet]
         public async Task<IEnumerable<MessageDetailsServiceModel>> All()
@@ -35,7 +41,7 @@
         [Route("profile")]
         public async Task<IEnumerable<MessageDetailsServiceModel>> Mine()
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUserService.GetId();
 
             return await this.messageService.GetAllByUser(userId);
         }
@@ -48,7 +54,7 @@
         [HttpPost]
         public async Task<ActionResult<int>> Create(MessageCreateRequestModel model)
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUserService.GetId();
 
             var messageId = await this.messageService.Create(
                 model.Title,
@@ -62,7 +68,7 @@
         [HttpPut]
         public async Task<ActionResult> Update(MessageUpdateRequestModel model)
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUserService.GetId();
 
             var updated = await this.messageService.Update(
                 model.Id,
@@ -83,7 +89,7 @@
         [Route(Id)]
         public async Task<ActionResult> Delete(int id)
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUserService.GetId();
 
             var deleted = await this.messageService.Delete(id, userId);
 

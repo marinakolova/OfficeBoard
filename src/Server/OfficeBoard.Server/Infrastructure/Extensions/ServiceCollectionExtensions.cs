@@ -14,6 +14,7 @@
     using OfficeBoard.Server.Features.Identity;
     using OfficeBoard.Server.Features.Messages;
     using OfficeBoard.Server.Infrastructure.Filters;
+    using OfficeBoard.Server.Infrastructure.Services;
 
     public static class ServiceCollectionExtensions
     {
@@ -79,6 +80,7 @@
 
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
             => services
+                .AddScoped<ICurrentUserService, CurrentUserService>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IMessageService, MessageService>();
 

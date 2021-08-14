@@ -7,16 +7,16 @@
 
     public interface IMessageService
     {
-        public Task<int> Create(string title, string content, string imageUrl, string userId);
+        Task<int> Create(string title, string content, string imageUrl, string userId);
 
-        public Task<bool> Update(int id, string title, string content, string imageUrl, string userId);
+        Task<bool> Update(int id, string title, string content, string imageUrl, string userId);
 
-        public Task<bool> Delete(int id, string userId);
+        Task<bool> Delete(int id, string userId);
 
-        public Task<IEnumerable<MessageDetailsServiceModel>> GetAll();
+        Task<IEnumerable<MessageDetailsServiceModel>> GetAll();
 
-        public Task<IEnumerable<MessageDetailsServiceModel>> GetAllByUser(string userId);
+        Task<IEnumerable<MessageDetailsServiceModel>> GetAllByUser(string userId);
 
-        public Task<MessageDetailsServiceModel> GetById(int id);
+        Task<MessageDetailsServiceModel> GetById(int id);
     }
 }

@@ -74,9 +74,12 @@
                     Title = x.Title,
                     Content = x.Content,
                     ImageUrl = x.ImageUrl,
+                    CreatedOn = x.CreatedOn,
+                    ModifiedOn = x.ModifiedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
                 })
+                .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
         public async Task<IEnumerable<MessageDetailsServiceModel>> GetAllByUser(string userId)
@@ -89,9 +92,12 @@
                     Title = x.Title,
                     Content = x.Content,
                     ImageUrl = x.ImageUrl,
+                    CreatedOn = x.CreatedOn,
+                    ModifiedOn = x.ModifiedOn,
                     UserId = userId,
                     UserName = x.User.UserName,
                 })
+                .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
         public async Task<MessageDetailsServiceModel> GetById(int id)
@@ -104,6 +110,7 @@
                     Title = x.Title,
                     Content = x.Content,
                     ImageUrl = x.ImageUrl,
+                    CreatedOn = x.CreatedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
                 })
