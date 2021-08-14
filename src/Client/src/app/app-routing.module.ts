@@ -8,16 +8,18 @@ import { ListMessagesComponent } from './list-messages/list-messages.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ProfileMessagesComponent } from './profile-messages/profile-messages.component';
 
 const routes: Routes = [  
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'create', component: CreatepostComponent, canActivate: [AuthGuardService] },
   { path: 'messages', component: ListMessagesComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/user/:id', component: ListMessagesByUserComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: '/messages', pathMatch: 'full'},
   { path: 'messages/:id', component: DetailsMessageComponent, canActivate: [AuthGuardService] },
   { path: 'messages/:id/edit', component: EditMessageComponent, canActivate: [AuthGuardService] },
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'messages/user/:id', component: ListMessagesByUserComponent, canActivate: [AuthGuardService] },
+  { path: 'profile', component: ProfileMessagesComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({

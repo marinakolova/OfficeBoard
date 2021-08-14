@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
@@ -19,6 +20,7 @@ import { EditMessageComponent } from './edit-message/edit-message.component';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileMessagesComponent } from './profile-messages/profile-messages.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { ToastrModule } from 'ngx-toastr';
     ListMessagesComponent,
     ListMessagesByUserComponent,
     DetailsMessageComponent,
-    EditMessageComponent    
+    EditMessageComponent,
+    ProfileMessagesComponent    
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

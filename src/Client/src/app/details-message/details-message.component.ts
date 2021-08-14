@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/Message';
 import { MessageService } from '../services/message.service';
 import { map, mergeMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details-message',
@@ -14,7 +15,7 @@ export class DetailsMessageComponent implements OnInit {
   id!: number;
   message!: Message;
 
-  constructor(private messageService: MessageService, private route: ActivatedRoute) { }
+  constructor(private messageService: MessageService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -26,6 +27,16 @@ export class DetailsMessageComponent implements OnInit {
       return id
     }), mergeMap(id => this.messageService.getMessageDetails(id))).subscribe(res => {
       this.message = res;
+    });
+  }  
+
+  editMessage(id: number) {
+    this.router.navigate([`messages/${id}/edit`])
+  }
+
+  deleteMessage(id: number) {
+    this.messageService.deleteMessage(id).subscribe(res => {
+      this.router.navigate(["/messages"]);
     });
   }
   

@@ -1,1 +1,129 @@
-<router-outlet></router-outlet>
+<div>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <div class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <fa-icon [icon]="faLaughWink"></fa-icon>
+                </div>
+                <div class="sidebar-brand-text mx-3"><sup>Office </sup>Board</div>
+            </div>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <div *ngIf="isAuthenticated()">
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="messages">
+                        <fa-icon [icon]="faList"></fa-icon>
+                        <span> All Messages</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Actions
+                </div>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" href="create">
+                        <fa-icon [icon]="faPlusCircle"></fa-icon>
+                        <span> Create New Message</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    User Profile
+                </div>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" href="profile">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                        <span> My Messages</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()">
+                        <fa-icon [icon]="faSignOutAlt"></fa-icon>
+                        <span> Logout</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+            </div>
+
+            <div *ngIf="!isAuthenticated()">
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" href="login">
+                        <fa-icon [icon]="faSignInAlt"></fa-icon>
+                        <span> Login</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" href="register">
+                        <fa-icon [icon]="faUserPlus"></fa-icon>
+                        <span> Register</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid mt-4">
+
+                    <router-outlet></router-outlet>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; OfficeBoard 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+</div>

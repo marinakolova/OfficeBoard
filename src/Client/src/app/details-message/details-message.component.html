@@ -15,8 +15,9 @@
                         <small class="text-muted">CreatedOn: 
                             {{message.createdOn}}
                         </small>
-                    </p>
-                    <a routerLink="/messages/{{message.id}}" class="btn btn-primary">See message info</a>
+                    </p>                    
+                    <button class="btn btn-warning ml-2" (click)="editMessage(message.id)"> Edit</button>
+                    <button class="btn btn-danger ml-2" (click)="deleteMessage(message.id)">Delete</button>
                 </div>
             </div>
         </div>
