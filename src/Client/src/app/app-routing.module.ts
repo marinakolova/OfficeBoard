@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
-const routes: Routes = [
+const routes: Routes = [  
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'create', component: CreatepostComponent, canActivate: [AuthGuardService] },
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'messages/user/:id', component: ListMessagesByUserComponent, canActivate: [AuthGuardService] },
   { path: 'messages/:id', component: DetailsMessageComponent, canActivate: [AuthGuardService] },
   { path: 'messages/:id/edit', component: EditMessageComponent, canActivate: [AuthGuardService] },
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];
 
 @NgModule({

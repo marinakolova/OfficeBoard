@@ -11,6 +11,11 @@
                             <a routerLink="/messages/user/{{message.userId}}">{{message.userName}}</a>
                         </small>
                     </p>
+                    <p class="card-text">
+                        <small class="text-muted">CreatedOn: 
+                            {{message.createdOn}}
+                        </small>
+                    </p>
                     <a routerLink="/messages/{{message.id}}" class="btn btn-primary">See message info</a>
                 </div>
             </div>
