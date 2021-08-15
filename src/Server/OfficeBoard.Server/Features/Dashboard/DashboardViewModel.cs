@@ -13,5 +13,11 @@
         public int TodayTasksCount { get; set; }
 
         public int MonthTasksCount { get; set; }
+
+        public int CommentsCount { get; set; }
+
+        public int TodayCommentsCount { get; set; }
+
+        public int MonthCommentsCount { get; set; }
     }
 }
