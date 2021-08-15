@@ -114,6 +114,23 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
+        public async Task<IEnumerable<MessageViewModel>> GetByUsername(string username)
+            => await this.data
+                .Messages
+                .Where(x => x.User.UserName == username)
+                .Select(x => new MessageViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    CreatedOn = x.CreatedOn,
+                    ModifiedOn = x.ModifiedOn,
+                    UserId = x.User.Id,
+                    UserName = username,
+                })
+                .OrderByDescending(x => x.CreatedOn)
+                .ToListAsync();
+
         public async Task<MessageViewModel> GetById(int id)
             => await this.data
                 .Messages

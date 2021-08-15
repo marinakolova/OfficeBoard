@@ -7,6 +7,8 @@
     using OfficeBoard.Server.Features.Comments.Models;
     using OfficeBoard.Server.Infrastructure.Services;
 
+    using static OfficeBoard.Server.Infrastructure.WebConstants;
+
     [Authorize]
     public class CommentsController : ApiController
     {
@@ -32,6 +34,22 @@
                 userId);
 
             return this.Created(nameof(this.Create), commentId);
+        }
+
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var userId = this.currentUserService.GetId();
+
+            var deleted = await this.commentService.Delete(id, userId);
+
+            if (!deleted)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Ok();
         }
     }
 }

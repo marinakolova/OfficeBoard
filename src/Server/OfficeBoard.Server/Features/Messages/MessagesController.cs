@@ -31,12 +31,13 @@
         }
 
         [HttpGet]
-        [Route("user/{userId}")]
-        public async Task<IEnumerable<MessageViewModel>> ByUser(string userId)
+        [Route("user/{username}")]
+        public async Task<IEnumerable<MessageViewModel>> ByUser(string username)
         {
-            return await this.messageService.GetAllByUser(userId);
+            return await this.messageService.GetByUsername(username);
         }
 
+        /*
         [HttpGet]
         [Route("profile")]
         public async Task<IEnumerable<MessageViewModel>> Mine()
@@ -45,6 +46,7 @@
 
             return await this.messageService.GetAllByUser(userId);
         }
+        */
 
         [HttpGet]
         [Route(Id)]

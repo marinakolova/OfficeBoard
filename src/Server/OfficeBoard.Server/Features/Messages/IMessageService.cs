@@ -23,6 +23,8 @@
 
         Task<IEnumerable<MessageViewModel>> GetAllByUser(string userId);
 
+        Task<IEnumerable<MessageViewModel>> GetByUsername(string username);
+
         Task<MessageViewModel> GetById(int id);
     }
 }
