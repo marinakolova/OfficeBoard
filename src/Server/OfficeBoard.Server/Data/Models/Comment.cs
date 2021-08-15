@@ -4,19 +4,19 @@
 
     using OfficeBoard.Server.Data.Models.Base;
 
-    using static OfficeBoard.Server.Data.Validation.Message;
+    using static OfficeBoard.Server.Data.Validation.Comment;
 
-    public class Message : DeletableEntity
+    public class Comment : DeletableEntity
     {
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(MaxTtileLength)]
-        public string Title { get; set; }
-
-        [Required]
         [MaxLength(MaxContentLength)]
         public string Content { get; set; }
+
+        public int TaskId { get; set; }
+
+        public Task Task { get; set; }
 
         [Required]
         public string UserId { get; set; }

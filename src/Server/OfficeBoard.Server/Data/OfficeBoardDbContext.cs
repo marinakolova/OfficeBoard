@@ -23,6 +23,10 @@
 
         public DbSet<Message> Messages { get; set; }
 
+        public DbSet<Models.Task> Tasks { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             this.ApplyAuditInformation();
@@ -47,6 +51,30 @@
                 .HasOne(m => m.User)
                 .WithMany(u => u.Messages)
                 .HasForeignKey(m => m.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Models.Task>()
+                .HasQueryFilter(t => !t.IsDeleted)
+                .HasOne(t => t.User)
+                .WithMany(u => u.Tasks)
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Comment>()
+                .HasQueryFilter(c => !c.IsDeleted)
+                .HasOne(c => c.Task)
+                .WithMany(t => t.Comments)
+                .HasForeignKey(c => c.TaskId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Comment>()
+                .HasQueryFilter(c => !c.IsDeleted)
+                .HasOne(c => c.User)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(t => t.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);

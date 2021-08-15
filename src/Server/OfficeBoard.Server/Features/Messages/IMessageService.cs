@@ -7,16 +7,22 @@
 
     public interface IMessageService
     {
-        Task<int> Create(string title, string content, string imageUrl, string userId);
+        Task<int> Create(string title, string content, string userId);
 
-        Task<bool> Update(int id, string title, string content, string imageUrl, string userId);
+        Task<bool> Update(int id, string title, string content, string userId);
 
         Task<bool> Delete(int id, string userId);
 
-        Task<IEnumerable<MessageDetailsServiceModel>> GetAll();
+        Task<int> GetCount();
 
-        Task<IEnumerable<MessageDetailsServiceModel>> GetAllByUser(string userId);
+        Task<int> GetTodayCount();
 
-        Task<MessageDetailsServiceModel> GetById(int id);
+        Task<int> GetMonthCount();
+
+        Task<IEnumerable<MessageViewModel>> GetAll();
+
+        Task<IEnumerable<MessageViewModel>> GetAllByUser(string userId);
+
+        Task<MessageViewModel> GetById(int id);
     }
 }

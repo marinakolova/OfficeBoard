@@ -25,21 +25,21 @@
         }
 
         [HttpGet]
-        public async Task<IEnumerable<MessageDetailsServiceModel>> All()
+        public async Task<IEnumerable<MessageViewModel>> All()
         {
             return await this.messageService.GetAll();
         }
 
         [HttpGet]
         [Route("user/{userId}")]
-        public async Task<IEnumerable<MessageDetailsServiceModel>> ByUser(string userId)
+        public async Task<IEnumerable<MessageViewModel>> ByUser(string userId)
         {
             return await this.messageService.GetAllByUser(userId);
         }
 
         [HttpGet]
         [Route("profile")]
-        public async Task<IEnumerable<MessageDetailsServiceModel>> Mine()
+        public async Task<IEnumerable<MessageViewModel>> Mine()
         {
             var userId = this.currentUserService.GetId();
 
@@ -48,7 +48,7 @@
 
         [HttpGet]
         [Route(Id)]
-        public async Task<ActionResult<MessageDetailsServiceModel>> Details(int id)
+        public async Task<ActionResult<MessageViewModel>> Details(int id)
             => await this.messageService.GetById(id);
 
         [HttpPost]
@@ -59,7 +59,6 @@
             var messageId = await this.messageService.Create(
                 model.Title,
                 model.Content,
-                model.ImageUrl,
                 userId);
 
             return this.Created(nameof(this.Create), messageId);
@@ -74,7 +73,6 @@
                 model.Id,
                 model.Title,
                 model.Content,
-                model.ImageUrl,
                 userId);
 
             if (!updated)

@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Features.Messages
+﻿namespace OfficeBoard.Server.Features.Comments
 {
     using System;
     using System.Collections.Generic;
@@ -8,57 +8,40 @@
     using Microsoft.EntityFrameworkCore;
     using OfficeBoard.Server.Data;
     using OfficeBoard.Server.Data.Models;
-    using OfficeBoard.Server.Features.Messages.Models;
+    using OfficeBoard.Server.Features.Comments.Models;
 
-    public class MessageService : IMessageService
+    public class CommentService : ICommentService
     {
         private readonly OfficeBoardDbContext data;
 
-        public MessageService(OfficeBoardDbContext data)
+        public CommentService(OfficeBoardDbContext data)
             => this.data = data;
 
-        public async Task<int> Create(string title, string content, string userId)
+        public async Task<int> Create(string content, int taskId, string userId)
         {
-            var message = new Message
+            var comment = new Comment
             {
-                Title = title,
                 Content = content,
+                TaskId = taskId,
                 UserId = userId,
             };
 
-            this.data.Add(message);
+            this.data.Add(comment);
             await this.data.SaveChangesAsync();
 
-            return message.Id;
-        }
-
-        public async Task<bool> Update(int id, string title, string content, string userId)
-        {
-            var message = await this.GetMessageByIdAndUserId(id, userId);
-
-            if (message == null)
-            {
-                return false;
-            }
-
-            message.Title = title;
-            message.Content = content;
-
-            await this.data.SaveChangesAsync();
-
-            return true;
+            return comment.Id;
         }
 
         public async Task<bool> Delete(int id, string userId)
         {
-            var message = await this.GetMessageByIdAndUserId(id, userId);
+            var comment = await this.GetCommentByIdAndUserId(id, userId);
 
-            if (message == null)
+            if (comment == null)
             {
                 return false;
             }
 
-            this.data.Messages.Remove(message);
+            this.data.Comments.Remove(comment);
             await this.data.SaveChangesAsync();
 
             return true;
@@ -66,29 +49,30 @@
 
         public async Task<int> GetCount()
             => await this.data
-                .Messages
+                .Comments
                 .CountAsync();
 
         public async Task<int> GetTodayCount()
             => await this.data
-                .Messages
+                .Comments
                 .Where(x => x.CreatedOn.Date == DateTime.UtcNow.Date)
                 .CountAsync();
 
         public async Task<int> GetMonthCount()
             => await this.data
-                .Messages
+                .Comments
                 .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
                 .CountAsync();
 
-        public async Task<IEnumerable<MessageViewModel>> GetAll()
+        public async Task<IEnumerable<CommentViewModel>> GetAll()
             => await this.data
-                .Messages
-                .Select(x => new MessageViewModel
+                .Comments
+                .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
-                    Title = x.Title,
                     Content = x.Content,
+                    TaskId = x.TaskId,
+                    TaskTitle = x.Task.Title,
                     CreatedOn = x.CreatedOn,
                     ModifiedOn = x.ModifiedOn,
                     UserId = x.UserId,
@@ -97,41 +81,62 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<IEnumerable<MessageViewModel>> GetAllByUser(string userId)
+        public async Task<IEnumerable<CommentViewModel>> GetAllByTask(int taskId)
             => await this.data
-                .Messages
-                .Where(x => x.UserId == userId)
-                .Select(x => new MessageViewModel
+                .Comments
+                .Where(x => x.TaskId == taskId)
+                .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
-                    Title = x.Title,
                     Content = x.Content,
+                    TaskId = x.TaskId,
+                    TaskTitle = x.Task.Title,
                     CreatedOn = x.CreatedOn,
                     ModifiedOn = x.ModifiedOn,
-                    UserId = userId,
+                    UserId = x.UserId,
                     UserName = x.User.UserName,
                 })
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<MessageViewModel> GetById(int id)
+        public async Task<IEnumerable<CommentViewModel>> GetAllByUser(string userId)
             => await this.data
-                .Messages
-                .Where(x => x.Id == id)
-                .Select(x => new MessageViewModel
+                .Comments
+                .Where(x => x.UserId == userId)
+                .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
-                    Title = x.Title,
                     Content = x.Content,
+                    TaskId = x.TaskId,
+                    TaskTitle = x.Task.Title,
                     CreatedOn = x.CreatedOn,
+                    ModifiedOn = x.ModifiedOn,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                })
+                .OrderByDescending(x => x.CreatedOn)
+                .ToListAsync();
+
+        public async Task<CommentViewModel> GetById(int id)
+            => await this.data
+                .Comments
+                .Where(x => x.Id == id)
+                .Select(x => new CommentViewModel
+                {
+                    Id = x.Id,
+                    Content = x.Content,
+                    TaskId = x.TaskId,
+                    TaskTitle = x.Task.Title,
+                    CreatedOn = x.CreatedOn,
+                    ModifiedOn = x.ModifiedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
                 })
                 .FirstOrDefaultAsync();
 
-        private async Task<Message> GetMessageByIdAndUserId(int id, string userId)
+        private async Task<Comment> GetCommentByIdAndUserId(int id, string userId)
             => await this.data
-                .Messages
+                .Comments
                 .Where(x => x.Id == id && x.UserId == userId)
                 .FirstOrDefaultAsync();
     }

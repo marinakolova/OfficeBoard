@@ -7,5 +7,16 @@
             public const int MaxTtileLength = 60;
             public const int MaxContentLength = 3500;
         }
+
+        public class Task
+        {
+            public const int MaxTtileLength = 60;
+            public const int MaxDescriptionLength = 3500;
+        }
+
+        public class Comment
+        {
+            public const int MaxContentLength = 3500;
+        }
     }
 }

@@ -17,5 +17,9 @@
         public string ModifiedBy { get; set; }
 
         public IEnumerable<Message> Messages { get; } = new HashSet<Message>();
+
+        public IEnumerable<Task> Tasks { get; } = new HashSet<Task>();
+
+        public IEnumerable<Comment> Comments { get; } = new HashSet<Comment>();
     }
 }

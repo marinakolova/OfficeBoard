@@ -1,4 +1,4 @@
-﻿namespace OfficeBoard.Server.Features.Messages
+﻿namespace OfficeBoard.Server.Features.Tasks
 {
     using System;
     using System.Collections.Generic;
@@ -7,42 +7,59 @@
 
     using Microsoft.EntityFrameworkCore;
     using OfficeBoard.Server.Data;
-    using OfficeBoard.Server.Data.Models;
-    using OfficeBoard.Server.Features.Messages.Models;
+    using OfficeBoard.Server.Features.Tasks.Models;
 
-    public class MessageService : IMessageService
+    public class TaskService : ITaskService
     {
         private readonly OfficeBoardDbContext data;
 
-        public MessageService(OfficeBoardDbContext data)
+        public TaskService(OfficeBoardDbContext data)
             => this.data = data;
 
-        public async Task<int> Create(string title, string content, string userId)
+        public async Task<int> Create(string title, string description, string userId)
         {
-            var message = new Message
+            var task = new Data.Models.Task
             {
                 Title = title,
-                Content = content,
+                Description = description,
+                Status = Data.Models.TaskStatus.ToDo,
                 UserId = userId,
             };
 
-            this.data.Add(message);
+            this.data.Add(task);
             await this.data.SaveChangesAsync();
 
-            return message.Id;
+            return task.Id;
         }
 
-        public async Task<bool> Update(int id, string title, string content, string userId)
+        public async Task<bool> Update(int id, string title, string description, int status, string userId)
         {
-            var message = await this.GetMessageByIdAndUserId(id, userId);
+            var task = await this.GetTaskByIdAndUserId(id, userId);
 
-            if (message == null)
+            if (task == null)
             {
                 return false;
             }
 
-            message.Title = title;
-            message.Content = content;
+            task.Title = title;
+            task.Description = description;
+            task.Status = (Data.Models.TaskStatus)status;
+
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> ChangeStatus(int id, int status, string userId)
+        {
+            var task = await this.GetTaskByIdAndUserId(id, userId);
+
+            if (task == null)
+            {
+                return false;
+            }
+
+            task.Status = (Data.Models.TaskStatus)status;
 
             await this.data.SaveChangesAsync();
 
@@ -51,14 +68,14 @@
 
         public async Task<bool> Delete(int id, string userId)
         {
-            var message = await this.GetMessageByIdAndUserId(id, userId);
+            var task = await this.GetTaskByIdAndUserId(id, userId);
 
-            if (message == null)
+            if (task == null)
             {
                 return false;
             }
 
-            this.data.Messages.Remove(message);
+            this.data.Tasks.Remove(task);
             await this.data.SaveChangesAsync();
 
             return true;
@@ -66,72 +83,78 @@
 
         public async Task<int> GetCount()
             => await this.data
-                .Messages
+                .Tasks
                 .CountAsync();
 
         public async Task<int> GetTodayCount()
             => await this.data
-                .Messages
+                .Tasks
                 .Where(x => x.CreatedOn.Date == DateTime.UtcNow.Date)
                 .CountAsync();
 
         public async Task<int> GetMonthCount()
             => await this.data
-                .Messages
+                .Tasks
                 .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
                 .CountAsync();
 
-        public async Task<IEnumerable<MessageViewModel>> GetAll()
+        public async Task<IEnumerable<TaskViewModel>> GetAll()
             => await this.data
-                .Messages
-                .Select(x => new MessageViewModel
+                .Tasks
+                .Select(x => new TaskViewModel
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    Content = x.Content,
+                    Description = x.Description,
+                    Status = (int)x.Status,
                     CreatedOn = x.CreatedOn,
                     ModifiedOn = x.ModifiedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
+                    CommentsCount = x.Comments.Count(),
                 })
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<IEnumerable<MessageViewModel>> GetAllByUser(string userId)
+        public async Task<IEnumerable<TaskViewModel>> GetAllByUser(string userId)
             => await this.data
-                .Messages
+                .Tasks
                 .Where(x => x.UserId == userId)
-                .Select(x => new MessageViewModel
+                .Select(x => new TaskViewModel
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    Content = x.Content,
+                    Description = x.Description,
+                    Status = (int)x.Status,
                     CreatedOn = x.CreatedOn,
                     ModifiedOn = x.ModifiedOn,
                     UserId = userId,
                     UserName = x.User.UserName,
+                    CommentsCount = x.Comments.Count(),
                 })
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<MessageViewModel> GetById(int id)
+        public async Task<TaskWithCommentsViewModel> GetById(int id)
             => await this.data
-                .Messages
+                .Tasks
                 .Where(x => x.Id == id)
-                .Select(x => new MessageViewModel
+                .Select(x => new TaskWithCommentsViewModel
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    Content = x.Content,
+                    Description = x.Description,
+                    Status = (int)x.Status,
                     CreatedOn = x.CreatedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
+                    CommentsCount = x.Comments.Count(),
                 })
                 .FirstOrDefaultAsync();
 
-        private async Task<Message> GetMessageByIdAndUserId(int id, string userId)
+        private async Task<Data.Models.Task> GetTaskByIdAndUserId(int id, string userId)
             => await this.data
-                .Messages
+                .Tasks
                 .Where(x => x.Id == id && x.UserId == userId)
                 .FirstOrDefaultAsync();
     }
