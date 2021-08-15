@@ -5,11 +5,12 @@ import { Message } from '../models/Message';
 import { MessageService } from '../services/message.service';
 
 @Component({
-  selector: 'app-edit-message',
-  templateUrl: './edit-message.component.html',
-  styleUrls: ['./edit-message.component.css']
+  selector: 'app-message-edit',
+  templateUrl: './message-edit.component.html',
+  styleUrls: ['./message-edit.component.css']
 })
-export class EditMessageComponent implements OnInit {
+export class MessageEditComponent implements OnInit {
+
   id!: number;
   message!: Message;
   messageForm!: FormGroup;
@@ -55,5 +56,6 @@ export class EditMessageComponent implements OnInit {
 
   get content() {
     return this.messageForm.get('Content');
-  } 
+  }
+
 }

@@ -1,17 +1,16 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/Message';
 import { MessageService } from '../services/message.service';
 import { map, mergeMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-details-message',
-  templateUrl: './details-message.component.html',
-  styleUrls: ['./details-message.component.css']
+  selector: 'app-message-details',
+  templateUrl: './message-details.component.html',
+  styleUrls: ['./message-details.component.css']
 })
-export class DetailsMessageComponent implements OnInit {
+export class MessageDetailsComponent implements OnInit {
+
   id!: number;
   message!: Message;
 
@@ -28,6 +27,6 @@ export class DetailsMessageComponent implements OnInit {
     }), mergeMap(id => this.messageService.getMessageDetails(id))).subscribe(res => {
       this.message = res;
     });
-  }    
-  
+  }
+
 }

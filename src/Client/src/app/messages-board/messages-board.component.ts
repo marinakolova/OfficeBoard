@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../services/message.service';
-import { Message } from '../models/Message';
 import { Router } from '@angular/router';
+import { Message } from '../models/Message';
+import { MessageService } from '../services/message.service';
 
 @Component({
-  selector: 'app-list-messages',
-  templateUrl: './list-messages.component.html',
-  styleUrls: ['./list-messages.component.css']
+  selector: 'app-messages-board',
+  templateUrl: './messages-board.component.html',
+  styleUrls: ['./messages-board.component.css']
 })
-export class ListMessagesComponent implements OnInit {
+export class MessagesBoardComponent implements OnInit {
+
   messages: Array<Message>;
 
   constructor(private messageService: MessageService, private router: Router) {
@@ -24,4 +25,5 @@ export class ListMessagesComponent implements OnInit {
       this.messages = messages;
     })
   }
+
 }

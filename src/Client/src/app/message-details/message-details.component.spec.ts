@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditMessageComponent } from './edit-message.component';
+import { MessageDetailsComponent } from './message-details.component';
 
-describe('EditMessageComponent', () => {
-  let component: EditMessageComponent;
-  let fixture: ComponentFixture<EditMessageComponent>;
+describe('MessageDetailsComponent', () => {
+  let component: MessageDetailsComponent;
+  let fixture: ComponentFixture<MessageDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditMessageComponent ]
+      declarations: [ MessageDetailsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditMessageComponent);
+    fixture = TestBed.createComponent(MessageDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

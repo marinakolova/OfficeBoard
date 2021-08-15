@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { MessageService } from '../services/message.service';
 
 @Component({
-  selector: 'app-createpost',
-  templateUrl: './createpost.component.html',
-  styleUrls: ['./createpost.component.css']
+  selector: 'app-message-create',
+  templateUrl: './message-create.component.html',
+  styleUrls: ['./message-create.component.css']
 })
-export class CreatepostComponent implements OnInit {
+export class MessageCreateComponent implements OnInit {
+  
   messageForm: FormGroup;
   
   constructor(private fb: FormBuilder, private messageService: MessageService, private router: Router) { 

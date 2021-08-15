@@ -4,11 +4,12 @@ import { Message } from '../models/Message';
 import { MessageService } from '../services/message.service';
 
 @Component({
-  selector: 'app-list-messages-by-user',
-  templateUrl: './list-messages-by-user.component.html',
-  styleUrls: ['./list-messages-by-user.component.css']
+  selector: 'app-messages-by-user',
+  templateUrl: './messages-by-user.component.html',
+  styleUrls: ['./messages-by-user.component.css']
 })
-export class ListMessagesByUserComponent implements OnInit {
+export class MessagesByUserComponent implements OnInit {
+
   userId!: string;
   messages: Array<Message>;
 
