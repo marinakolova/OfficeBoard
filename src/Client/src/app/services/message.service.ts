@@ -9,6 +9,7 @@ import { Message } from '../models/Message';
   providedIn: 'root'
 })
 export class MessageService {
+  
   private messagesPath = environment.apiUrl + 'messages';
     
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -36,4 +37,5 @@ export class MessageService {
   deleteMessage(id: number) {
     return this.http.delete(this.messagesPath + `/${id}`);
   }  
+  
 }

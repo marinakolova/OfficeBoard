@@ -13,7 +13,16 @@
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{message.title}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">{{message.title}}</h6>
+                    <!-- Circle Buttons (Small) --> 
+                    <div *ngIf="this.getUserId() == message.userId" style="display: inline;">
+                        <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4" title="Edit">
+                            <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
+                        </a>
+                        <a (click)="confirmDelete(message.title, message.id)" class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
+                            <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <p>{{message.content}}</p>
@@ -24,13 +33,6 @@
                             <a routerLink="/messages/user/{{message.userName}}"><strong>{{message.userName}}</strong></a>
                         </small>
                     </p>
-                    <button routerLink="/messages/{{message.id}}" class="btn btn-sm btn-primary ml-2">See
-                        Details</button>
-                    <div *ngIf="this.getUserId() == message.userId" style="display: inline;">
-                        <button class="btn btn-sm btn-warning ml-3" (click)="editMessage(message.id)"> Edit</button>
-                        <button class="btn btn-sm btn-danger ml-3"
-                            (click)="confirmDelete(message.title, message.id)">Delete</button>
-                    </div>
                 </div>
             </div>
         </div>

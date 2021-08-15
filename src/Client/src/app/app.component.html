@@ -84,6 +84,14 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
+                    <a class="nav-link" (click)="myMessages()">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                        <span> My Messages</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
                     <a class="nav-link" (click)="confirmLogout()">
                         <fa-icon [icon]="faSignOutAlt"></fa-icon>
                         <span> Logout</span>

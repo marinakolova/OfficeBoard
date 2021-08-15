@@ -3,6 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../models/Message';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/message.service';
+import { 
+  faInfo,
+  faEdit,
+  faTrash, 
+  faList,
+  } 
+  from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-messages-by-user',
@@ -10,6 +17,10 @@ import { MessageService } from '../services/message.service';
   styleUrls: ['./messages-by-user.component.css']
 })
 export class MessagesByUserComponent implements OnInit {
+  faInfo = faInfo;
+  faEdit = faEdit;
+  faTrash = faTrash;
+  faList = faList;
 
   userId!: string;
   messages: Array<Message>;

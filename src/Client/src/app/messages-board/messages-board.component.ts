@@ -3,6 +3,12 @@ import { Router } from '@angular/router';
 import { Message } from '../models/Message';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/message.service';
+import { 
+  faInfo,
+  faEdit,
+  faTrash, 
+  } 
+  from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-messages-board',
@@ -10,6 +16,9 @@ import { MessageService } from '../services/message.service';
   styleUrls: ['./messages-board.component.css']
 })
 export class MessagesBoardComponent implements OnInit {
+  faInfo = faInfo;
+  faEdit = faEdit;
+  faTrash = faTrash;
 
   messages: Array<Message>;
 

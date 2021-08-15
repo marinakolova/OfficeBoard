@@ -37,6 +37,14 @@ export class AppComponent {
     return this.authService.isAuthenticated();
   }
 
+  getUsername() {
+    return this.authService.getUsername();
+  }
+
+  myMessages() {
+    this.router.navigate([`/messages/user/${this.getUsername()}`]);
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(["/login"]);

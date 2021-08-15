@@ -36,6 +36,14 @@ export class AuthService {
     return localStorage.getItem('userId');
   }
 
+  saveUsername(username: string) {
+    localStorage.setItem('username', username);
+  }
+
+  getUsername() {
+    return localStorage.getItem('username');
+  }
+
   isAuthenticated() {
     if (this.getToken()) {
       return true;

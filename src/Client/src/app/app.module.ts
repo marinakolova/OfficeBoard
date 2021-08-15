@@ -25,7 +25,6 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { MessagesBoardComponent } from './messages-board/messages-board.component';
 import { MessageCreateComponent } from './message-create/message-create.component';
-import { MessageDetailsComponent } from './message-details/message-details.component';
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
 import { DashboardService } from './services/dashboard.service';
@@ -43,7 +42,6 @@ import { DashboardService } from './services/dashboard.service';
     TaskEditComponent,
     MessagesBoardComponent,
     MessageCreateComponent,
-    MessageDetailsComponent,
     MessageEditComponent,
     MessagesByUserComponent    
   ],

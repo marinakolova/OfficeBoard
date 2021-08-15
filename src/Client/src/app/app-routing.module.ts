@@ -10,7 +10,6 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { MessagesBoardComponent } from './messages-board/messages-board.component';
 import { MessageCreateComponent } from './message-create/message-create.component';
-import { MessageDetailsComponent } from './message-details/message-details.component';
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
 
@@ -27,7 +26,6 @@ const routes: Routes = [
 
   { path: 'messages', component: MessagesBoardComponent, canActivate: [AuthGuardService] },
   { path: 'messages/create', component: MessageCreateComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/:id', component: MessageDetailsComponent, canActivate: [AuthGuardService] },
   { path: 'messages/:id/edit', component: MessageEditComponent, canActivate: [AuthGuardService] },
   { path: 'messages/user/:id', component: MessagesByUserComponent, canActivate: [AuthGuardService] },    
 ];
