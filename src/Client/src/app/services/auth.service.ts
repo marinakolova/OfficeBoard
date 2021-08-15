@@ -28,6 +28,14 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  saveUserId(userId: string) {
+    localStorage.setItem('userId', userId);
+  }
+
+  getUserId() {
+    return localStorage.getItem('userId');
+  }
+
   isAuthenticated() {
     if (this.getToken()) {
       return true;
@@ -38,6 +46,7 @@ export class AuthService {
   logout() {
     if (this.isAuthenticated()) {
       localStorage.removeItem('token');
+      localStorage.removeItem('userId');
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../models/Message';
+import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/message.service';
 
 @Component({
@@ -13,7 +14,12 @@ export class MessagesByUserComponent implements OnInit {
   userId!: string;
   messages: Array<Message>;
 
-  constructor(private messageService: MessageService, private route: ActivatedRoute) { 
+  constructor(
+    private messageService: MessageService, 
+    private authService: AuthService, 
+    private route: ActivatedRoute, 
+    private router: Router
+  ) { 
     this.messages = new Array<Message>();
     
     this.route.params.subscribe(res => {
@@ -25,6 +31,26 @@ export class MessagesByUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  getUserId() {
+    return this.authService.getUserId();
+  }
+
+  editMessage(id: number) {
+    this.router.navigate([`messages/${id}/edit`]);
+  }
+
+  deleteMessage(id: number) {
+    this.messageService.deleteMessage(id).subscribe(res => {
+      this.router.navigate(["messages"])
+    });
+  }
+
+  confirmDelete(name: string, id: number) {
+    if(confirm(`${name} - Delete message?`)) {
+      this.deleteMessage(id);
+    }
   }
 
 }

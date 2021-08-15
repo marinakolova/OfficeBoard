@@ -28,7 +28,31 @@
             <hr class="sidebar-divider">
 
             <div *ngIf="isAuthenticated()">
-                
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Messages
+                </div>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/messages">
+                        <fa-icon [icon]="faList"></fa-icon>
+                        <span> Messages Board</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/messages/create">
+                        <fa-icon [icon]="faPlusCircle"></fa-icon>
+                        <span> Create New Message</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Tasks
@@ -48,52 +72,19 @@
                         <fa-icon [icon]="faPlusCircle"></fa-icon>
                         <span> Create New Task</span>
                     </a>
-                </li>                
+                </li>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
-                
+
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Messages
+                    Account
                 </div>
-                
-                <!-- Nav Item -->
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/messages">
-                        <fa-icon [icon]="faList"></fa-icon>
-                        <span> Messages Board</span>
-                    </a>
-                </li>                
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/messages/create">
-                        <fa-icon [icon]="faPlusCircle"></fa-icon>
-                        <span> Create New Message</span>
-                    </a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-                
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    User
-                </div>  
-                
-                <!-- Nav Item -->
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/profile/messages">
-                        <fa-icon [icon]="faUser"></fa-icon>
-                        <span> My Messages</span>
-                    </a>
-                </li>
-
-                <!-- Nav Item -->
-                <li class="nav-item">
-                    <a class="nav-link" (click)="logout()">
+                    <a class="nav-link" (click)="confirmLogout()">
                         <fa-icon [icon]="faSignOutAlt"></fa-icon>
                         <span> Logout</span>
                     </a>
@@ -133,13 +124,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid mt-4">
-
-                    <router-outlet></router-outlet>
-
-                </div>
-                <!-- /.container-fluid -->
+                <router-outlet></router-outlet>
 
             </div>
             <!-- End of Main Content -->

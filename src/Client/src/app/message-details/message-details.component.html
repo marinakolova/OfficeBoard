@@ -1,7 +1,17 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Message Details</h1>
-</div>
-<div class="container-fluid">
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between m-4">
+        <h1 class="h3 mb-0 text-primary"><strong>Messages Board</strong></h1>
+    </div>
+</nav>
+<!-- End of Topbar -->
+<!-- Begin Page Content -->
+<div class="container-fluid mt-4">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Message Details</h1>
+        <button routerLink="/messages" class="btn btn-sm btn-secondary ml-2">Back To Messages Board</button>
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <!-- Basic Card Example -->
@@ -14,7 +24,7 @@
                     <br>
                     <p>
                         <small class="text-muted">Author:
-                            <a routerLink="/messages/user/{{message.userId}}"><strong>{{message.userName}}</strong></a>
+                            <a routerLink="/messages/user/{{message.userName}}"><strong>{{message.userName}}</strong></a>
                         </small>
                     </p>
                     <p>
@@ -24,10 +34,13 @@
                     <p>
                         <small class="text-muted">Modified On: <strong class="text-danger">{{message.modifiedOn|
                                 date:'dd.MM.yyyy hh:mm'}}</strong></small>
-                    </p>
-                </div>
+                    </p>                                        
+                </div>                
             </div>
-            <button routerLink="/messages" class="btn btn-sm btn-secondary ml-2">Back To Messages</button>
+            <div *ngIf="this.getUserId() == message.userId">
+                <button class="btn btn-sm btn-warning ml-3" (click)="editMessage(message.id)"> Edit</button>
+                <button class="btn btn-sm btn-danger ml-3" (click)="confirmDelete(message.title, message.id)">Delete</button>
+            </div>            
         </div>
     </div>
 </div>

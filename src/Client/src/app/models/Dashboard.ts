@@ -5,4 +5,7 @@ export interface Dashboard {
     tasksCount: number,
     todayTasksCount: number,
     monthTasksCount: number,
+    commentsCount: number,
+    todayCommentsCount: number,
+    monthCommentsCount: number,
 }

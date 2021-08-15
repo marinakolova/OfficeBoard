@@ -13,15 +13,12 @@ import { MessageCreateComponent } from './message-create/message-create.componen
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
-import { ProfileMessagesComponent } from './profile-messages/profile-messages.component';
 
 const routes: Routes = [  
   { path: '', component: DashboardComponent },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-
-  { path: 'profile/messages', component: ProfileMessagesComponent, canActivate: [AuthGuardService] },
 
   { path: 'tasks', component: TasksBoardComponent, canActivate: [AuthGuardService] },
   { path: 'tasks/create', component: TaskCreateComponent, canActivate: [AuthGuardService] },

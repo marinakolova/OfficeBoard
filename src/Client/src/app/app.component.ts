@@ -33,12 +33,19 @@ export class AppComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(["/login"]);
   }
 
-  isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+  confirmLogout() {
+    if(confirm("Logout?")) {
+      this.logout();
+    }
   }
+
 }

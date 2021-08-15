@@ -28,7 +28,6 @@ import { MessageCreateComponent } from './message-create/message-create.componen
 import { MessageDetailsComponent } from './message-details/message-details.component';
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
-import { ProfileMessagesComponent } from './profile-messages/profile-messages.component';
 import { DashboardService } from './services/dashboard.service';
 
 @NgModule({
@@ -46,8 +45,7 @@ import { DashboardService } from './services/dashboard.service';
     MessageCreateComponent,
     MessageDetailsComponent,
     MessageEditComponent,
-    MessagesByUserComponent,
-    ProfileMessagesComponent,    
+    MessagesByUserComponent    
   ],
   imports: [
     BrowserModule,
