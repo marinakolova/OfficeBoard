@@ -52,7 +52,10 @@
 
         public async Task<bool> ChangeStatus(int id, int status, string userId)
         {
-            var task = await this.GetTaskByIdAndUserId(id, userId);
+            var task = await this.data
+                .Tasks
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
 
             if (task == null)
             {
