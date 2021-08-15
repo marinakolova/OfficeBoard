@@ -18,7 +18,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksBoardComponent } from './tasks-board/tasks-board.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
-import { CommentCreateComponent } from './comment-create/comment-create.component';
 import { TaskService } from './services/task.service';
 import { CommentService } from './services/comment.service';
 import { TaskDetailsComponent } from './task-details/task-details.component';
@@ -37,7 +36,6 @@ import { DashboardService } from './services/dashboard.service';
     DashboardComponent,
     TasksBoardComponent,
     TaskCreateComponent,
-    CommentCreateComponent,
     TaskDetailsComponent,
     TaskEditComponent,
     MessagesBoardComponent,

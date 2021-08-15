@@ -1,1 +1,50 @@
-<p>task-details works!</p>
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between m-4">
+        <h1 class="h3 mb-0 text-primary"><strong>Tasks Details</strong></h1>
+    </div>
+</nav>
+<!-- End of Topbar -->
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-bottom-info">
+                <div class="card-body">
+                    <p class="text-lg"><strong>{{task.title}}</strong></p>
+                    <p>{{task.description}}</p>
+                    <p [ngSwitch]="task.status">
+                        <small *ngSwitchCase="0" class="text-muted">Status: <strong class="text-primary">To
+                                Do</strong></small>
+                        <small *ngSwitchCase="1" class="text-muted">Status: <strong
+                                class="text-warning">Doing</strong></small>
+                        <small *ngSwitchCase="2" class="text-muted">Status: <strong
+                                class="text-success">Done</strong></small>
+                    </p>
+                    <p>
+                        <small class="text-muted">Created On:
+                            <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                        </small> |
+                        <small class="text-muted">Created By:
+                            <strong>{{task.userName}}</strong>
+                        </small> <br>
+                        <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
+                    </p>
+                    <!-- Circle Buttons (Small) -->
+                    <div *ngIf="this.getUserId() == task.userId" style="display: inline;">
+                        <a (click)="editTask(task.id)" class="btn btn-warning btn-circle ml-4" title="Edit">
+                            <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
+                        </a>
+                        <a (click)="confirmDelete(task.title, task.id)" class="btn btn-danger btn-circle ml-4"
+                            title="Delete">
+                            <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

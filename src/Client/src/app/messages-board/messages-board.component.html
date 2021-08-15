@@ -14,12 +14,14 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">{{message.title}}</h6>
-                    <!-- Circle Buttons (Small) --> 
+                    <!-- Circle Buttons (Small) -->
                     <div *ngIf="this.getUserId() == message.userId" style="display: inline;">
-                        <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4" title="Edit">
+                        <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                            title="Edit">
                             <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
                         </a>
-                        <a (click)="confirmDelete(message.title, message.id)" class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
+                        <a (click)="confirmDelete(message.title, message.id)"
+                            class="btn btn-danger btn-circle btn-sm ml-2" title="Delete">
                             <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
                         </a>
                     </div>
@@ -30,7 +32,8 @@
                         <small class="text-muted">Created On: <strong>{{message.createdOn| date:'dd.MM.yyyy
                                 hh:mm'}}</strong></small> |
                         <small class="text-muted">Author:
-                            <a routerLink="/messages/user/{{message.userName}}"><strong>{{message.userName}}</strong></a>
+                            <a
+                                routerLink="/messages/user/{{message.userName}}"><strong>{{message.userName}}</strong></a>
                         </small>
                     </p>
                 </div>

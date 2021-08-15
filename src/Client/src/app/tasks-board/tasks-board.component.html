@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between m-4">
-        <h1 class="h3 mb-0 text-info"><strong>Tasks Board</strong></h1>
+        <h1 class="h3 mb-0 text-primary"><strong>Tasks Board</strong></h1>
     </div>
 </nav>
 <!-- End of Topbar -->
@@ -16,18 +16,21 @@
             <!-- Custom Text Color Utilities -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-info">TO DO</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">TO DO</h6>
                 </div>
                 <div class="card-body">
                     <div *ngFor="let task of tasks">
-                        <div class="card mb-4 py-3 border-left-info" *ngIf="task.status == 0">
+                        <div class="card mb-4 py-3 border-left-primary" *ngIf="task.status == 0">
                             <div class="card-body text-center">
-                                <p><strong>{{task.title}}</strong></p>
-                                <p><small class="text-muted">Created On: <strong>{{task.createdOn| date:'dd.MM.yyyy
-                                            hh:mm'}}</strong></small> |
+                                <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
+                                <p>
+                                    <small class="text-muted">Created On:
+                                        <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                                    </small> |
                                     <small class="text-muted">Created By:
                                         <strong>{{task.userName}}</strong>
-                                    </small>
+                                    </small> <br>
+                                    <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
                                 </p>
                                 <!-- Circle Buttons (Small) -->
                                 <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
@@ -66,12 +69,15 @@
                     <div *ngFor="let task of tasks">
                         <div class="card mb-4 py-3 border-left-warning" *ngIf="task.status == 1">
                             <div class="card-body text-center">
-                                <p><strong>{{task.title}}</strong></p>
-                                <p><small class="text-muted">Created On: <strong>{{task.createdOn| date:'dd.MM.yyyy
-                                            hh:mm'}}</strong></small> |
+                                <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
+                                <p>
+                                    <small class="text-muted">Created On:
+                                        <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                                    </small> |
                                     <small class="text-muted">Created By:
                                         <strong>{{task.userName}}</strong>
-                                    </small>
+                                    </small> <br>
+                                    <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
                                 </p>
                                 <!-- Circle Buttons (Small) -->
                                 <a (click)="changeStatus(task.id, 0)" class="btn btn-secondary btn-circle ml-4"
@@ -114,12 +120,15 @@
                     <div *ngFor="let task of tasks">
                         <div class="card mb-4 py-3 border-left-success" *ngIf="task.status == 2">
                             <div class="card-body text-center">
-                                <p><strong>{{task.title}}</strong></p>
-                                <p><small class="text-muted">Created On: <strong>{{task.createdOn| date:'dd.MM.yyyy
-                                            hh:mm'}}</strong></small> |
+                                <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
+                                <p>
+                                    <small class="text-muted">Created On:
+                                        <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                                    </small> |
                                     <small class="text-muted">Created By:
                                         <strong>{{task.userName}}</strong>
-                                    </small>
+                                    </small> <br>
+                                    <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
                                 </p>
                                 <!-- Circle Buttons (Small) -->
                                 <a (click)="changeStatus(task.id, 1)" class="btn btn-secondary btn-circle ml-4"

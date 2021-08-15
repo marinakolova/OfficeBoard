@@ -1,1 +1,58 @@
-<p>task-edit works!</p>
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between m-4">
+        <h1 class="h3 mb-0 text-primary"><strong>Tasks Board</strong></h1>
+    </div>
+</nav>
+<!-- End of Topbar -->
+<!-- Begin Page Content -->
+<div class="container-fluid mt-4">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Edit Task</h1>
+                        </div>
+                        <form class="user" [formGroup]='taskForm'>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" formControlName="Title">
+                            </div>
+                            <div *ngIf="title?.touched && title?.errors?.required" class="alert alert-danger">
+                                Title is required!
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea type="text" class="form-control" formControlName="Description"></textarea>
+                            </div>
+                            <div *ngIf="description?.touched && description?.errors?.required" class="alert alert-danger">
+                                Description is required!
+                            </div>
+                            <div class="form-group">
+                                <label for="Status">Status</label>
+                                <select class="form-control" formControlName="Status">
+                                  <option value="0">To Do</option>
+                                  <option value="1">Doing</option>
+                                  <option value="2">Done</option>
+                                </select>
+                              </div>
+                            <div class="form-group">
+                                <input hidden type="number" class="form-control" formControlName="Id">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-user btn-block"
+                                (click)="confirmEdit()">Save changes</button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="text-danger" routerLink="/tasks">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
