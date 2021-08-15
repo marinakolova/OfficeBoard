@@ -7,7 +7,10 @@ import {
   faSignInAlt, 
   faUserPlus, 
   faUser, 
-  faSignOutAlt } 
+  faSignOutAlt,
+  faTachometerAlt,
+  faTasks, 
+  } 
   from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
@@ -25,6 +28,8 @@ export class AppComponent {
   faUserPlus = faUserPlus;
   faUser = faUser;
   faSignOutAlt = faSignOutAlt;
+  faTachometerAlt = faTachometerAlt;
+  faTasks = faTasks;
 
   constructor(private authService: AuthService, private router: Router) { }
 

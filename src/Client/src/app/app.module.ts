@@ -21,6 +21,14 @@ import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileMessagesComponent } from './profile-messages/profile-messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TasksBoardComponent } from './tasks-board/tasks-board.component';
+import { TaskCreateComponent } from './task-create/task-create.component';
+import { CommentCreateComponent } from './comment-create/comment-create.component';
+import { TaskService } from './services/task.service';
+import { CommentService } from './services/comment.service';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+import { TaskEditComponent } from './task-edit/task-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,13 @@ import { ProfileMessagesComponent } from './profile-messages/profile-messages.co
     ListMessagesByUserComponent,
     DetailsMessageComponent,
     EditMessageComponent,
-    ProfileMessagesComponent    
+    ProfileMessagesComponent,
+    DashboardComponent,
+    TasksBoardComponent,
+    TaskCreateComponent,
+    CommentCreateComponent,
+    TaskDetailsComponent,
+    TaskEditComponent    
   ],
   imports: [
     BrowserModule,
@@ -46,6 +60,8 @@ import { ProfileMessagesComponent } from './profile-messages/profile-messages.co
   providers: [
     AuthService, 
     MessageService, 
+    TaskService,
+    CommentService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
