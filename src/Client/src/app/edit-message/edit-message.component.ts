@@ -31,7 +31,6 @@ export class EditMessageComponent implements OnInit {
         this.messageForm = this.fb.group({
           'Title': [this.message.title, Validators.required],
           'Content': [this.message.content, Validators.required],
-          'ImageUrl': [this.message.imageUrl],
           'Id': [this.message.id],
         });
       });

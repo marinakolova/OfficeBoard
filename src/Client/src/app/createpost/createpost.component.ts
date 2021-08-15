@@ -15,7 +15,6 @@ export class CreatepostComponent implements OnInit {
     this.messageForm = this.fb.group({
       'Title': ['', Validators.required],
       'Content': ['', Validators.required],
-      'ImageUrl': [''],
     });
   }
 

@@ -19,7 +19,7 @@
             <div *ngIf="isAuthenticated()">
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="messages">
+                    <a class="nav-link" routerLink="/messages">
                         <fa-icon [icon]="faList"></fa-icon>
                         <span> All Messages</span>
                     </a>
@@ -35,7 +35,7 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" href="create">
+                    <a class="nav-link" routerLink="/create">
                         <fa-icon [icon]="faPlusCircle"></fa-icon>
                         <span> Create New Message</span>
                     </a>
@@ -51,7 +51,7 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" href="profile">
+                    <a class="nav-link" routerLink="/profile">
                         <fa-icon [icon]="faUser"></fa-icon>
                         <span> My Messages</span>
                     </a>
@@ -72,7 +72,7 @@
             <div *ngIf="!isAuthenticated()">
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" href="login">
+                    <a class="nav-link" routerLink="/login">
                         <fa-icon [icon]="faSignInAlt"></fa-icon>
                         <span> Login</span>
                     </a>
@@ -80,7 +80,7 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" href="register">
+                    <a class="nav-link" routerLink="/register">
                         <fa-icon [icon]="faUserPlus"></fa-icon>
                         <span> Register</span>
                     </a>
