@@ -1,30 +1,43 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-            <form [formGroup]='messageForm' (ngSubmit)='create()'>
-                <h1>Create Message</h1>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" formControlName="Title">
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create New Message</h1>
+                        </div>
+                        <form class="user" [formGroup]='messageForm' (ngSubmit)='create()'>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" formControlName="Title">
+                            </div>
+                            <div *ngIf="title?.touched && title?.errors?.required" class="alert alert-danger">
+                                This field is required!
+                            </div>
+                            <div class="form-group">
+                                <label>Content</label>
+                                <textarea type="text" class="form-control" formControlName="Content"></textarea>
+                            </div>
+                            <div *ngIf="content?.touched && content?.errors?.required" class="alert alert-danger">
+                                This field is required!
+                            </div>
+                            <div class="form-group">
+                                <label>ImageUrl</label>
+                                <input type="text" class="form-control" formControlName="ImageUrl">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-user btn-block">Create</button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="text-danger" href="messages">Cancel</a>
+                        </div>
+                    </div>
                 </div>
-                <div *ngIf="title?.touched && title?.errors?.required" class="alert alert-danger">
-                    This field is required!
-                </div>
-                <div class="form-group">
-                    <label>Content</label>
-                    <textarea type="text" class="form-control" formControlName="Content"></textarea>
-                </div>
-                <div *ngIf="content?.touched && content?.errors?.required" class="alert alert-danger">
-                    This field is required!
-                </div>
-                <div class="form-group">
-                    <label>ImageUrl</label>
-                    <input type="text" class="form-control" formControlName="ImageUrl">
-                </div>
-                <button type="submit" class="btn btn-primary">Create</button>
-            </form>
+            </div>
         </div>
-        <div class="col-lg-4"></div>
     </div>
+
 </div>

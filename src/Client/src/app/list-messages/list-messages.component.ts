@@ -24,15 +24,4 @@ export class ListMessagesComponent implements OnInit {
       this.messages = messages;
     })
   }
-
-  editMessage(id: number) {
-    this.router.navigate([`messages/${id}/edit`])
-  }
-
-  deleteMessage(id: number) {
-    this.messageService.deleteMessage(id).subscribe(res => {
-      this.fetchMessages();
-    });
-  }
-
 }

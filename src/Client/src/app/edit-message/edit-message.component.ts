@@ -44,6 +44,12 @@ export class EditMessageComponent implements OnInit {
     });
   }
 
+  confirmEdit() {
+    if(confirm("Save changes to this message?")) {
+      this.editMessage();
+    }
+  }
+
   get title() {
     return this.messageForm.get('Title');
   }

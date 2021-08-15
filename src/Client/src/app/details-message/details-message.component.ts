@@ -28,16 +28,6 @@ export class DetailsMessageComponent implements OnInit {
     }), mergeMap(id => this.messageService.getMessageDetails(id))).subscribe(res => {
       this.message = res;
     });
-  }  
-
-  editMessage(id: number) {
-    this.router.navigate([`messages/${id}/edit`])
-  }
-
-  deleteMessage(id: number) {
-    this.messageService.deleteMessage(id).subscribe(res => {
-      this.router.navigate(["/messages"]);
-    });
-  }
+  }    
   
 }
