@@ -30,14 +30,14 @@ Angular
 ### 1. Server
 - Check the connection string in `appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
 - The app is set to use `https://localhost:44390`. If you need to change that, you may do it in the `UseUrls()` in `Program.cs`.
-- Open `OfficeBoard.Server.sln` with Visual Studio and press `Ctrl+F5` to run the OfficeBoard.Server App. 
+- Open `OfficeBoard.Server.sln` with Visual Studio and press `Ctrl+F5` to run the OfficeBoard.Server App.
 - You should see SwaggerUI in your browser.
 
 ### 2. Client 
 - Run `npm install` in the `Client` directory. 
 - Check the `apiUrl` in the file `Client/src/environments/environment.ts`. It should be the one on which the OfficeBoard.Server App is running - where you see the SwaggerUI.
-- Run `ng serve` in the `Client` directory. 
-- Navigate to `http://localhost:4200/` and enjoy OfficeBoard's client-side.
+- Run `ng serve` in the `Client` directory for a dev server. 
+- Navigate to `http://localhost:4200/` and enjoy OfficeBoard's client-side. 
 
 ### Seeded test accounts:
   - Username: user / password: 123456
