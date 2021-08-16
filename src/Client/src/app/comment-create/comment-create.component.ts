@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommentService } from '../services/comment.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-comment-create',
@@ -16,7 +17,8 @@ export class CommentCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private commentService: CommentService,
-    private router: Router
+    private router: Router,
+    public activeModal: NgbActiveModal
   ) {
     this.task = localStorage.getItem('task');
 
@@ -31,7 +33,14 @@ export class CommentCreateComponent implements OnInit {
 
   create() {
     this.commentService.create(this.commentForm.value).subscribe(res => {
-      this.router.navigate([`/tasks/${this.task}`]);
+      this.reloadCurrentRoute();
+    });
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
     });
   }
 

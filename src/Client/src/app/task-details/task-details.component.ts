@@ -4,10 +4,14 @@ import { Task } from '../models/Task';
 import { AuthService } from '../services/auth.service';
 import { TaskService } from '../services/task.service';
 import { map, mergeMap } from 'rxjs/operators';
-import {   
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommentCreateComponent } from '../comment-create/comment-create.component';
+
+import {
   faEdit,
-  faTrash, 
+  faTrash,
   faTasks,
+  faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -19,16 +23,18 @@ export class TaskDetailsComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
   faTasks = faTasks;
+  faPlusCircle = faPlusCircle;
 
   id!: number;
   task!: Task;
 
   constructor(
-    private taskService: TaskService, 
-    private authService: AuthService, 
-    private route: ActivatedRoute, 
-    private router: Router
-    ) { }
+    private taskService: TaskService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -59,9 +65,13 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   confirmDelete(name: string, id: number) {
-    if(confirm(`${name} - Delete this task?`)) {
+    if (confirm(`${name} - Delete this task?`)) {
       this.deleteTask(id);
     }
+  }
+
+  open() {
+    const modalRef = this.modalService.open(CommentCreateComponent);
   }
 
 }

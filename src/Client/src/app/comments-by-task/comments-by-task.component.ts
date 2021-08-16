@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CommentService } from '../services/comment.service';
 import { Comment } from '../models/Comment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommentEditComponent } from '../comment-edit/comment-edit.component';
 import { 
   faInfo,
   faEdit,
@@ -34,7 +36,8 @@ export class CommentsByTaskComponent implements OnInit {
     private commentService: CommentService, 
     private authService: AuthService, 
     private route: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal,
     ) { 
     this.comments = new Array<Comment>();
   }
@@ -54,6 +57,10 @@ export class CommentsByTaskComponent implements OnInit {
 
   getUserId() {
     return this.authService.getUserId();
+  }
+
+  open() {
+    const modalRef = this.modalService.open(CommentEditComponent);
   }
 
   editComment(id: number) {

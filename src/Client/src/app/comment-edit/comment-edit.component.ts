@@ -19,7 +19,7 @@ export class CommentEditComponent implements OnInit {
     private fb: FormBuilder, 
     private commentService: CommentService, 
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
     ) { 
   }
 
@@ -39,7 +39,7 @@ export class CommentEditComponent implements OnInit {
 
   editComment() {
     this.commentService.editComment(this.commentForm.value).subscribe(res => {
-      this.router.navigate(["/comments"]);
+      this.router.navigate([`/tasks/${this.comment.taskId}`]);
     });
   }
 

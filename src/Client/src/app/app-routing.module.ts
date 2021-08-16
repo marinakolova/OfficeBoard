@@ -32,7 +32,6 @@ const routes: Routes = [
   { path: 'tasks/:id', component: TaskDetailsComponent, canActivate: [AuthGuardService] },
   { path: 'tasks/:id/edit', component: TaskEditComponent, canActivate: [AuthGuardService] },
 
-  { path: 'comments/create', component: CommentCreateComponent, canActivate: [AuthGuardService] },
   { path: 'comments/:id/edit', component: CommentEditComponent, canActivate: [AuthGuardService] },
   
   {path: '**', component: NotFoundComponent },
