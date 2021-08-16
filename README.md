@@ -39,6 +39,10 @@ Angular
 - Run `ng serve` in the `Client` directory. 
 - Navigate to `http://localhost:4200/` and enjoy OfficeBoard's client-side.
 
+### Seeded test accounts:
+  - Username: user / password: 123456
+  - Username: test / password: 123456
+
 ## :information_source: How It Works
 - Public part (visible without authentication): 
   - Dashboard page - shows the count of messages, tasks and comments for the day, for the month and for the year;  
@@ -48,13 +52,19 @@ Angular
   - Messages
     - messages board - all messages;
     - messages by user - messages created by a chosen user;
-    - create a message with title and content;
+    - create messages with title and content;
     - edit or delete own messages;
   - Tasks
     - tasks board - all tasks in three columns - to do, doing and done;
     - change task's status - move a task across the three columns;
-    - create a task with title and description; 
+    - create tasks with title and description; 
     - edit or delete own tasks;
+  - Comments
+    - create comments for existing tasks;
+    - edit or delete own comments;
+
+### :eyes: Screenshot of the Tasks Board:
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screencapture-tasks-board.png)
 
 ## License
 
