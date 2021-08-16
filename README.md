@@ -14,10 +14,8 @@ Web application for office communication:
 - [.NET 5.0 SDK](https://dotnet.microsoft.com/download/visual-studio-sdks)
 - [Visual Studio](https://visualstudio.microsoft.com/vs/)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-- [Node.js](https://nodejs.org/en/download/)
+- [Node.js](https://nodejs.org/en/)
 - [Angular CLI](https://angular.io/cli)
-- (optional) [Visual Studio Code](https://code.visualstudio.com/) 
-- (optional) [Notepad++](https://notepad-plus-plus.org/downloads/)
 
 ## :gear: Configurations
 
