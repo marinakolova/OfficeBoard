@@ -25,11 +25,16 @@
         }
 
         [HttpGet]
-        [Route("{taskId}")]
+        [Route("byTask/{taskId}")]
         public async Task<IEnumerable<CommentViewModel>> ByTask(int taskId)
         {
             return await this.commentService.GetAllByTask(taskId);
         }
+
+        [HttpGet]
+        [Route(Id)]
+        public async Task<ActionResult<CommentViewModel>> Details(int id)
+            => await this.commentService.GetById(id);
 
         [HttpPost]
         public async Task<ActionResult<int>> Create(CommentCreateRequestModel model)
