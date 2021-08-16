@@ -7,8 +7,8 @@ import {
   faInfo,
   faEdit,
   faTrash, 
-  } 
-  from '@fortawesome/free-solid-svg-icons';
+  faArrowDown,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-messages-board',
@@ -19,6 +19,9 @@ export class MessagesBoardComponent implements OnInit {
   faInfo = faInfo;
   faEdit = faEdit;
   faTrash = faTrash;
+  faArrowDown = faArrowDown;
+
+  show = 4;
 
   messages: Array<Message>;
 
@@ -26,7 +29,7 @@ export class MessagesBoardComponent implements OnInit {
     private messageService: MessageService, 
     private authService: AuthService, 
     private router: Router
-  ) {
+    ) {
     this.messages = new Array<Message>();
   }
 
@@ -50,7 +53,7 @@ export class MessagesBoardComponent implements OnInit {
 
   deleteMessage(id: number) {
     this.messageService.deleteMessage(id).subscribe(res => {
-      this.router.navigate(["messages"])
+      this.fetchMessages();
     });
   }
 

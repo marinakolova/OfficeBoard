@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 import { 
   faLaughWink, 
   faList, 
@@ -10,9 +11,7 @@ import {
   faSignOutAlt,
   faTachometerAlt,
   faTasks, 
-  } 
-  from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',

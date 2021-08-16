@@ -20,8 +20,7 @@ export class TaskEditComponent implements OnInit {
     private taskService: TaskService, 
     private route: ActivatedRoute,
     private router: Router
-  ) 
-  { }
+    ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(res => {

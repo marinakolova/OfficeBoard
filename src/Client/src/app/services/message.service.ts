@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AuthService } from './auth.service';
 import { Message } from '../models/Message';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class MessageService {
   
   private messagesPath = environment.apiUrl + 'messages';
     
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   create(data: any): Observable<any> {
     return this.http.post(this.messagesPath, data);

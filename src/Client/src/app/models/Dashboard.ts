@@ -1,11 +1,11 @@
-export interface Dashboard {
-    messagesCount: number,
+export interface Dashboard {    
     todayMessagesCount: number,
     monthMessagesCount: number,
-    tasksCount: number,
+    yearMessagesCount: number,
     todayTasksCount: number,
     monthTasksCount: number,
-    commentsCount: number,
+    yearTasksCount: number,    
     todayCommentsCount: number,
     monthCommentsCount: number,
+    yearCommentsCount: number,
 }

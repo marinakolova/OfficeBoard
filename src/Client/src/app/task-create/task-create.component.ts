@@ -12,7 +12,11 @@ export class TaskCreateComponent implements OnInit {
 
   taskForm: FormGroup;
   
-  constructor(private fb: FormBuilder, private taskService: TaskService, private router: Router) { 
+  constructor(
+    private fb: FormBuilder, 
+    private taskService: TaskService, 
+    private router: Router
+    ) { 
     this.taskForm = this.fb.group({
       'Title': ['', Validators.required],
       'Description': ['', Validators.required],

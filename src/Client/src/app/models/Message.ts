@@ -3,7 +3,6 @@ export interface Message {
     title: string,
     content: string,
     createdOn: Date,
-    modifiedOn: Date,
     userId: string,
     userName: string,
 }

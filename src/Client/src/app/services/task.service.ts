@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AuthService } from './auth.service';
 import { Task } from '../models/Task';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class TaskService {
 
   private tasksPath = environment.apiUrl + 'tasks';
     
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   create(data: any): Observable<any> {
     return this.http.post(this.tasksPath, data);

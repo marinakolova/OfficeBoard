@@ -29,17 +29,18 @@
                                 <label>Description</label>
                                 <textarea type="text" class="form-control" formControlName="Description"></textarea>
                             </div>
-                            <div *ngIf="description?.touched && description?.errors?.required" class="alert alert-danger">
+                            <div *ngIf="description?.touched && description?.errors?.required"
+                                class="alert alert-danger">
                                 Description is required!
                             </div>
                             <div class="form-group">
                                 <label for="Status">Status</label>
                                 <select class="form-control" formControlName="Status">
-                                  <option value="0">To Do</option>
-                                  <option value="1">Doing</option>
-                                  <option value="2">Done</option>
+                                    <option value="0">To Do</option>
+                                    <option value="1">Doing</option>
+                                    <option value="2">Done</option>
                                 </select>
-                              </div>
+                            </div>
                             <div class="form-group">
                                 <input hidden type="number" class="form-control" formControlName="Id">
                             </div>

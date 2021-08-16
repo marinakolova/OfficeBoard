@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Dashboard } from '../models/Dashboard';
 import { DashboardService } from '../services/dashboard.service';
-import { faList, faTasks, faComments } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faList, 
+  faTasks, 
+  faComments, 
+} from '@fortawesome/free-solid-svg-icons';  
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +19,8 @@ export class DashboardComponent implements OnInit {
 
   model!: Dashboard;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) { 
+  }
 
   ngOnInit(): void {
     this.fetchData();
@@ -26,5 +31,5 @@ export class DashboardComponent implements OnInit {
       this.model = model;
     })
   }
-
+  
 }

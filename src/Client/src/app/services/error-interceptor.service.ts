@@ -21,10 +21,10 @@ export class ErrorInterceptorService implements HttpInterceptor {
           //refresh token or navigate to login
           message = "Token has expired or you should be logged in"
         } else if (err.status === 404) {
-          message = "404"
+          message = "404 Not Found"
         } else if (err.status === 400) {
           //some message
-          message = "400"
+          message = "400 Bad Request"
         } else {
           //global message for error
           message = "Unexpected error"
@@ -35,4 +35,5 @@ export class ErrorInterceptorService implements HttpInterceptor {
       }),
     );
   }
+
 }

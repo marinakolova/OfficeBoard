@@ -4,7 +4,6 @@ export interface Comment {
     taskId: number,
     taskTitle: string,
     createdOn: Date,
-    modifiedOn: Date,
     userId: string,
     userName: string,
 }

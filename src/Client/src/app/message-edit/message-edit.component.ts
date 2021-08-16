@@ -10,7 +10,7 @@ import { MessageService } from '../services/message.service';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
-
+  
   id!: number;
   message!: Message;
   messageForm!: FormGroup;
@@ -20,8 +20,8 @@ export class MessageEditComponent implements OnInit {
     private messageService: MessageService, 
     private route: ActivatedRoute,
     private router: Router
-  ) 
-  { }
+    ) { 
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(res => {

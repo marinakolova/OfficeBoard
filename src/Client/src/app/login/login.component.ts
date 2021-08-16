@@ -9,9 +9,14 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { 
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router
+    ) { 
     this.loginForm = this.fb.group({
       'username': ['', [Validators.required]],      
       'password': ['', [Validators.required]]
@@ -26,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.authService.saveToken(data['token']);
       this.authService.saveUserId(data['userId']);
       this.authService.saveUsername(data['userName']);
-      this.router.navigate(["/messages"]);
+      this.router.navigate(["/dashboard"]);
     });
   }
 

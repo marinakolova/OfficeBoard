@@ -7,8 +7,8 @@ import { map, mergeMap } from 'rxjs/operators';
 import {   
   faEdit,
   faTrash, 
-  } 
-  from '@fortawesome/free-solid-svg-icons';
+  faTasks,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-task-details',
@@ -18,6 +18,7 @@ import {
 export class TaskDetailsComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
+  faTasks = faTasks;
 
   id!: number;
   task!: Task;
@@ -27,7 +28,7 @@ export class TaskDetailsComponent implements OnInit {
     private authService: AuthService, 
     private route: ActivatedRoute, 
     private router: Router
-  ) { }
+    ) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -39,7 +40,6 @@ export class TaskDetailsComponent implements OnInit {
       return id
     }), mergeMap(id => this.taskService.getTaskDetails(id))).subscribe(res => {
       this.task = res;
-      this.task.comments = res.comments;
     });
   }
 

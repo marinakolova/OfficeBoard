@@ -4,9 +4,7 @@ export interface Task {
     description: string,
     status: number,
     createdOn: Date,
-    modifiedOn: Date,
     userId: string,
     userName: string,
     commentsCount: number,
-    comments: [],
 }

@@ -9,8 +9,7 @@ import {
   faEdit,
   faTrash,
   faArrowRight, 
-  } 
-  from '@fortawesome/free-solid-svg-icons';
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tasks-board',
@@ -30,7 +29,7 @@ export class TasksBoardComponent implements OnInit {
     private taskService: TaskService, 
     private authService: AuthService, 
     private router: Router
-  ) {
+    ) {
     this.tasks = new Array<Task>();
   }
 

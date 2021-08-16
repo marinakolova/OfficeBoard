@@ -8,8 +8,8 @@ import {
   faEdit,
   faTrash, 
   faList,
-  } 
-  from '@fortawesome/free-solid-svg-icons';
+  faArrowDown,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-messages-by-user',
@@ -21,6 +21,9 @@ export class MessagesByUserComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
   faList = faList;
+  faArrowDown = faArrowDown;
+
+  show = 4;
 
   userId!: string;
   messages: Array<Message>;
@@ -30,18 +33,21 @@ export class MessagesByUserComponent implements OnInit {
     private authService: AuthService, 
     private route: ActivatedRoute, 
     private router: Router
-  ) { 
+    ) { 
     this.messages = new Array<Message>();
-    
+  }
+
+  ngOnInit(): void {
+    this.fetchData();
+  }
+
+  fetchData() {
     this.route.params.subscribe(res => {
       this.userId = res['id'];
       this.messageService.getMessagesByUser(this.userId).subscribe(res => {
         this.messages = res;
       });
     });
-  }
-
-  ngOnInit(): void {
   }
 
   getUserId() {
@@ -54,7 +60,7 @@ export class MessagesByUserComponent implements OnInit {
 
   deleteMessage(id: number) {
     this.messageService.deleteMessage(id).subscribe(res => {
-      this.router.navigate(["messages"])
+      this.fetchData();
     });
   }
 

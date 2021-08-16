@@ -16,4 +16,5 @@ export class DashboardService {
   getModel(): Observable<Dashboard> {
     return this.http.get<Dashboard>(this.dashboardPath);
   }
+  
 }
