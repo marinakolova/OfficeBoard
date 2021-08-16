@@ -48,10 +48,11 @@ Web application for office communication:
   - edit or delete own messages;
 - Tasks
   - tasks board - all tasks in three columns - to do, doing and done;
-  - change task's status - move a task across the three columns;
+  - change task's status by moving the task across the three columns;
   - create tasks with title and description; 
   - edit or delete own tasks;
 - Comments
+  - shown in task's details page; 
   - create comments for existing tasks;
   - edit or delete own comments;
 
