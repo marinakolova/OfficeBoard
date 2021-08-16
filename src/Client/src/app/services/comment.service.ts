@@ -18,7 +18,11 @@ export class CommentService {
   }
 
   getCommentsByTask(taskId: number): Observable<Array<Comment>> {
-    return this.http.get<Array<Comment>>(this.commentsPath + `/${taskId}`);
+    return this.http.get<Array<Comment>>(this.commentsPath + `/byTask/${taskId}`);
+  }
+
+  getCommentDetails(id: number): Observable<Comment> {
+    return this.http.get<Comment>(this.commentsPath + `/${id}`);
   }
 
   editComment(data: any) {

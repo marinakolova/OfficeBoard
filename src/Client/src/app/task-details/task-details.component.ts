@@ -37,7 +37,8 @@ export class TaskDetailsComponent implements OnInit {
   fetchData() {
     this.route.params.pipe(map(params => {
       const id = params['id'];
-      return id
+      localStorage.setItem('task', id);
+      return id;
     }), mergeMap(id => this.taskService.getTaskDetails(id))).subscribe(res => {
       this.task = res;
     });

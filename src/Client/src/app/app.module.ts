@@ -28,6 +28,10 @@ import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
 import { DashboardService } from './services/dashboard.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CommentsByTaskComponent } from './comments-by-task/comments-by-task.component';
+import { CommentCreateComponent } from './comment-create/comment-create.component';
+import { CommentEditComponent } from './comment-edit/comment-edit.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MessageCreateComponent,
     MessageEditComponent,
     MessagesByUserComponent,
-    NotFoundComponent    
+    NotFoundComponent,
+    CommentsByTaskComponent,
+    CommentCreateComponent,
+    CommentEditComponent,    
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgbModule
   ],
   providers: [
     AuthService, 

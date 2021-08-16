@@ -13,6 +13,8 @@ import { MessageCreateComponent } from './message-create/message-create.componen
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CommentCreateComponent } from './comment-create/comment-create.component';
+import { CommentEditComponent } from './comment-edit/comment-edit.component';
 
 const routes: Routes = [  
   { path: '', component: DashboardComponent },
@@ -20,15 +22,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
+  { path: 'messages', component: MessagesBoardComponent, canActivate: [AuthGuardService] },
+  { path: 'messages/create', component: MessageCreateComponent, canActivate: [AuthGuardService] },
+  { path: 'messages/:id/edit', component: MessageEditComponent, canActivate: [AuthGuardService] },
+  { path: 'messages/user/:id', component: MessagesByUserComponent, canActivate: [AuthGuardService] }, 
+  
   { path: 'tasks', component: TasksBoardComponent, canActivate: [AuthGuardService] },
   { path: 'tasks/create', component: TaskCreateComponent, canActivate: [AuthGuardService] },
   { path: 'tasks/:id', component: TaskDetailsComponent, canActivate: [AuthGuardService] },
   { path: 'tasks/:id/edit', component: TaskEditComponent, canActivate: [AuthGuardService] },
 
-  { path: 'messages', component: MessagesBoardComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/create', component: MessageCreateComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/:id/edit', component: MessageEditComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/user/:id', component: MessagesByUserComponent, canActivate: [AuthGuardService] },  
+  { path: 'comments/create', component: CommentCreateComponent, canActivate: [AuthGuardService] },
+  { path: 'comments/:id/edit', component: CommentEditComponent, canActivate: [AuthGuardService] },
   
   {path: '**', component: NotFoundComponent },
 ];

@@ -1,0 +1,53 @@
+<!-- Begin Page Content -->
+<div class="container-fluid" *ngIf="comments.length > 0">
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-3">
+            <h1 class="h3 text-gray-800 ml-5">Comments:</h1>
+            <!-- Nav Item -->
+            <a routerLink="/comments/create" class="btn btn-info btn-sm btn-icon-split ml-3">
+                <span class="icon text-white-50">
+                    <fa-icon [icon]="faPlusCircle"></fa-icon>
+                </span>
+                <span class="text" style="color: white;">Create New Comment</span>
+            </a>
+        </div>
+        <!-- Border Left Utilities -->
+        <div class="col-lg-8">
+            <div *ngFor="let comment of comments|slice:0:show let i=index">
+                <div class="card mb-4 py-3 border-left-info">
+                    <div class="card-body">
+                        <p>{{comment.content}}</p>
+                        <p>
+                            <small class="text-muted">Author:
+                                <strong>{{comment.userName}}</strong>
+                            </small> |
+                            <small class="text-muted">Created On:
+                                <strong>{{comment.createdOn| date:'dd.MM.yyyy hh:mm'}}</strong>
+                            </small>
+                        </p>
+                        <!-- Circle Buttons (Small) -->
+                        <div *ngIf="this.getUserId() == comment.userId" style="display: inline;">
+                            <a (click)="editComment(comment.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                                title="Edit">
+                                <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
+                            </a>
+                            <a (click)="confirmDelete(comment.id)" class="btn btn-danger btn-circle btn-sm ml-4"
+                                title="Delete">
+                                <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mb-4">
+                    <a *ngIf="show - i == 1" (click)="show = show + 3" class="btn btn-info btn-sm btn-icon-split">
+                        <span class="icon text-white-50">
+                            <fa-icon [icon]="faArrowDown"></fa-icon>
+                        </span>
+                        <span class="text" style="color: white;">Load More</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
