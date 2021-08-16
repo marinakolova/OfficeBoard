@@ -28,15 +28,15 @@
         {
             return new DashboardViewModel
             {
-                MessagesCount = await this.messageService.GetCount(),
                 TodayMessagesCount = await this.messageService.GetTodayCount(),
                 MonthMessagesCount = await this.messageService.GetMonthCount(),
-                TasksCount = await this.taskService.GetCount(),
+                YearMessagesCount = await this.messageService.GetYearCount(),
                 TodayTasksCount = await this.taskService.GetTodayCount(),
                 MonthTasksCount = await this.taskService.GetMonthCount(),
-                CommentsCount = await this.commentService.GetCount(),
+                YearTasksCount = await this.taskService.GetYearCount(),
                 TodayCommentsCount = await this.commentService.GetTodayCount(),
                 MonthCommentsCount = await this.commentService.GetMonthCount(),
+                YearCommentsCount = await this.commentService.GetYearCount(),
             };
         }
     }

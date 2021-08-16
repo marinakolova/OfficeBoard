@@ -1,5 +1,6 @@
 ﻿namespace OfficeBoard.Server.Features.Comments
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -23,6 +24,13 @@
             this.currentUserService = currentUserService;
         }
 
+        [HttpGet]
+        [Route("{taskId}")]
+        public async Task<IEnumerable<CommentViewModel>> ByTask(int taskId)
+        {
+            return await this.commentService.GetAllByTask(taskId);
+        }
+
         [HttpPost]
         public async Task<ActionResult<int>> Create(CommentCreateRequestModel model)
         {
@@ -34,6 +42,24 @@
                 userId);
 
             return this.Created(nameof(this.Create), commentId);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(CommentUpdateRequestModel model)
+        {
+            var userId = this.currentUserService.GetId();
+
+            var updated = await this.commentService.Update(
+                model.Id,
+                model.Content,
+                userId);
+
+            if (!updated)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Ok();
         }
 
         [HttpDelete]

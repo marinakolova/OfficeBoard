@@ -7,24 +7,22 @@
 
     public interface ITaskService
     {
-        Task<int> Create(string title, string description, string userId);
-
-        Task<bool> Update(int id, string title, string description, int status, string userId);
-
-        Task<bool> ChangeStatus(int id, int status, string userId);
-
-        Task<bool> Delete(int id, string userId);
-
-        Task<int> GetCount();
-
         Task<int> GetTodayCount();
 
         Task<int> GetMonthCount();
 
+        Task<int> GetYearCount();
+
         Task<IEnumerable<TaskViewModel>> GetAll();
 
-        Task<IEnumerable<TaskViewModel>> GetAllByUser(string userId);
+        Task<TaskViewModel> GetById(int id);
 
-        Task<TaskWithCommentsViewModel> GetById(int id);
+        Task<int> Create(string title, string description, string userId);
+
+        Task<bool> Update(int id, string title, string description, int status, string userId);
+
+        Task<bool> ChangeStatus(int id, int status);
+
+        Task<bool> Delete(int id, string userId);
     }
 }

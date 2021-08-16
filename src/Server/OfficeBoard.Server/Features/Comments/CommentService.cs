@@ -17,41 +17,6 @@
         public CommentService(OfficeBoardDbContext data)
             => this.data = data;
 
-        public async Task<int> Create(string content, int taskId, string userId)
-        {
-            var comment = new Comment
-            {
-                Content = content,
-                TaskId = taskId,
-                UserId = userId,
-            };
-
-            this.data.Add(comment);
-            await this.data.SaveChangesAsync();
-
-            return comment.Id;
-        }
-
-        public async Task<bool> Delete(int id, string userId)
-        {
-            var comment = await this.GetCommentByIdAndUserId(id, userId);
-
-            if (comment == null)
-            {
-                return false;
-            }
-
-            this.data.Comments.Remove(comment);
-            await this.data.SaveChangesAsync();
-
-            return true;
-        }
-
-        public async Task<int> GetCount()
-            => await this.data
-                .Comments
-                .CountAsync();
-
         public async Task<int> GetTodayCount()
             => await this.data
                 .Comments
@@ -64,22 +29,11 @@
                 .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
                 .CountAsync();
 
-        public async Task<IEnumerable<CommentViewModel>> GetAll()
+        public async Task<int> GetYearCount()
             => await this.data
                 .Comments
-                .Select(x => new CommentViewModel
-                {
-                    Id = x.Id,
-                    Content = x.Content,
-                    TaskId = x.TaskId,
-                    TaskTitle = x.Task.Title,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = x.UserId,
-                    UserName = x.User.UserName,
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
+                .Where(x => x.CreatedOn.Year == DateTime.UtcNow.Year)
+                .CountAsync();
 
         public async Task<IEnumerable<CommentViewModel>> GetAllByTask(int taskId)
             => await this.data
@@ -92,25 +46,6 @@
                     TaskId = x.TaskId,
                     TaskTitle = x.Task.Title,
                     CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = x.UserId,
-                    UserName = x.User.UserName,
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<IEnumerable<CommentViewModel>> GetAllByUser(string userId)
-            => await this.data
-                .Comments
-                .Where(x => x.UserId == userId)
-                .Select(x => new CommentViewModel
-                {
-                    Id = x.Id,
-                    Content = x.Content,
-                    TaskId = x.TaskId,
-                    TaskTitle = x.Task.Title,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
                 })
@@ -128,11 +63,56 @@
                     TaskId = x.TaskId,
                     TaskTitle = x.Task.Title,
                     CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
                     UserId = x.UserId,
                     UserName = x.User.UserName,
                 })
                 .FirstOrDefaultAsync();
+
+        public async Task<int> Create(string content, int taskId, string userId)
+        {
+            var comment = new Comment
+            {
+                Content = content,
+                TaskId = taskId,
+                UserId = userId,
+            };
+
+            this.data.Add(comment);
+            await this.data.SaveChangesAsync();
+
+            return comment.Id;
+        }
+
+        public async Task<bool> Update(int id, string content, string userId)
+        {
+            var message = await this.GetCommentByIdAndUserId(id, userId);
+
+            if (message == null)
+            {
+                return false;
+            }
+
+            message.Content = content;
+
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> Delete(int id, string userId)
+        {
+            var comment = await this.GetCommentByIdAndUserId(id, userId);
+
+            if (comment == null)
+            {
+                return false;
+            }
+
+            this.data.Comments.Remove(comment);
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
 
         private async Task<Comment> GetCommentByIdAndUserId(int id, string userId)
             => await this.data

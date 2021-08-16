@@ -16,6 +16,76 @@
         public TaskService(OfficeBoardDbContext data)
             => this.data = data;
 
+        public async Task<int> GetTodayCount()
+            => await this.data
+                .Tasks
+                .Where(x => x.CreatedOn.Date == DateTime.UtcNow.Date)
+                .CountAsync();
+
+        public async Task<int> GetMonthCount()
+            => await this.data
+                .Tasks
+                .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
+                .CountAsync();
+
+        public async Task<int> GetYearCount()
+            => await this.data
+                .Tasks
+                .Where(x => x.CreatedOn.Year == DateTime.UtcNow.Year)
+                .CountAsync();
+
+        public async Task<IEnumerable<TaskViewModel>> GetAll()
+            => await this.data
+                .Tasks
+                .Select(x => new TaskViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    Status = (int)x.Status,
+                    CreatedOn = x.CreatedOn,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                    CommentsCount = x.Comments.Count(),
+                })
+                .OrderByDescending(x => x.CreatedOn)
+                .ToListAsync();
+
+        public async Task<IEnumerable<TaskViewModel>> GetAllByUser(string userId)
+            => await this.data
+                .Tasks
+                .Where(x => x.UserId == userId)
+                .Select(x => new TaskViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    Status = (int)x.Status,
+                    CreatedOn = x.CreatedOn,
+                    UserId = userId,
+                    UserName = x.User.UserName,
+                    CommentsCount = x.Comments.Count(),
+                })
+                .OrderByDescending(x => x.CreatedOn)
+                .ToListAsync();
+
+        public async Task<TaskViewModel> GetById(int id)
+            => await this.data
+                .Tasks
+                .Where(x => x.Id == id)
+                .Select(x => new TaskViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    Status = (int)x.Status,
+                    CreatedOn = x.CreatedOn,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                    CommentsCount = x.Comments.Count(),
+                })
+                .FirstOrDefaultAsync();
+
         public async Task<int> Create(string title, string description, string userId)
         {
             var task = new Data.Models.Task
@@ -50,7 +120,7 @@
             return true;
         }
 
-        public async Task<bool> ChangeStatus(int id, int status, string userId)
+        public async Task<bool> ChangeStatus(int id, int status)
         {
             var task = await this.data
                 .Tasks
@@ -83,77 +153,6 @@
 
             return true;
         }
-
-        public async Task<int> GetCount()
-            => await this.data
-                .Tasks
-                .CountAsync();
-
-        public async Task<int> GetTodayCount()
-            => await this.data
-                .Tasks
-                .Where(x => x.CreatedOn.Date == DateTime.UtcNow.Date)
-                .CountAsync();
-
-        public async Task<int> GetMonthCount()
-            => await this.data
-                .Tasks
-                .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
-                .CountAsync();
-
-        public async Task<IEnumerable<TaskViewModel>> GetAll()
-            => await this.data
-                .Tasks
-                .Select(x => new TaskViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    Status = (int)x.Status,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = x.UserId,
-                    UserName = x.User.UserName,
-                    CommentsCount = x.Comments.Count(),
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<IEnumerable<TaskViewModel>> GetAllByUser(string userId)
-            => await this.data
-                .Tasks
-                .Where(x => x.UserId == userId)
-                .Select(x => new TaskViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    Status = (int)x.Status,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = userId,
-                    UserName = x.User.UserName,
-                    CommentsCount = x.Comments.Count(),
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<TaskWithCommentsViewModel> GetById(int id)
-            => await this.data
-                .Tasks
-                .Where(x => x.Id == id)
-                .Select(x => new TaskWithCommentsViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    Status = (int)x.Status,
-                    CreatedOn = x.CreatedOn,
-                    UserId = x.UserId,
-                    UserName = x.User.UserName,
-                    CommentsCount = x.Comments.Count(),
-                })
-                .FirstOrDefaultAsync();
 
         private async Task<Data.Models.Task> GetTaskByIdAndUserId(int id, string userId)
             => await this.data

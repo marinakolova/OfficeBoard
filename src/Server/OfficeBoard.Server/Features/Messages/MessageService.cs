@@ -17,6 +17,70 @@
         public MessageService(OfficeBoardDbContext data)
             => this.data = data;
 
+        public async Task<int> GetTodayCount()
+            => await this.data
+                .Messages
+                .Where(x => x.CreatedOn.Date == DateTime.UtcNow.Date)
+                .CountAsync();
+
+        public async Task<int> GetMonthCount()
+            => await this.data
+                .Messages
+                .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
+                .CountAsync();
+
+        public async Task<int> GetYearCount()
+            => await this.data
+                .Messages
+                .Where(x => x.CreatedOn.Year == DateTime.UtcNow.Year)
+                .CountAsync();
+
+        public async Task<IEnumerable<MessageViewModel>> GetAll()
+            => await this.data
+                .Messages
+                .Select(x => new MessageViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    CreatedOn = x.CreatedOn,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                })
+                .OrderByDescending(x => x.CreatedOn)
+                .ToListAsync();
+
+        public async Task<IEnumerable<MessageViewModel>> GetAllByUsername(string username)
+            => await this.data
+                .Messages
+                .Where(x => x.User.UserName == username)
+                .Select(x => new MessageViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    CreatedOn = x.CreatedOn,
+                    UserId = x.User.Id,
+                    UserName = username,
+                })
+                .OrderByDescending(x => x.CreatedOn)
+                .ToListAsync();
+
+        public async Task<MessageViewModel> GetById(int id)
+            => await this.data
+                .Messages
+                .Where(x => x.Id == id)
+                .Select(x => new MessageViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    CreatedOn = x.CreatedOn,
+                    UserId = x.UserId,
+                    UserName = x.User.UserName,
+                })
+                .FirstOrDefaultAsync();
+
         public async Task<int> Create(string title, string content, string userId)
         {
             var message = new Message
@@ -63,88 +127,6 @@
 
             return true;
         }
-
-        public async Task<int> GetCount()
-            => await this.data
-                .Messages
-                .CountAsync();
-
-        public async Task<int> GetTodayCount()
-            => await this.data
-                .Messages
-                .Where(x => x.CreatedOn.Date == DateTime.UtcNow.Date)
-                .CountAsync();
-
-        public async Task<int> GetMonthCount()
-            => await this.data
-                .Messages
-                .Where(x => x.CreatedOn.Month == DateTime.UtcNow.Month)
-                .CountAsync();
-
-        public async Task<IEnumerable<MessageViewModel>> GetAll()
-            => await this.data
-                .Messages
-                .Select(x => new MessageViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Content = x.Content,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = x.UserId,
-                    UserName = x.User.UserName,
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<IEnumerable<MessageViewModel>> GetAllByUser(string userId)
-            => await this.data
-                .Messages
-                .Where(x => x.UserId == userId)
-                .Select(x => new MessageViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Content = x.Content,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = userId,
-                    UserName = x.User.UserName,
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<IEnumerable<MessageViewModel>> GetByUsername(string username)
-            => await this.data
-                .Messages
-                .Where(x => x.User.UserName == username)
-                .Select(x => new MessageViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Content = x.Content,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedOn = x.ModifiedOn,
-                    UserId = x.User.Id,
-                    UserName = username,
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<MessageViewModel> GetById(int id)
-            => await this.data
-                .Messages
-                .Where(x => x.Id == id)
-                .Select(x => new MessageViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Content = x.Content,
-                    CreatedOn = x.CreatedOn,
-                    UserId = x.UserId,
-                    UserName = x.User.UserName,
-                })
-                .FirstOrDefaultAsync();
 
         private async Task<Message> GetMessageByIdAndUserId(int id, string userId)
             => await this.data
