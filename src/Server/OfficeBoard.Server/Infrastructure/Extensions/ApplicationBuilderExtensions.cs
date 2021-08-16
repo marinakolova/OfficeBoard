@@ -4,6 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using OfficeBoard.Server.Data;
+    using OfficeBoard.Server.Data.Seeding;
 
     public static class ApplicationBuilderExtensions
     {
@@ -18,11 +19,15 @@
 
         public static void ApplyMigrations(this IApplicationBuilder app)
         {
-            using var services = app.ApplicationServices.CreateScope();
+            // Seed data on application startup
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<OfficeBoardDbContext>();
 
-            var dbContext = services.ServiceProvider.GetService<OfficeBoardDbContext>();
+                dbContext.Database.Migrate();
 
-            dbContext.Database.Migrate();
+                new OfficeBoardDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+            }
         }
     }
 }
