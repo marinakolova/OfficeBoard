@@ -27,6 +27,7 @@ import { MessageCreateComponent } from './message-create/message-create.componen
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
 import { DashboardService } from './services/dashboard.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DashboardService } from './services/dashboard.service';
     MessagesBoardComponent,
     MessageCreateComponent,
     MessageEditComponent,
-    MessagesByUserComponent    
+    MessagesByUserComponent,
+    NotFoundComponent    
   ],
   imports: [
     BrowserModule,

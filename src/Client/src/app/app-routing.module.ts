@@ -12,6 +12,7 @@ import { MessagesBoardComponent } from './messages-board/messages-board.componen
 import { MessageCreateComponent } from './message-create/message-create.component';
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [  
   { path: '', component: DashboardComponent },
@@ -27,7 +28,9 @@ const routes: Routes = [
   { path: 'messages', component: MessagesBoardComponent, canActivate: [AuthGuardService] },
   { path: 'messages/create', component: MessageCreateComponent, canActivate: [AuthGuardService] },
   { path: 'messages/:id/edit', component: MessageEditComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/user/:id', component: MessagesByUserComponent, canActivate: [AuthGuardService] },    
+  { path: 'messages/user/:id', component: MessagesByUserComponent, canActivate: [AuthGuardService] },  
+  
+  {path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
