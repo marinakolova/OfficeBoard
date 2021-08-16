@@ -2,14 +2,14 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between m-4">
-        <h1 class="h3 mb-0 text-primary"><strong>User Messages</strong></h1>
+        <h1 class="h3 mb-0 text-secondary">Messages by <strong>{{messages[0]?.userName}}</strong></h1>
     </div>
 </nav>
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
 <div class="container-fluid mt-4">
     <div class="d-sm-flex align-items-center justify-content-between m-4">
-        <h1 class="h3 mb-0 text-gray-800">Messages by <strong>{{messages[0]?.userName}}</strong></h1>
+        <h1 class="h3 mb-0 text-gray-800"></h1>
         <a routerLink="/messages" class="btn btn-primary btn-sm btn-icon-split">
             <span class="icon text-white-50">
                 <fa-icon [icon]="faList"></fa-icon>

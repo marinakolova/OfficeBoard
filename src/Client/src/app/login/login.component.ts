@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.authService.saveToken(data['token']);
       this.authService.saveUserId(data['userId']);
       this.authService.saveUsername(data['userName']);
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["/"]);
     });
   }
 
