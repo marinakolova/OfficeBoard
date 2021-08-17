@@ -18,5 +18,12 @@
         {
             public const int MaxContentLength = 3500;
         }
+
+        public class User
+        {
+            public const int MaxNameLength = 40;
+            public const int MaxPositionLength = 40;
+            public const int MaxDepartmentLength = 40;
+        }
     }
 }

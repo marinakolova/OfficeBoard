@@ -14,6 +14,7 @@
     using OfficeBoard.Server.Features.Comments;
     using OfficeBoard.Server.Features.Identity;
     using OfficeBoard.Server.Features.Messages;
+    using OfficeBoard.Server.Features.Profiles;
     using OfficeBoard.Server.Features.Tasks;
     using OfficeBoard.Server.Infrastructure.Filters;
     using OfficeBoard.Server.Infrastructure.Services;
@@ -86,7 +87,8 @@
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IMessageService, MessageService>()
                 .AddTransient<ITaskService, TaskService>()
-                .AddTransient<ICommentService, CommentService>();
+                .AddTransient<ICommentService, CommentService>()
+                .AddTransient<IProfileService, ProfileService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>

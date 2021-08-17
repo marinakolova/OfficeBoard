@@ -27,6 +27,8 @@
 
         public DbSet<Comment> Comments { get; set; }
 
+        public DbSet<Profile> Profiles { get; set; }
+
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             this.ApplyAuditInformation();
@@ -75,6 +77,13 @@
                 .HasOne(c => c.User)
                 .WithMany(u => u.Comments)
                 .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<User>()
+                .HasOne(u => u.Profile)
+                .WithOne()
+                .HasForeignKey<Profile>(p => p.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
