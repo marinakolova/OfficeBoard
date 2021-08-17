@@ -15,7 +15,10 @@
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Edit Message</h1>
+                            <h1 class="h4 text-gray-900">Edit Message</h1>
+                            <p class="mb-4"><small>Created On: <strong>{{message.createdOn| date:'dd.MM.yyyy
+                                        hh:mm'}}</strong></small>
+                            </p>
                         </div>
                         <form class="user" [formGroup]='messageForm'>
                             <div class="form-group">
@@ -35,12 +38,12 @@
                             <div class="form-group">
                                 <input hidden type="number" class="form-control" formControlName="Id">
                             </div>
-                            <button type="submit" class="btn btn-success btn-user btn-block"
+                            <button type="submit" class="btn btn-success btn-user btn-block my-4"
                                 (click)="confirmEdit()">Save changes</button>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="text-danger" routerLink="/messages">Cancel</a>
+                            <button class="btn btn-sm btn-outline-danger" routerLink="/messages">Cancel</button>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,9 @@
                     <div class="p-5">
                         <div class="text-center">
                             <h1 class="h4 text-gray-900">Edit Comment</h1>
-                            <p class="mb-4">for <strong>{{comment.taskTitle}}</strong></p>
+                            <p class="mb-4"><small>Created On: <strong>{{comment.createdOn| date:'dd.MM.yyyy
+                                hh:mm'}}</strong> <br>
+                                for Task: </small> <strong>{{comment.taskTitle}}</strong></p>
                         </div>
                         <form class="user" [formGroup]='commentForm'>                            
                             <div class="form-group">
@@ -21,12 +23,12 @@
                             <div class="form-group">
                                 <input hidden type="number" class="form-control" formControlName="Id">
                             </div>
-                            <button type="submit" class="btn btn-success btn-user btn-block"
+                            <button type="submit" class="btn btn-success btn-user btn-block my-4"
                                 (click)="confirmEdit()">Save changes</button>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="text-danger" routerLink="/tasks/{{comment.taskId}}">Cancel</a>
+                            <button class="btn btn-sm btn-outline-danger" routerLink="/tasks/{{comment.taskId}}">Cancel</button>
                         </div>
                     </div>
                 </div>

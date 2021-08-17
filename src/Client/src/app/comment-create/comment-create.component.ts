@@ -9,7 +9,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './comment-create.component.html',
   styleUrls: ['./comment-create.component.css']
 })
-export class CommentCreateComponent implements OnInit {
+export class CommentCreateComponent {
 
   commentForm: FormGroup;
   task: any;
@@ -26,9 +26,6 @@ export class CommentCreateComponent implements OnInit {
       'Content': ['', Validators.required],
       'TaskId': [this.task],
     });
-  }
-
-  ngOnInit(): void {
   }
 
   create() {
