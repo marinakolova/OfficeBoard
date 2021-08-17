@@ -20,16 +20,16 @@ Web application for office communication:
 ## :gear: Configurations
 
 ### 1. Server
-- Check the connection string in `appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
-- The app is set to use `https://localhost:44390`. If you need to change that, you may do it inside `UseUrls()` in the `Program.cs` file, but note that the `apiUrl` in the file `Client/src/environments/environment.ts` should be the same.
-- Run the OfficeBoard.Server App. Seeding sample data would happen, including test accounts.
-- You should see SwaggerUI in your browser. 
+- Check the connection string in `Server/OfficeBoard.Server/appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
+- The server app is set to use `https://localhost:44390`. If you need to change that, you may do it inside `UseUrls()` in the `Program.cs` file, but note that the `apiUrl` in the file `Client/src/environments/environment.ts` should be the same.
+- Run the OfficeBoard.Server App. One way to do it is by opening `OfficeBoard.Server.sln` with [Visual Studio](https://visualstudio.microsoft.com/vs/) and pressing `Ctrl+F5`. Seeding sample data would happen, including test accounts.
+- You should see `SwaggerUI` in your browser. 
 
 ### 2. Client  
 - The OfficeBoard.Server App should be running in order to use the Client.
 - Run `npm install` in the `Client` directory.
-- Run `ng serve` (in the `Client` directory) for a dev server. 
-- Navigate to `http://localhost:4200/` and enjoy OfficeBoard's client-side.
+- Run `ng serve --open` (in the `Client` directory) for a dev server. 
+- You should see OfficeBoard open in your browser on `http://localhost:4200/`.
 
 ### Seeded test accounts:
   - Username: user / password: 123456
