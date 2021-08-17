@@ -8,15 +8,15 @@ import { MessageService } from '../services/message.service';
   templateUrl: './message-create.component.html',
   styleUrls: ['./message-create.component.css']
 })
-export class MessageCreateComponent implements OnInit {  
-  
+export class MessageCreateComponent implements OnInit {
+
   messageForm: FormGroup;
-  
+
   constructor(
-    private fb: FormBuilder, 
-    private messageService: MessageService, 
-    private router: Router
-    ) { 
+    private fb: FormBuilder,
+    private messageService: MessageService,
+    private router: Router,
+  ) {
     this.messageForm = this.fb.group({
       'Title': ['', Validators.required],
       'Content': ['', Validators.required],
@@ -38,6 +38,6 @@ export class MessageCreateComponent implements OnInit {
 
   get content() {
     return this.messageForm.get('Content');
-  } 
+  }
 
 }

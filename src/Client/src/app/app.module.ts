@@ -32,6 +32,9 @@ import { CommentsByTaskComponent } from './comments-by-task/comments-by-task.com
 import { CommentCreateComponent } from './comment-create/comment-create.component';
 import { CommentEditComponent } from './comment-edit/comment-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileService } from './services/profile.service';
+import { ProfileByUserComponent } from './profile-by-user/profile-by-user.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NotFoundComponent,
     CommentsByTaskComponent,
     CommentCreateComponent,
-    CommentEditComponent,    
+    CommentEditComponent,
+    ProfileByUserComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TaskService,
     CommentService,
     DashboardService,
+    ProfileService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,

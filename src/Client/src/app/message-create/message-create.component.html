@@ -17,7 +17,7 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create New Message</h1>
                         </div>
-                        <form class="user" [formGroup]='messageForm' (ngSubmit)='create()'>
+                        <form class="user" method="post" [formGroup]='messageForm' (ngSubmit)='create()'>
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text" class="form-control" formControlName="Title">

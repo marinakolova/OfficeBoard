@@ -8,7 +8,7 @@
             <!-- Sidebar - Brand -->
             <div class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <fa-icon [icon]="faLaughWink"></fa-icon>
+                    <fa-icon [icon]="faLaughWink" class="fa-2x"></fa-icon>
                 </div>
                 <div class="sidebar-brand-text mx-3"><sup>Office </sup>Board</div>
             </div>
@@ -84,9 +84,9 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" (click)="myMessages()">
-                        <fa-icon [icon]="faUser"></fa-icon>
-                        <span> My Messages</span>
+                    <a class="nav-link" routerLink="/profile">
+                        <fa-icon [icon]="faUserEdit"></fa-icon>
+                        <span> User Profile</span>
                     </a>
                 </li>
 

@@ -7,7 +7,7 @@ import {
   faPlusCircle, 
   faSignInAlt, 
   faUserPlus, 
-  faUser, 
+  faUserEdit, 
   faSignOutAlt,
   faTachometerAlt,
   faTasks, 
@@ -25,7 +25,7 @@ export class AppComponent {
   faPlusCircle = faPlusCircle;
   faSignInAlt = faSignInAlt;
   faUserPlus = faUserPlus;
-  faUser = faUser;
+  faUserEdit = faUserEdit;
   faSignOutAlt = faSignOutAlt;
   faTachometerAlt = faTachometerAlt;
   faTasks = faTasks;
@@ -34,14 +34,6 @@ export class AppComponent {
 
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
-  }
-
-  getUsername() {
-    return this.authService.getUsername();
-  }
-
-  myMessages() {
-    this.router.navigate([`/messages/user/${this.getUsername()}`]);
   }
 
   logout() {

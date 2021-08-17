@@ -23,7 +23,7 @@ export class MessagesByUserComponent implements OnInit {
   faList = faList;
   faArrowDown = faArrowDown;
 
-  show = 4;
+  show = 3;
 
   userId!: string;
   messages: Array<Message>;
