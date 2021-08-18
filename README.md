@@ -23,13 +23,13 @@ Web application for office communication:
 - Check the connection string in `Server/OfficeBoard.Server/appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
 - The server app is set to use `https://localhost:44390`. If you need to change that, you may do it inside `UseUrls()` in the `Program.cs` file, but note that the `apiUrl` in the file `Client/src/environments/environment.ts` should be the same.
 - Run the OfficeBoard.Server App. One way to do it is by opening `OfficeBoard.Server.sln` with [Visual Studio](https://visualstudio.microsoft.com/vs/) and pressing `Ctrl+F5`. Seeding sample data would happen, including test accounts.
-- You should see `SwaggerUI` in your browser. 
+- You should see SwaggerUI in your browser. 
 
 ### 2. Client  
 - The OfficeBoard.Server App should be running in order to use the Client.
 - Run `npm install` in the `Client` directory.
 - Run `ng serve --open` (in the `Client` directory) for a dev server. 
-- You should see OfficeBoard open in your browser on `http://localhost:4200/`.
+- You should see OfficeBoard's client-side open in your browser on `http://localhost:4200/`.
 
 ### Seeded test accounts:
   - Username: user / password: 123456
@@ -41,9 +41,11 @@ Web application for office communication:
 - Login page - user login form;
 - Register page - user registration form;  
 #### Only for Logged Users:
+- Profile
+  - view and edit own profile info;
+  - view other user's info;
 - Messages
   - messages board - all messages;
-  - messages by user - messages created by a chosen user;
   - create messages with title and content;
   - edit or delete own messages;
 - Tasks
@@ -51,6 +53,7 @@ Web application for office communication:
   - change task's status by moving the task across the three columns;
   - create tasks with title and description; 
   - edit or delete own tasks;
+  - view task's details with comments;
 - Comments
   - shown in task's details page; 
   - create comments for existing tasks;
