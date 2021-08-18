@@ -32,8 +32,8 @@ Web application for office communication:
 - You should see OfficeBoard's client-side open in your browser on `http://localhost:4200/`.
 
 ### Seeded test accounts:
-  - Username: user / password: 123456
-  - Username: test / password: 123456
+  - Username: testuser / password: 123456
+  - Username: anothertest / password: 123456
 
 ## :information_source: Structure
 #### Public part (visible without authentication): 
@@ -60,7 +60,7 @@ Web application for office communication:
   - edit or delete own comments;
 
 ## :eyes: Screenshot of the Tasks Board:
-![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshot-tasks-board.png)
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screencapture-tasks-board.png)
 
 ## License
 
