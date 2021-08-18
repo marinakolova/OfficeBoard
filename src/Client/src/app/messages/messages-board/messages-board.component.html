@@ -1,0 +1,50 @@
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between m-4">
+        <h1 class="h3 mb-0 text-primary"><strong>Messages Board</strong></h1>
+    </div>
+</nav>
+<!-- End of Topbar -->
+<!-- Begin Page Content -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-lg-12" *ngFor="let message of messages|slice:0:show let i=index">
+            <!-- Basic Card Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">{{message.title}}</h6>
+                    <!-- Circle Buttons (Small) -->
+                    <div *ngIf="currentUser.id == message.userId" style="display: inline;">
+                        <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                            title="Edit">
+                            <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
+                        </a>
+                        <a (click)="confirmDelete(message.title, message.id)"
+                            class="btn btn-danger btn-circle btn-sm ml-2" title="Delete">
+                            <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>{{message.content}}</p>
+                    <p>
+                        <small class="text-muted">Created On: <strong>{{message.createdOn| date:'dd.MM.yyyy
+                                hh:mm'}}</strong></small> |
+                        <small class="text-muted">Author:
+                            <a routerLink="/profile/user/{{message.userId}}"><strong>{{message.userName}}</strong></a>
+                        </small>
+                    </p>
+                </div>
+            </div>
+            <div class="mb-4 ml-2">
+                <a *ngIf="show - i == 1" (click)="show = show + 4" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <fa-icon [icon]="faArrowDown"></fa-icon>
+                    </span>
+                    <span class="text" style="color: white;">Load More</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

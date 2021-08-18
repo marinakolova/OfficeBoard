@@ -84,9 +84,17 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/profile">
+                    <a class="nav-link" routerLink="/profile/info">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                        <span> User Info</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/profile/edit">
                         <fa-icon [icon]="faUserEdit"></fa-icon>
-                        <span> User Profile</span>
+                        <span> Edit User Profile</span>
                     </a>
                 </li>
 
@@ -105,7 +113,7 @@
             <div *ngIf="!isAuthenticated()">
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">
+                    <a class="nav-link" routerLink="auth/login">
                         <fa-icon [icon]="faSignInAlt"></fa-icon>
                         <span> Login</span>
                     </a>
@@ -113,7 +121,7 @@
 
                 <!-- Nav Item -->
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/register">
+                    <a class="nav-link" routerLink="auth/register">
                         <fa-icon [icon]="faUserPlus"></fa-icon>
                         <span> Register</span>
                     </a>

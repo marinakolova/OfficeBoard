@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { 
-  faLaughWink, 
-  faList, 
-  faPlusCircle, 
-  faSignInAlt, 
-  faUserPlus, 
-  faUserEdit, 
+import {
+  faLaughWink,
+  faList,
+  faPlusCircle,
+  faSignInAlt,
+  faUserPlus,
+  faUser,
+  faUserEdit,
   faSignOutAlt,
   faTachometerAlt,
-  faTasks, 
+  faTasks,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -20,11 +21,13 @@ import {
 })
 export class AppComponent {
   title = 'office-board';
+  
   faLaughWink = faLaughWink;
   faList = faList;
   faPlusCircle = faPlusCircle;
   faSignInAlt = faSignInAlt;
   faUserPlus = faUserPlus;
+  faUser = faUser;
   faUserEdit = faUserEdit;
   faSignOutAlt = faSignOutAlt;
   faTachometerAlt = faTachometerAlt;
@@ -38,11 +41,11 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/auth/login"]);
   }
 
   confirmLogout() {
-    if(confirm("Logout?")) {
+    if (confirm("Logout?")) {
       this.logout();
     }
   }
