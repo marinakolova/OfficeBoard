@@ -15,14 +15,14 @@
             // Create User
             await CreateUser(
                 userManager,
-                "user",
+                "testuser",
                 "user@user.com",
                 "123456");
 
             // Create User
             await CreateUser(
                 userManager,
-                "test",
+                "anothertest",
                 "test@test.com",
                 "123456");
         }

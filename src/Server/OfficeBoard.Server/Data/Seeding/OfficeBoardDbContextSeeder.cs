@@ -23,6 +23,7 @@
             var seeders = new List<ISeeder>
                           {
                               new UsersSeeder(),
+                              new ProfilesSeeder(),
                               new MessagesSeeder(),
                               new TasksSeeder(),
                               new CommentsSeeder(),
