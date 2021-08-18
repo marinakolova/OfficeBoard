@@ -25,21 +25,14 @@
         }
 
         [HttpGet]
-        public async Task<IEnumerable<MessageViewModel>> All()
+        public async Task<IEnumerable<MessageResponseModel>> All()
         {
             return await this.messageService.GetAll();
         }
 
         [HttpGet]
-        [Route("user/{username}")]
-        public async Task<IEnumerable<MessageViewModel>> ByUser(string username)
-        {
-            return await this.messageService.GetAllByUsername(username);
-        }
-
-        [HttpGet]
         [Route(Id)]
-        public async Task<ActionResult<MessageViewModel>> Details(int id)
+        public async Task<ActionResult<MessageResponseModel>> Details(int id)
             => await this.messageService.GetById(id);
 
         [HttpPost]

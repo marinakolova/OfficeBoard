@@ -35,11 +35,11 @@
                 .Where(x => x.CreatedOn.Year == DateTime.UtcNow.Year)
                 .CountAsync();
 
-        public async Task<IEnumerable<CommentViewModel>> GetAllByTask(int taskId)
+        public async Task<IEnumerable<CommentResponseModel>> GetAllByTask(int taskId)
             => await this.data
                 .Comments
                 .Where(x => x.TaskId == taskId)
-                .Select(x => new CommentViewModel
+                .Select(x => new CommentResponseModel
                 {
                     Id = x.Id,
                     Content = x.Content,
@@ -52,11 +52,11 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<CommentViewModel> GetById(int id)
+        public async Task<CommentResponseModel> GetById(int id)
             => await this.data
                 .Comments
                 .Where(x => x.Id == id)
-                .Select(x => new CommentViewModel
+                .Select(x => new CommentResponseModel
                 {
                     Id = x.Id,
                     Content = x.Content,

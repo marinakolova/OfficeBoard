@@ -34,10 +34,10 @@
                 .Where(x => x.CreatedOn.Year == DateTime.UtcNow.Year)
                 .CountAsync();
 
-        public async Task<IEnumerable<TaskViewModel>> GetAll()
+        public async Task<IEnumerable<TaskResponseModel>> GetAll()
             => await this.data
                 .Tasks
-                .Select(x => new TaskViewModel
+                .Select(x => new TaskResponseModel
                 {
                     Id = x.Id,
                     Title = x.Title,
@@ -51,11 +51,11 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<IEnumerable<TaskViewModel>> GetAllByUser(string userId)
+        public async Task<IEnumerable<TaskResponseModel>> GetAllByUser(string userId)
             => await this.data
                 .Tasks
                 .Where(x => x.UserId == userId)
-                .Select(x => new TaskViewModel
+                .Select(x => new TaskResponseModel
                 {
                     Id = x.Id,
                     Title = x.Title,
@@ -69,11 +69,11 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<TaskViewModel> GetById(int id)
+        public async Task<TaskResponseModel> GetById(int id)
             => await this.data
                 .Tasks
                 .Where(x => x.Id == id)
-                .Select(x => new TaskViewModel
+                .Select(x => new TaskResponseModel
                 {
                     Id = x.Id,
                     Title = x.Title,

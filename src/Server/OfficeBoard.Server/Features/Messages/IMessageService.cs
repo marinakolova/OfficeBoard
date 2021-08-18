@@ -13,11 +13,9 @@
 
         Task<int> GetYearCount();
 
-        Task<IEnumerable<MessageViewModel>> GetAll();
+        Task<IEnumerable<MessageResponseModel>> GetAll();
 
-        Task<IEnumerable<MessageViewModel>> GetAllByUsername(string username);
-
-        Task<MessageViewModel> GetById(int id);
+        Task<MessageResponseModel> GetById(int id);
 
         Task<int> Create(string title, string content, string userId);
 

@@ -7,21 +7,35 @@
     using Microsoft.Extensions.Options;
     using OfficeBoard.Server.Data.Models;
     using OfficeBoard.Server.Features.Identity.Models;
+    using OfficeBoard.Server.Infrastructure.Services;
 
     public class IdentityController : ApiController
     {
         private readonly UserManager<User> userManager;
         private readonly IIdentityService identityService;
         private readonly AppSettings appSettings;
+        private readonly ICurrentUserService currentUserService;
 
         public IdentityController(
             UserManager<User> userManager,
             IIdentityService identityService,
-            IOptions<AppSettings> appSettings)
+            IOptions<AppSettings> appSettings,
+            ICurrentUserService currentUserService)
         {
             this.userManager = userManager;
             this.identityService = identityService;
             this.appSettings = appSettings.Value;
+            this.currentUserService = currentUserService;
+        }
+
+        [HttpGet]
+        [Route(nameof(CurrentUser))]
+        public ActionResult<CurrentUserResponseModel> CurrentUser()
+        {
+            return new CurrentUserResponseModel
+            {
+                Id = this.currentUserService.GetId(),
+            };
         }
 
         [HttpPost]
@@ -68,8 +82,6 @@
             return new LoginResponseModel
             {
                 Token = token,
-                UserId = user.Id,
-                UserName = user.UserName,
             };
         }
     }

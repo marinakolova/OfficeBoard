@@ -13,9 +13,9 @@
 
         Task<int> GetYearCount();
 
-        Task<IEnumerable<CommentViewModel>> GetAllByTask(int taskId);
+        Task<IEnumerable<CommentResponseModel>> GetAllByTask(int taskId);
 
-        Task<CommentViewModel> GetById(int id);
+        Task<CommentResponseModel> GetById(int id);
 
         Task<int> Create(string content, int taskId, string userId);
 

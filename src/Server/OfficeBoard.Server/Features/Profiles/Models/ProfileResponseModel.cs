@@ -1,6 +1,6 @@
 ﻿namespace OfficeBoard.Server.Features.Profiles.Models
 {
-    public class ProfileViewModel
+    public class ProfileResponseModel
     {
         public string UserId { get; set; }
 

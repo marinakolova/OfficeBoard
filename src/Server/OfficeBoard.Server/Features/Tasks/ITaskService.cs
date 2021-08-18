@@ -13,9 +13,9 @@
 
         Task<int> GetYearCount();
 
-        Task<IEnumerable<TaskViewModel>> GetAll();
+        Task<IEnumerable<TaskResponseModel>> GetAll();
 
-        Task<TaskViewModel> GetById(int id);
+        Task<TaskResponseModel> GetById(int id);
 
         Task<int> Create(string title, string description, string userId);
 

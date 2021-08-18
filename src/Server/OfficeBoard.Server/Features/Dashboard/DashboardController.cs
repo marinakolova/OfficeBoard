@@ -24,9 +24,9 @@
         }
 
         [HttpGet]
-        public async Task<DashboardViewModel> Dashboard()
+        public async Task<DashboardResponseModel> Dashboard()
         {
-            return new DashboardViewModel
+            return new DashboardResponseModel
             {
                 TodayMessagesCount = await this.messageService.GetTodayCount(),
                 MonthMessagesCount = await this.messageService.GetMonthCount(),

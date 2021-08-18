@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class CommentViewModel
+    public class CommentResponseModel
     {
         public int Id { get; set; }
 

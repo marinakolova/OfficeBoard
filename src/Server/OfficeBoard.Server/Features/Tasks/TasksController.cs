@@ -25,14 +25,14 @@
         }
 
         [HttpGet]
-        public async Task<IEnumerable<TaskViewModel>> All()
+        public async Task<IEnumerable<TaskResponseModel>> All()
         {
             return await this.taskService.GetAll();
         }
 
         [HttpGet]
         [Route(Id)]
-        public async Task<ActionResult<TaskViewModel>> Details(int id)
+        public async Task<ActionResult<TaskResponseModel>> Details(int id)
         {
             var taskWithComments = await this.taskService.GetById(id);
 

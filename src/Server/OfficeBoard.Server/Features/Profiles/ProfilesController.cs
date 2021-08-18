@@ -22,19 +22,13 @@
         }
 
         [HttpGet]
-        public async Task<ProfileViewModel> ByUser()
+        [Route("current")]
+        public async Task<ProfileResponseModel> ByUser()
             => await this.profileService.ByUser(this.currentUser.GetId());
 
         [HttpGet]
-        [Route("user/{username}")]
-        public async Task<ProfileViewModel> ByUsername(string username)
-        {
-            return await this.profileService.ByUsername(username);
-        }
-
-        [HttpGet]
         [Route(Id)]
-        public async Task<ProfileViewModel> Details(string id)
+        public async Task<ProfileResponseModel> Details(string id)
         {
             return await this.profileService.ByUser(id);
         }

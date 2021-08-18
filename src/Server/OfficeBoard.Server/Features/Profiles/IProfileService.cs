@@ -7,9 +7,7 @@
 
     public interface IProfileService
     {
-        Task<ProfileViewModel> ByUser(string userId);
-
-        Task<ProfileViewModel> ByUsername(string username);
+        Task<ProfileResponseModel> ByUser(string userId);
 
         Task<Result> Update(
             string userId,

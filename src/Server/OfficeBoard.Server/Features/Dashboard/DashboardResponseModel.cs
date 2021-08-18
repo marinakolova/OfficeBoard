@@ -1,6 +1,6 @@
 ﻿namespace OfficeBoard.Server.Features.Dashboard
 {
-    public class DashboardViewModel
+    public class DashboardResponseModel
     {
         public int TodayMessagesCount { get; set; }
 

@@ -15,26 +15,11 @@
 
         public ProfileService(OfficeBoardDbContext data) => this.data = data;
 
-        public async Task<ProfileViewModel> ByUser(string userId)
+        public async Task<ProfileResponseModel> ByUser(string userId)
             => await this.data
                 .Users
                 .Where(u => u.Id == userId)
-                .Select(u => new ProfileViewModel
-                {
-                    UserId = u.Id,
-                    Email = u.Email,
-                    UserName = u.UserName,
-                    Name = u.Profile.Name,
-                    Position = u.Profile.Position,
-                    Department = u.Profile.Department,
-                })
-                .FirstOrDefaultAsync();
-
-        public async Task<ProfileViewModel> ByUsername(string username)
-            => await this.data
-                .Users
-                .Where(u => u.UserName == username)
-                .Select(u => new ProfileViewModel
+                .Select(u => new ProfileResponseModel
                 {
                     UserId = u.Id,
                     Email = u.Email,

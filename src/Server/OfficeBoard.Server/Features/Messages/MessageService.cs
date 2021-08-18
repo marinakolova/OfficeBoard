@@ -35,10 +35,10 @@
                 .Where(x => x.CreatedOn.Year == DateTime.UtcNow.Year)
                 .CountAsync();
 
-        public async Task<IEnumerable<MessageViewModel>> GetAll()
+        public async Task<IEnumerable<MessageResponseModel>> GetAll()
             => await this.data
                 .Messages
-                .Select(x => new MessageViewModel
+                .Select(x => new MessageResponseModel
                 {
                     Id = x.Id,
                     Title = x.Title,
@@ -50,27 +50,11 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
-        public async Task<IEnumerable<MessageViewModel>> GetAllByUsername(string username)
-            => await this.data
-                .Messages
-                .Where(x => x.User.UserName == username)
-                .Select(x => new MessageViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Content = x.Content,
-                    CreatedOn = x.CreatedOn,
-                    UserId = x.User.Id,
-                    UserName = username,
-                })
-                .OrderByDescending(x => x.CreatedOn)
-                .ToListAsync();
-
-        public async Task<MessageViewModel> GetById(int id)
+        public async Task<MessageResponseModel> GetById(int id)
             => await this.data
                 .Messages
                 .Where(x => x.Id == id)
-                .Select(x => new MessageViewModel
+                .Select(x => new MessageResponseModel
                 {
                     Id = x.Id,
                     Title = x.Title,
