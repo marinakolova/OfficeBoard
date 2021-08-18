@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../models/Message';
+import { User } from '../models/User';
+import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/message.service';
 
 @Component({
@@ -14,13 +16,18 @@ export class MessageEditComponent implements OnInit {
   id!: number;
   message!: Message;
   messageForm!: FormGroup;
+  currentUser!: User;
 
   constructor(
     private fb: FormBuilder, 
-    private messageService: MessageService, 
+    private messageService: MessageService,
+    private authService: AuthService, 
     private route: ActivatedRoute,
     private router: Router
     ) { 
+      this.authService.getCurrentUser().subscribe(res => {
+        this.currentUser = res;
+      });
   }
 
   ngOnInit(): void {
@@ -28,6 +35,7 @@ export class MessageEditComponent implements OnInit {
       this.id = res['id'];
       this.messageService.getMessageDetails(this.id).subscribe(res => {
         this.message = res;
+        this.verifyOwner();
 
         this.messageForm = this.fb.group({
           'Title': [this.message.title, Validators.required],
@@ -36,6 +44,12 @@ export class MessageEditComponent implements OnInit {
         });
       });
     });
+  }
+
+  verifyOwner() {
+    if (this.currentUser.id != this.message.userId) {
+      this.router.navigate(["/messages"]);
+    } 
   }
 
   editMessage() {

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/Task';
+import { User } from '../models/User';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-task-edit',
@@ -14,19 +16,26 @@ export class TaskEditComponent implements OnInit {
   id!: number;
   task!: Task;
   taskForm!: FormGroup;
+  currentUser!: User;
 
   constructor(
-    private fb: FormBuilder, 
-    private taskService: TaskService, 
+    private fb: FormBuilder,
+    private taskService: TaskService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
-    ) { }
+  ) {
+    this.authService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    });
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(res => {
       this.id = res['id'];
       this.taskService.getTaskDetails(this.id).subscribe(res => {
         this.task = res;
+        this.verifyOwner();
 
         this.taskForm = this.fb.group({
           'Title': [this.task.title, Validators.required],
@@ -38,6 +47,12 @@ export class TaskEditComponent implements OnInit {
     });
   }
 
+  verifyOwner() {
+    if (this.currentUser.id != this.task.userId) {
+      this.router.navigate([`/tasks/${this.task.id}`]);
+    } 
+  }
+
   editTask() {
     this.taskService.editTask(this.taskForm.value).subscribe(res => {
       this.router.navigate(["/tasks"]);
@@ -45,7 +60,7 @@ export class TaskEditComponent implements OnInit {
   }
 
   confirmEdit() {
-    if(confirm("Save changes to this task?")) {
+    if (confirm("Save changes to this task?")) {
       this.editTask();
     }
   }

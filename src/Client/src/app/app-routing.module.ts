@@ -18,7 +18,6 @@ import { ProfileByUserComponent } from './profile-by-user/profile-by-user.compon
 
 const routes: Routes = [  
   { path: '', component: DashboardComponent },
-
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileEditComponent, canActivate: [AuthGuardService] },
