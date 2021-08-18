@@ -10,6 +10,7 @@ import {
   faTrash,
   faArrowRight, 
 } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-tasks-board',
@@ -24,6 +25,7 @@ export class TasksBoardComponent implements OnInit {
   faArrowRight = faArrowRight;
 
   tasks: Array<Task>;
+  currentUser!: User;
 
   constructor(
     private taskService: TaskService, 
@@ -31,6 +33,10 @@ export class TasksBoardComponent implements OnInit {
     private router: Router
     ) {
     this.tasks = new Array<Task>();
+
+    this.authService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    });
   }
 
   ngOnInit(): void {
@@ -40,11 +46,7 @@ export class TasksBoardComponent implements OnInit {
   fetchTasks() {
     this.taskService.getAllTasks().subscribe(tasks => {
       this.tasks = tasks;
-    })
-  }
-
-  getUserId() {
-    return this.authService.getUserId();
+    });
   }
 
   editTask(id: number) {

@@ -48,7 +48,7 @@ export class ProfileEditComponent implements OnInit {
 
   editProfile() {
     this.profileService.editProfile(this.profileForm.value).subscribe(res => {
-      this.router.navigate([`/messages/user/${this.profile.userName}`]);
+      this.router.navigate([`/user/${this.profile.userId}`]);
     });
   }
 

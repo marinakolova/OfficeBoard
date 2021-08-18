@@ -11,10 +11,10 @@ import { TaskEditComponent } from './task-edit/task-edit.component';
 import { MessagesBoardComponent } from './messages-board/messages-board.component';
 import { MessageCreateComponent } from './message-create/message-create.component';
 import { MessageEditComponent } from './message-edit/message-edit.component';
-import { MessagesByUserComponent } from './messages-by-user/messages-by-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CommentEditComponent } from './comment-edit/comment-edit.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { ProfileByUserComponent } from './profile-by-user/profile-by-user.component';
 
 const routes: Routes = [  
   { path: '', component: DashboardComponent },
@@ -22,11 +22,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileEditComponent, canActivate: [AuthGuardService] },
+  { path: 'user/:id', component: ProfileByUserComponent, canActivate: [AuthGuardService] },
 
   { path: 'messages', component: MessagesBoardComponent, canActivate: [AuthGuardService] },
   { path: 'messages/create', component: MessageCreateComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/:id/edit', component: MessageEditComponent, canActivate: [AuthGuardService] },
-  { path: 'messages/user/:id', component: MessagesByUserComponent, canActivate: [AuthGuardService] }, 
+  { path: 'messages/:id/edit', component: MessageEditComponent, canActivate: [AuthGuardService] }, 
   
   { path: 'tasks', component: TasksBoardComponent, canActivate: [AuthGuardService] },
   { path: 'tasks/create', component: TaskCreateComponent, canActivate: [AuthGuardService] },

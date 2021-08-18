@@ -3,12 +3,13 @@ import { Router } from '@angular/router';
 import { Message } from '../models/Message';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/message.service';
-import { 
+import {
   faInfo,
   faEdit,
-  faTrash, 
+  faTrash,
   faArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-messages-board',
@@ -24,13 +25,18 @@ export class MessagesBoardComponent implements OnInit {
   show = 4;
 
   messages: Array<Message>;
+  currentUser!: User;
 
   constructor(
-    private messageService: MessageService, 
-    private authService: AuthService, 
+    private messageService: MessageService,
+    private authService: AuthService,
     private router: Router
-    ) {
+  ) {
     this.messages = new Array<Message>();
+
+    this.authService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    });
   }
 
   ngOnInit(): void {
@@ -41,10 +47,6 @@ export class MessagesBoardComponent implements OnInit {
     this.messageService.getAllMessages().subscribe(messages => {
       this.messages = messages;
     })
-  }
-
-  getUserId() {
-    return this.authService.getUserId();
   }
 
   editMessage(id: number) {
@@ -58,7 +60,7 @@ export class MessagesBoardComponent implements OnInit {
   }
 
   confirmDelete(name: string, id: number) {
-    if(confirm(`${name} - Delete message?`)) {
+    if (confirm(`${name} - Delete message?`)) {
       this.deleteMessage(id);
     }
   }

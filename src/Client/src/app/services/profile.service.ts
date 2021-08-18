@@ -13,15 +13,11 @@ export class ProfileService {
     
   constructor(private http: HttpClient) { }
 
-  getProfileByUsername(username: string): Observable<Profile> {
-    return this.http.get<Profile>(this.profilePath + `/user/${username}`);
-  }
-
   getProfileOfCurrentUser(): Observable<Profile> {
-    return this.http.get<Profile>(this.profilePath);
+    return this.http.get<Profile>(this.profilePath + '/current');
   }
 
-  getProfileDetails(id: number): Observable<Profile> {
+  getProfileDetails(id: string): Observable<Profile> {
     return this.http.get<Profile>(this.profilePath + `/${id}`);
   }
 

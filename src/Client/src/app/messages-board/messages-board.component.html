@@ -15,7 +15,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">{{message.title}}</h6>
                     <!-- Circle Buttons (Small) -->
-                    <div *ngIf="this.getUserId() == message.userId" style="display: inline;">
+                    <div *ngIf="currentUser.id == message.userId" style="display: inline;">
                         <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4"
                             title="Edit">
                             <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
@@ -33,7 +33,7 @@
                                 hh:mm'}}</strong></small> |
                         <small class="text-muted">Author:
                             <a
-                                routerLink="/messages/user/{{message.userName}}"><strong>{{message.userName}}</strong></a>
+                                routerLink="/user/{{message.userId}}"><strong>{{message.userName}}</strong></a>
                         </small>
                     </p>
                 </div>

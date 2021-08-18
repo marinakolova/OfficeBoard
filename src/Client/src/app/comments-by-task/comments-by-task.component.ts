@@ -5,14 +5,15 @@ import { CommentService } from '../services/comment.service';
 import { Comment } from '../models/Comment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommentEditComponent } from '../comment-edit/comment-edit.component';
-import { 
+import {
   faInfo,
   faEdit,
-  faTrash, 
+  faTrash,
   faList,
   faArrowDown,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-comments-by-task',
@@ -31,15 +32,20 @@ export class CommentsByTaskComponent implements OnInit {
 
   taskId!: number;
   comments: Array<Comment>;
+  currentUser!: User;
 
   constructor(
-    private commentService: CommentService, 
-    private authService: AuthService, 
-    private route: ActivatedRoute, 
+    private commentService: CommentService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal,
-    ) { 
+  ) {
     this.comments = new Array<Comment>();
+
+    this.authService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    });
   }
 
   ngOnInit(): void {
@@ -53,10 +59,6 @@ export class CommentsByTaskComponent implements OnInit {
         this.comments = res;
       });
     });
-  }
-
-  getUserId() {
-    return this.authService.getUserId();
   }
 
   open() {
@@ -74,7 +76,7 @@ export class CommentsByTaskComponent implements OnInit {
   }
 
   confirmDelete(id: number) {
-    if(confirm(`Delete comment?`)) {
+    if (confirm(`Delete comment?`)) {
       this.deleteComment(id);
     }
   }

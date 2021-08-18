@@ -33,7 +33,7 @@
                         <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
                     </p>
                     <!-- Circle Buttons (Small) -->
-                    <div *ngIf="this.getUserId() == task.userId" style="display: inline;">
+                    <div *ngIf="currentUser.id == task.userId" style="display: inline;">
                         <a (click)="editTask(task.id)" class="btn btn-warning btn-circle ml-4" title="Edit">
                             <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
                         </a>

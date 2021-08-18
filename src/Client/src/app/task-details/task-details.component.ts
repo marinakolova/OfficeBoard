@@ -13,6 +13,7 @@ import {
   faTasks,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-task-details',
@@ -27,6 +28,7 @@ export class TaskDetailsComponent implements OnInit {
 
   id!: number;
   task!: Task;
+  currentUser!: User;
 
   constructor(
     private taskService: TaskService,
@@ -34,7 +36,11 @@ export class TaskDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal,
-  ) { }
+  ) {
+    this.authService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    });
+  }
 
   ngOnInit(): void {
     this.fetchData();
@@ -48,10 +54,6 @@ export class TaskDetailsComponent implements OnInit {
     }), mergeMap(id => this.taskService.getTaskDetails(id))).subscribe(res => {
       this.task = res;
     });
-  }
-
-  getUserId() {
-    return this.authService.getUserId();
   }
 
   editTask(id: number) {
