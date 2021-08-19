@@ -1,8 +1,9 @@
 # OfficeBoard
 
 Web application for office communication: 
-- messages board for sharing important messages with team members; 
-- tasks board for keeping track of tasks which should be done inside the team.
+- Messages board for sharing important messages with team members. 
+- Tasks board for keeping track of tasks which should be done inside the team.
+- Comments option for the tasks.
 
 ## :hammer_and_pick: Built With
 
