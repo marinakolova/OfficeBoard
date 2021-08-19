@@ -7,9 +7,12 @@
 </nav>
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4">    
+    <div class="form-group">
+        <input type="text" class="form-control form-control-lg" placeholder="Search..." [(ngModel)]="filterTerm">
+    </div>
     <div class="row">
-        <div class="col-lg-12" *ngFor="let message of messages|slice:0:show let i=index">
+        <div class="col-lg-12" *ngFor="let message of messages | slice:0:show | filter:filterTerm">
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -37,14 +40,14 @@
                     </p>
                 </div>
             </div>
-            <div class="mb-4 ml-2">
-                <a *ngIf="show - i == 1" (click)="show = show + 4" class="btn btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                        <fa-icon [icon]="faArrowDown"></fa-icon>
-                    </span>
-                    <span class="text" style="color: white;">Load More</span>
-                </a>
-            </div>
+        </div>
+        <div class="mb-4 ml-2">
+            <a *ngIf="show<(messages.length)" (click)="show = show + 3" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                    <fa-icon [icon]="faArrowDown"></fa-icon>
+                </span>
+                <span class="text" style="color: white;">Load More</span>
+            </a>
         </div>
     </div>
 </div>

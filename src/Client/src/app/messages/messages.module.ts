@@ -7,6 +7,8 @@ import { MessageCreateComponent } from './message-create/message-create.componen
 import { MessageEditComponent } from './message-edit/message-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MessagesRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    FormsModule,
+    Ng2SearchPipeModule,
   ],
 })
 export class MessagesModule { }

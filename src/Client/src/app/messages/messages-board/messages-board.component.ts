@@ -4,6 +4,7 @@ import {
   faInfo,
   faEdit,
   faTrash,
+  faSearch,
   faArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { Message } from '../../models/Message';
@@ -21,12 +22,14 @@ export class MessagesBoardComponent implements OnInit {
   faInfo = faInfo;
   faEdit = faEdit;
   faTrash = faTrash;
+  faSearch = faSearch;
   faArrowDown = faArrowDown;
-
-  show = 4;
+  
+  currentUser!: User;
+  filterTerm!: string;
 
   messages: Array<Message>;
-  currentUser!: User;
+  show = 3;
 
   constructor(
     private messageService: MessageService,
