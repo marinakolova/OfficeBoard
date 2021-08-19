@@ -32,8 +32,6 @@
 
         public async Task<Result> Update(
             string userId,
-            string email,
-            string userName,
             string name,
             string position,
             string department)
@@ -53,18 +51,6 @@
                 user.Profile = new Profile();
             }
 
-            var result = await this.ChangeEmail(user, userId, email);
-            if (result.Failure)
-            {
-                return result;
-            }
-
-            result = await this.ChangeUserName(user, userId, userName);
-            if (result.Failure)
-            {
-                return result;
-            }
-
             this.ChangeProfile(
                 user.Profile,
                 name,
@@ -72,44 +58,6 @@
                 department);
 
             await this.data.SaveChangesAsync();
-
-            return true;
-        }
-
-        private async Task<Result> ChangeEmail(User user, string userId, string email)
-        {
-            if (!string.IsNullOrWhiteSpace(email) && user.Email != email)
-            {
-                var emailExists = await this.data
-                    .Users
-                    .AnyAsync(u => u.Id != userId && u.Email == email);
-
-                if (emailExists)
-                {
-                    return "The provided e-mail is already taken.";
-                }
-
-                user.Email = email;
-            }
-
-            return true;
-        }
-
-        private async Task<Result> ChangeUserName(User user, string userId, string userName)
-        {
-            if (!string.IsNullOrWhiteSpace(userName) && user.UserName != userName)
-            {
-                var userNameExists = await this.data
-                    .Users
-                    .AnyAsync(u => u.Id != userId && u.UserName == userName);
-
-                if (userNameExists)
-                {
-                    return "The provided user name is already taken.";
-                }
-
-                user.UserName = userName;
-            }
 
             return true;
         }

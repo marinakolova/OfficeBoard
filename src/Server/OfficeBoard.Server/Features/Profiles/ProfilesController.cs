@@ -40,8 +40,6 @@
 
             var result = await this.profileService.Update(
                 userId,
-                model.Email,
-                model.UserName,
                 model.Name,
                 model.Position,
                 model.Department);

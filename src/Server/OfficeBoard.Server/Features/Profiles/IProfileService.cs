@@ -11,8 +11,6 @@
 
         Task<Result> Update(
             string userId,
-            string email,
-            string userName,
             string name,
             string position,
             string department);
