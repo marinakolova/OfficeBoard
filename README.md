@@ -20,7 +20,7 @@ Web application for office communication:
 ## :gear: Configurations
 
 ### 1. Server
-- If you don't use SQLEXPRESS, in the connection string in `appsettings.json` replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
+- If you don't use SQLEXPRESS, you should check the connection string in `appsettings.json` and replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
 - Run `dotnet run` in the OfficeBoard.Server App's directory. Seeding sample data would happen, including test accounts.
 - You should see SwaggerUI in your browser on `https://localhost:44390`. 
 - ( The server app is set to listen on `https://localhost:44390`. If you need to change that, you may do it inside `UseUrls()` in the `Program.cs` file, but note that the `apiUrl` in the file `Client/src/environments/environment.ts` should be the same. )
