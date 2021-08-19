@@ -45,7 +45,7 @@ Web application for office communication:
   - view and edit own profile info;
   - view other user's info;
 - Messages
-  - messages board - all messages;
+  - messages board - all messages with search bar;
   - create messages with title and content;
   - edit or delete own messages;
 - Tasks
