@@ -40,7 +40,7 @@ export class TaskDetailsComponent implements OnInit {
   currentUser!: User;
 
   comments: Array<Comment>;
-  show = 3;
+  show = 2;
 
   constructor(
     private taskService: TaskService,

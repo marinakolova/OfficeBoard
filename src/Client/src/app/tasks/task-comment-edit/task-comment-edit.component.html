@@ -10,12 +10,15 @@
                             <h1 class="h4 text-gray-900">Edit Comment</h1>
                             <p class="mb-4"><small>Created On: <strong>{{comment.createdOn| date:'dd.MM.yyyy
                                         hh:mm'}}</strong> <br>
-                                    for Task: </small> <strong>{{comment.taskTitle}}</strong></p>
+                                    for Task: </small> <a
+                                    routerLink="/tasks/{{comment.taskId}}"><strong>{{comment.taskTitle}}</strong></a>
+                            </p>
                         </div>
                         <form class="user" [formGroup]='commentForm'>
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea type="text" class="form-control" formControlName="Content"></textarea>
+                                <textarea rows="6" type="text" class="form-control"
+                                    formControlName="Content"></textarea>
                             </div>
                             <div *ngIf="content?.touched && content?.errors?.required" class="alert alert-danger">
                                 Content is required!
@@ -23,14 +26,17 @@
                             <div class="form-group">
                                 <input hidden type="number" class="form-control" formControlName="Id">
                             </div>
-                            <button type="submit" class="btn btn-success btn-user btn-block my-4"
-                                (click)="confirmEdit()">Save changes</button>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-success btn-user btn-block my-4"
+                                        (click)="confirmEdit()">Save changes</button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-danger btn-user btn-block my-4"
+                                        routerLink="/tasks/{{comment.taskId}}">Cancel</button>
+                                </div>
+                            </div>
                         </form>
-                        <hr>
-                        <div class="text-center">
-                            <button class="btn btn-sm btn-outline-danger"
-                                routerLink="/tasks/{{comment.taskId}}">Cancel</button>
-                        </div>
                     </div>
                 </div>
             </div>

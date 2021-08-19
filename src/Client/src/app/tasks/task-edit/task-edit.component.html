@@ -30,7 +30,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea type="text" class="form-control" formControlName="Description"></textarea>
+                                <textarea rows="6" type="text" class="form-control"
+                                    formControlName="Description"></textarea>
                             </div>
                             <div *ngIf="description?.touched && description?.errors?.required"
                                 class="alert alert-danger">
@@ -47,13 +48,17 @@
                             <div class="form-group">
                                 <input hidden type="number" class="form-control" formControlName="Id">
                             </div>
-                            <button type="submit" class="btn btn-success btn-user btn-block my-4"
-                                (click)="confirmEdit()">Save changes</button>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-success btn-user btn-block my-4"
+                                        (click)="confirmEdit()">Save changes</button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-danger btn-user btn-block my-4"
+                                        routerLink="/tasks">Cancel</button>
+                                </div>
+                            </div>
                         </form>
-                        <hr>
-                        <div class="text-center">
-                            <button class="btn btn-sm btn-outline-danger" routerLink="/tasks">Cancel</button>
-                        </div>
                     </div>
                 </div>
             </div>

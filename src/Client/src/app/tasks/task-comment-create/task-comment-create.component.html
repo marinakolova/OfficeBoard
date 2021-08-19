@@ -1,21 +1,22 @@
-<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+<button type="button" class="close btn" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
 </button>
 <!-- Begin Page Content -->
 <div class="container-fluid mt-4">
-    <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card o-hidden border-0 shadow-lg my-4">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="py-5">
+                <div class="col-lg-12">
+                    <div class="p-3">
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create New Comment</h1>
                         </div>
                         <form class="user" [formGroup]='commentForm' (ngSubmit)='create()'>
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea type="text" class="form-control" formControlName="Content"></textarea>
+                                <textarea rows="6" type="text" class="form-control"
+                                    formControlName="Content"></textarea>
                             </div>
                             <div *ngIf="content?.touched && content?.errors?.required" class="alert alert-danger">
                                 Content is required!
@@ -23,13 +24,14 @@
                             <div class="form-group">
                                 <input hidden type="number" class="form-control" formControlName="taskId">
                             </div>
-                            <button type="submit" class="btn btn-success btn-user btn-block my-4"
-                                (click)="activeModal.close('Close click')">Create</button>
+                            <div>
+                                <button type="submit" class="btn btn-success btn-user btn-block my-4"
+                                    (click)="activeModal.close('Close click')">Create</button>
+                            </div>
                         </form>
-                        <hr>
-                        <div class="text-center">
-                            <button class="btn btn-sm btn-outline-danger"
-                                (click)="activeModal.close('Close click')">Cancel</button>
+                        <div>
+                            <button class="btn btn-outline-danger btn-user btn-block my-4"
+                                (click)="activeModal.dismiss('Close click')">Cancel</button>
                         </div>
                     </div>
                 </div>
