@@ -38,9 +38,7 @@ export class ProfileEditComponent implements OnInit {
     this.profileService.getProfileOfCurrentUser().subscribe(res => {
       this.profile = res;
 
-      this.profileForm = this.fb.group({
-        'Email': [this.profile.email, Validators.required],
-        'UserName': [this.profile.userName, Validators.required],
+      this.profileForm = this.fb.group({        
         'Name': [this.profile.name],
         'Position': [this.profile.position],
         'Department': [this.profile.department],
@@ -51,7 +49,7 @@ export class ProfileEditComponent implements OnInit {
 
   editProfile() {
     this.profileService.editProfile(this.profileForm.value).subscribe(res => {
-      this.router.navigate([`/profile/info`]);
+      this.router.navigate([`/profile/user/${this.profile.userId}`]);
     });
   }
 
@@ -59,14 +57,6 @@ export class ProfileEditComponent implements OnInit {
     if (confirm("Save changes?")) {
       this.editProfile();
     }
-  }
-
-  get email() {
-    return this.profileForm.get('Email');
-  }
-
-  get userName() {
-    return this.profileForm.get('UserName');
   }
 
 }
