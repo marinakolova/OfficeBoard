@@ -59,8 +59,13 @@ Web application for office communication:
   - create comments for existing tasks;
   - edit or delete own comments;
 
-## :eyes: Screenshot of the Tasks Board:
-![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screencapture-tasks-board.png)
+## :eyes: Screenshots
+#### Messages Board
+![OfficeBoard-MessagesBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-messages-board.png)
+#### Tasks Board
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-tasks-board.png)
+#### Task Details With Comments
+![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments-2.png)
 
 ## License
 
