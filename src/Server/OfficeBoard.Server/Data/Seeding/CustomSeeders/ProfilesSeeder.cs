@@ -21,14 +21,14 @@
                     UserId = dbContext.Users.OrderBy(x => x.Id).FirstOrDefault().Id,
                     Name = "Test User",
                     Position = "Project Manager",
-                    Department = "Test Department",
+                    Department = "Lorem ipsum",
                 },
                 new Profile
                 {
                     UserId = dbContext.Users.OrderBy(x => x.Id).LastOrDefault().Id,
                     Name = "Seeded User",
                     Position = "CTO",
-                    Department = "Seeded Department",
+                    Department = "Lorem ipsum",
                 },
             };
 
