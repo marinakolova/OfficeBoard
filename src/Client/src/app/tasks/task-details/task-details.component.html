@@ -70,7 +70,7 @@
         </div>
         <!-- Border Left Utilities -->
         <div class="col-lg-8">
-            <div *ngFor="let comment of comments|slice:0:show let i=index">
+            <div *ngFor="let comment of comments|slice:0:show">
                 <div class="card mb-4 py-3 border-left-primary">
                     <div class="card-body">
                         <p>{{comment.content}}</p>
@@ -94,15 +94,15 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="mb-4">
-                    <a *ngIf="show - i == 1" (click)="show = show + 2" class="btn btn-primary btn-icon-split">
-                        <span class="icon text-white-50">
-                            <fa-icon [icon]="faArrowDown"></fa-icon>
-                        </span>
-                        <span class="text" style="color: white;">Load More</span>
-                    </a>
-                </div>
+                </div>                
+            </div>
+            <div class="mb-4">
+                <a *ngIf="show<comments.length" (click)="show = show + 3" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <fa-icon [icon]="faArrowDown"></fa-icon>
+                    </span>
+                    <span class="text" style="color: white;">Load More</span>
+                </a>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@ export class MessagesBoardComponent implements OnInit {
   filterTerm!: string;
 
   messages: Array<Message>;
-  show = 3;
+  show = 4;
 
   constructor(
     private messageService: MessageService,
