@@ -66,7 +66,6 @@ Web application for office communication:
 ![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-tasks-board.png)
 #### Task Details With Comments
 ![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments.png)
-![OfficeBoard-TaskDetailsWithComments-2-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments-2.png)
 
 ## License
 
