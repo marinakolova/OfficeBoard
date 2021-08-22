@@ -30,7 +30,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <p>{{message.content}}</p>
+                    <div [innerHTML]="message.content"></div>
+                    <hr>
                     <p>
                         <small class="text-muted">Created On: <strong>{{message.createdOn| date:'dd.MM.yyyy
                                 hh:mm'}}</strong></small> |

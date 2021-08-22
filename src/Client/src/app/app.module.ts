@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,7 +14,6 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
-
 import { MessageService } from './services/message.service';
 import { TaskService } from './services/task.service';
 import { CommentService } from './services/comment.service';
@@ -39,13 +32,9 @@ import { PreventLoggedInAccessService } from './services/prevent-logged-in-acces
     BrowserModule,
     FontAwesomeModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgbModule,
-    Ng2SearchPipeModule,
-    DragDropModule,
   ],
   providers: [
     AuthService,

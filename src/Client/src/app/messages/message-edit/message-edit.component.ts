@@ -5,6 +5,7 @@ import { Message } from '../../models/Message';
 import { User } from '../../models/User';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from '../../services/message.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-message-edit',
@@ -12,6 +13,7 @@ import { MessageService } from '../../services/message.service';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
+  public Editor = ClassicEditor;
 
   id!: number;
   message!: Message;

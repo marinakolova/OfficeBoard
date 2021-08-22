@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from '../../services/message.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-message-create',
@@ -9,6 +10,7 @@ import { MessageService } from '../../services/message.service';
   styleUrls: ['./message-create.component.css']
 })
 export class MessageCreateComponent implements OnInit {
+  public Editor = ClassicEditor;
 
   messageForm: FormGroup;
 
