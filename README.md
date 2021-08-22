@@ -12,8 +12,7 @@ Web application for office communication:
 | ASP.NET Core 5.0  | Entity Framework (EF) Core 5.0  | MS SQL Server Express  | Angular  |
 
 ## :warning: Prerequisites
-- [.NET 5.0 SDK](https://dotnet.microsoft.com/download/visual-studio-sdks)
-- [Visual Studio](https://visualstudio.microsoft.com/vs/)
+- [.NET 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - [Node.js](https://nodejs.org/en/)
 - [Angular CLI](https://angular.io/cli)
@@ -21,10 +20,10 @@ Web application for office communication:
 ## :gear: Configurations
 
 ### 1. Server
-- Check the connection string in `Server/OfficeBoard.Server/appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
-- The server app is set to use `https://localhost:44390`. If you need to change that, you may do it inside `UseUrls()` in the `Program.cs` file, but note that the `apiUrl` in the file `Client/src/environments/environment.ts` should be the same.
-- Run the OfficeBoard.Server App. One way to do it is by opening `OfficeBoard.Server.sln` with [Visual Studio](https://visualstudio.microsoft.com/vs/) and pressing `Ctrl+F5`. Seeding sample data would happen, including test accounts.
-- You should see SwaggerUI in your browser. 
+- If you don't use SQLEXPRESS, you should check the connection string in `appsettings.json` and replace `Server=.\\SQLEXPRESS;` with `Server=.;`.
+- Run `dotnet run` in the OfficeBoard.Server App's directory. Seeding sample data would happen, including test accounts.
+- You should see SwaggerUI in your browser on `https://localhost:44390`. 
+- ( The server app is set to listen on `https://localhost:44390`. If you need to change that, you may do it inside `UseUrls()` in the `Program.cs` file, but note that the `apiUrl` in the file `Client/src/environments/environment.ts` should be the same. )
 
 ### 2. Client  
 - The OfficeBoard.Server App should be running in order to use the Client.
@@ -38,9 +37,9 @@ Web application for office communication:
 
 ## :information_source: Structure
 #### Public part (visible without authentication): 
-- Dashboard page - shows the count of messages, tasks and comments for the day, for the month and for the year;  
+- Dashboard - shows the count of messages, tasks and comments for the day, for the month and for the year;
 - Login page - user login form;
-- Register page - user registration form;  
+- Register page - user registration form; 
 #### Only for Logged Users:
 - Profile
   - view and edit own profile info;
@@ -66,7 +65,8 @@ Web application for office communication:
 #### Tasks Board
 ![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-tasks-board.png)
 #### Task Details With Comments
-![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments-2.png)
+![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments.png)
+![OfficeBoard-TaskDetailsWithComments-2-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments-2.png)
 
 ## License
 
