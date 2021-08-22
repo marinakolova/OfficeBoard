@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import {
   faArrowLeft,
   faInfo,
@@ -25,7 +26,9 @@ export class TasksBoardComponent implements OnInit {
   faTrash = faTrash;
   faArrowRight = faArrowRight;
 
-  tasks: Array<Task>;
+  toDoTasks: Array<Task>;
+  doingTasks: Array<Task>;
+  doneTasks: Array<Task>;
   currentUser!: User;
 
   constructor(
@@ -33,7 +36,9 @@ export class TasksBoardComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    this.tasks = new Array<Task>();
+    this.toDoTasks = new Array<Task>();
+    this.doingTasks = new Array<Task>();
+    this.doneTasks = new Array<Task>();
 
     this.authService.getCurrentUser().subscribe(res => {
       this.currentUser = res;
@@ -46,12 +51,27 @@ export class TasksBoardComponent implements OnInit {
 
   fetchTasks() {
     this.taskService.getAllTasks().subscribe(tasks => {
-      this.tasks = tasks;
+      this.toDoTasks = tasks.filter(x => x.status == 0);
+      this.doingTasks = tasks.filter(x => x.status == 1);
+      this.doneTasks = tasks.filter(x => x.status == 2);
     });
   }
 
   editTask(id: number) {
     this.router.navigate([`tasks/${id}/edit`]);
+  }
+
+  drop(event: CdkDragDrop<Task[]>, status: number) {
+
+    if (event.previousContainer !== event.container) {
+
+      transferArrayItem(event.previousContainer.data, event.container.data,
+        event.previousIndex, event.currentIndex);
+        this.changeStatus(Number(event.item.getRootElement().querySelector('#taskId')?.innerHTML), status);
+
+    } else {
+      moveItemInArray(this.toDoTasks, event.previousIndex, event.currentIndex);
+    }
   }
 
   changeStatus(id: number, status: number) {

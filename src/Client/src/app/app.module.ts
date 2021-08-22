@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -44,6 +45,7 @@ import { PreventLoggedInAccessService } from './services/prevent-logged-in-acces
     ToastrModule.forRoot(),
     NgbModule,
     Ng2SearchPipeModule,
+    DragDropModule,
   ],
   providers: [
     AuthService,

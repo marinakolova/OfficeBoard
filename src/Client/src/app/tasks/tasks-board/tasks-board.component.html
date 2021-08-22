@@ -18,41 +18,41 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">TO DO</h6>
                 </div>
-                <div class="card-body">
-                    <div *ngFor="let task of tasks">
-                        <div class="card mb-4 py-3 border-left-primary" *ngIf="task.status == 0">
-                            <div class="card-body text-center">
-                                <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
-                                <p>
-                                    <small class="text-muted">Created On:
-                                        <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
-                                    </small> |
-                                    <small class="text-muted">Created By:
-                                        <a
-                                            routerLink="/profile/user/{{task.userId}}"><strong>{{task.userName}}</strong></a>
-                                    </small> <br>
-                                    <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
-                                </p>
-                                <!-- Circle Buttons (Small) -->
-                                <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
-                                    title="See Details">
-                                    <fa-icon [icon]="faInfo" style="color: white;"></fa-icon>
+                <div class="card-body" cdkDropList cdkDropListSortingDisabled [cdkDropListData]="toDoTasks"
+                    [cdkDropListConnectedTo]="[secondList, thirdList]" #firstList="cdkDropList"
+                    (cdkDropListDropped)="drop($event, 0)">
+                    <div class="card mb-4 py-3 border-left-primary pop" cdkDrag *ngFor="let task of toDoTasks">
+                        <textarea hidden id="taskId">{{task.id}}</textarea>
+                        <div class="card-body text-center">
+                            <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
+                            <p>
+                                <small class="text-muted">Created On:
+                                    <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                                </small> |
+                                <small class="text-muted">Created By:
+                                    <a routerLink="/profile/user/{{task.userId}}"><strong>{{task.userName}}</strong></a>
+                                </small> <br>
+                                <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
+                            </p>
+                            <!-- Circle Buttons (Small) -->
+                            <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
+                                title="See Details">
+                                <fa-icon [icon]="faInfo" style="color: white;"></fa-icon>
+                            </a>
+                            <div *ngIf="currentUser.id == task.userId" style="display: inline;">
+                                <a (click)="editTask(task.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                                    title="Edit">
+                                    <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
                                 </a>
-                                <div *ngIf="currentUser.id == task.userId" style="display: inline;">
-                                    <a (click)="editTask(task.id)" class="btn btn-warning btn-circle btn-sm ml-4"
-                                        title="Edit">
-                                        <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
-                                    </a>
-                                    <a (click)="confirmDelete(task.title, task.id)"
-                                        class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
-                                        <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
-                                    </a>
-                                </div>
-                                <a (click)="changeStatus(task.id, 1)" class="btn btn-secondary btn-circle ml-4"
-                                    title="Move To Doing">
-                                    <fa-icon [icon]="faArrowRight" style="color: white;"></fa-icon>
+                                <a (click)="confirmDelete(task.title, task.id)"
+                                    class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
+                                    <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
                                 </a>
                             </div>
+                            <a (click)="changeStatus(task.id, 1)" class="btn btn-secondary btn-circle ml-4"
+                                title="Move To Doing">
+                                <fa-icon [icon]="faArrowRight" style="color: white;"></fa-icon>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -66,45 +66,45 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-warning">Doing</h6>
                 </div>
-                <div class="card-body">
-                    <div *ngFor="let task of tasks">
-                        <div class="card mb-4 py-3 border-left-warning" *ngIf="task.status == 1">
-                            <div class="card-body text-center">
-                                <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
-                                <p>
-                                    <small class="text-muted">Created On:
-                                        <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
-                                    </small> |
-                                    <small class="text-muted">Created By:
-                                        <a
-                                            routerLink="/profile/user/{{task.userId}}"><strong>{{task.userName}}</strong></a>
-                                    </small> <br>
-                                    <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
-                                </p>
-                                <!-- Circle Buttons (Small) -->
-                                <a (click)="changeStatus(task.id, 0)" class="btn btn-secondary btn-circle ml-4"
-                                    title="Move to TO DO">
-                                    <fa-icon [icon]="faArrowLeft" style="color: white;"></fa-icon>
+                <div class="card-body" cdkDropList cdkDropListSortingDisabled [cdkDropListData]="doingTasks"
+                    [cdkDropListConnectedTo]="[firstList, thirdList]" #secondList="cdkDropList"
+                    (cdkDropListDropped)="drop($event, 1)">
+                    <div class="card mb-4 py-3 border-left-warning pop" cdkDrag *ngFor="let task of doingTasks">
+                        <textarea hidden id="taskId">{{task.id}}</textarea>
+                        <div class="card-body text-center">
+                            <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
+                            <p>
+                                <small class="text-muted">Created On:
+                                    <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                                </small> |
+                                <small class="text-muted">Created By:
+                                    <a routerLink="/profile/user/{{task.userId}}"><strong>{{task.userName}}</strong></a>
+                                </small> <br>
+                                <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
+                            </p>
+                            <!-- Circle Buttons (Small) -->
+                            <a (click)="changeStatus(task.id, 0)" class="btn btn-secondary btn-circle ml-4"
+                                title="Move to TO DO">
+                                <fa-icon [icon]="faArrowLeft" style="color: white;"></fa-icon>
+                            </a>
+                            <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
+                                title="See Details">
+                                <fa-icon [icon]="faInfo" style="color: white;"></fa-icon>
+                            </a>
+                            <div *ngIf="currentUser.id == task.userId" style="display: inline;">
+                                <a (click)="editTask(task.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                                    title="Edit">
+                                    <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
                                 </a>
-                                <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
-                                    title="See Details">
-                                    <fa-icon [icon]="faInfo" style="color: white;"></fa-icon>
-                                </a>
-                                <div *ngIf="currentUser.id == task.userId" style="display: inline;">
-                                    <a (click)="editTask(task.id)" class="btn btn-warning btn-circle btn-sm ml-4"
-                                        title="Edit">
-                                        <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
-                                    </a>
-                                    <a (click)="confirmDelete(task.title, task.id)"
-                                        class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
-                                        <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
-                                    </a>
-                                </div>
-                                <a (click)="changeStatus(task.id, 2)" class="btn btn-secondary btn-circle ml-4"
-                                    title="Move To DONE">
-                                    <fa-icon [icon]="faArrowRight" style="color: white;"></fa-icon>
+                                <a (click)="confirmDelete(task.title, task.id)"
+                                    class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
+                                    <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
                                 </a>
                             </div>
+                            <a (click)="changeStatus(task.id, 2)" class="btn btn-secondary btn-circle ml-4"
+                                title="Move To DONE">
+                                <fa-icon [icon]="faArrowRight" style="color: white;"></fa-icon>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -118,40 +118,40 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-success">DONE</h6>
                 </div>
-                <div class="card-body">
-                    <div *ngFor="let task of tasks">
-                        <div class="card mb-4 py-3 border-left-success" *ngIf="task.status == 2">
-                            <div class="card-body text-center">
-                                <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
-                                <p>
-                                    <small class="text-muted">Created On:
-                                        <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
-                                    </small> |
-                                    <small class="text-muted">Created By:
-                                        <a
-                                            routerLink="/profile/user/{{task.userId}}"><strong>{{task.userName}}</strong></a>
-                                    </small> <br>
-                                    <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
-                                </p>
-                                <!-- Circle Buttons (Small) -->
-                                <a (click)="changeStatus(task.id, 1)" class="btn btn-secondary btn-circle ml-4"
-                                    title="Move to Doing">
-                                    <fa-icon [icon]="faArrowLeft" style="color: white;"></fa-icon>
+                <div class="card-body" cdkDropList cdkDropListSortingDisabled [cdkDropListData]="doneTasks"
+                    [cdkDropListConnectedTo]="[firstList, secondList]" #thirdList="cdkDropList"
+                    (cdkDropListDropped)="drop($event, 2)">
+                    <div class="card mb-4 py-3 border-left-success pop" cdkDrag *ngFor="let task of doneTasks">
+                        <textarea hidden id="taskId">{{task.id}}</textarea>
+                        <div class="card-body text-center">
+                            <p><a routerLink="/tasks/{{task.id}}"><strong>{{task.title}}</strong></a></p>
+                            <p>
+                                <small class="text-muted">Created On:
+                                    <strong>{{task.createdOn| date:'dd.MM.yyyy'}}</strong>
+                                </small> |
+                                <small class="text-muted">Created By:
+                                    <a routerLink="/profile/user/{{task.userId}}"><strong>{{task.userName}}</strong></a>
+                                </small> <br>
+                                <small class="text-muted">Comments: <strong>{{task.commentsCount}}</strong></small>
+                            </p>
+                            <!-- Circle Buttons (Small) -->
+                            <a (click)="changeStatus(task.id, 1)" class="btn btn-secondary btn-circle ml-4"
+                                title="Move to Doing">
+                                <fa-icon [icon]="faArrowLeft" style="color: white;"></fa-icon>
+                            </a>
+                            <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
+                                title="See Details">
+                                <fa-icon [icon]="faInfo" style="color: white;"></fa-icon>
+                            </a>
+                            <div *ngIf="currentUser.id == task.userId" style="display: inline;">
+                                <a (click)="editTask(task.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                                    title="Edit">
+                                    <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
                                 </a>
-                                <a routerLink="/tasks/{{task.id}}" class="btn btn-primary btn-circle btn-sm ml-4"
-                                    title="See Details">
-                                    <fa-icon [icon]="faInfo" style="color: white;"></fa-icon>
+                                <a (click)="confirmDelete(task.title, task.id)"
+                                    class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
+                                    <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
                                 </a>
-                                <div *ngIf="currentUser.id == task.userId" style="display: inline;">
-                                    <a (click)="editTask(task.id)" class="btn btn-warning btn-circle btn-sm ml-4"
-                                        title="Edit">
-                                        <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
-                                    </a>
-                                    <a (click)="confirmDelete(task.title, task.id)"
-                                        class="btn btn-danger btn-circle btn-sm ml-4" title="Delete">
-                                        <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
