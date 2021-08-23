@@ -12,6 +12,7 @@ import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TaskCommentCreateComponent } from './task-comment-create/task-comment-create.component';
 import { TaskCommentEditComponent } from './task-comment-edit/task-comment-edit.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { TaskCommentEditComponent } from './task-comment-edit/task-comment-edit.
     ReactiveFormsModule,
     NgbModule,
     DragDropModule,
+    CKEditorModule,
   ]
 })
 export class TasksModule { }

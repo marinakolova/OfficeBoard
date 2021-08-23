@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-task-create',
@@ -9,6 +10,7 @@ import { TaskService } from '../../services/task.service';
   styleUrls: ['./task-create.component.css']
 })
 export class TaskCreateComponent implements OnInit {
+  public Editor = ClassicEditor;
 
   taskForm: FormGroup;
 

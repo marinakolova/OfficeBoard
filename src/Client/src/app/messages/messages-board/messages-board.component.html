@@ -7,7 +7,7 @@
 </nav>
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
-<div class="container-fluid mt-4">    
+<div class="container-fluid mt-4">
     <div class="form-group">
         <input type="text" class="form-control form-control-lg" placeholder="Search..." [(ngModel)]="filterTerm">
     </div>
@@ -19,12 +19,12 @@
                     <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">{{message.title}}</h6>
                     <!-- Circle Buttons (Small) -->
                     <div *ngIf="currentUser.id == message.userId" style="display: inline;">
-                        <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4"
+                        <a (click)="editMessage(message.id)" class="btn btn-warning btn-circle btn-sm ml-4 mb-2"
                             title="Edit">
                             <fa-icon [icon]="faEdit" style="color: white;"></fa-icon>
                         </a>
                         <a (click)="confirmDelete(message.title, message.id)"
-                            class="btn btn-danger btn-circle btn-sm ml-2" title="Delete">
+                            class="btn btn-danger btn-circle btn-sm ml-2 mb-2" title="Delete">
                             <fa-icon [icon]="faTrash" style="color: white;"></fa-icon>
                         </a>
                     </div>
@@ -43,7 +43,8 @@
             </div>
         </div>
         <div class="mb-4 ml-4">
-            <a *ngIf="show<((messages|filter:filterTerm).length)" (click)="show = show + 4" class="btn btn-primary btn-icon-split">
+            <a *ngIf="show<((messages|filter:filterTerm).length)" (click)="show = show + 4"
+                class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
                     <fa-icon [icon]="faArrowDown"></fa-icon>
                 </span>

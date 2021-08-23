@@ -5,6 +5,7 @@ import { Task } from '../../models/Task';
 import { User } from '../../models/User';
 import { AuthService } from '../../services/auth.service';
 import { TaskService } from '../../services/task.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-task-edit',
@@ -12,6 +13,7 @@ import { TaskService } from '../../services/task.service';
   styleUrls: ['./task-edit.component.css']
 })
 export class TaskEditComponent implements OnInit {
+  public Editor = ClassicEditor;
 
   id!: number;
   task!: Task;
