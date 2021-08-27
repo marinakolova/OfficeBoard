@@ -8647,42 +8647,6 @@
     content: '\f105';
   }
   
-  .chart-area {
-    position: relative;
-    height: 10rem;
-    width: 100%;
-  }
-  
-  @media (min-width: 768px) {
-    .chart-area {
-      height: 20rem;
-    }
-  }
-  
-  .chart-bar {
-    position: relative;
-    height: 10rem;
-    width: 100%;
-  }
-  
-  @media (min-width: 768px) {
-    .chart-bar {
-      height: 20rem;
-    }
-  }
-  
-  .chart-pie {
-    position: relative;
-    height: 15rem;
-    width: 100%;
-  }
-  
-  @media (min-width: 768px) {
-    .chart-pie {
-      height: calc(20rem - 43px) !important;
-    }
-  }
-  
   form.user .custom-checkbox.small label {
     line-height: 1.5rem;
   }
@@ -8697,40 +8661,6 @@
     font-size: 0.8rem;
     border-radius: 10rem;
     padding: 0.75rem 1rem;
-  }
-  
-  .error {
-    color: #5a5c69;
-    font-size: 7rem;
-    position: relative;
-    line-height: 1;
-    width: 12.5rem;
-  }
-  
-  .error:after {
-    content: attr(data-text);
-    position: absolute;
-    left: 2px;
-    text-shadow: -1px 0 #e74a3b;
-    top: 0;
-    color: #5a5c69;
-    background: #f8f9fc;
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-    animation: noise-anim 2s infinite linear alternate-reverse;
-  }
-  
-  .error:before {
-    content: attr(data-text);
-    position: absolute;
-    left: -2px;
-    text-shadow: 1px 0 #4e73df;
-    top: 0;
-    color: #5a5c69;
-    background: #f8f9fc;
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-    animation: noise-anim-2 3s infinite linear alternate-reverse;
   }
   
   footer.sticky-footer {
