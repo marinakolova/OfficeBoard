@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule),
   },
   {
+    path: '404',
+    component: NotFoundComponent
+  },
+  {
     path: '**',
     component: NotFoundComponent
   },
