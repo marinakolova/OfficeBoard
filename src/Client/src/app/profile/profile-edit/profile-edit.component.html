@@ -15,21 +15,21 @@
                     <fa-icon [icon]="faUserEdit"></fa-icon>
                 </h1>
             </div>
+            <hr>
+            <div class="form-group row mt-4">
+                <label class="col-sm-3 col-form-label text-right text-right">Username</label>
+                <div class="col-sm-9 text-left">
+                    <div class="mt-2"><strong>{{profile.userName}}</strong></div>
+                </div>
+            </div>
+            <div class="form-group row mt-4">
+                <label class="col-sm-3 col-form-label text-right">Email</label>
+                <div class="col-sm-9 text-left">
+                    <div class="mt-2"><strong>{{profile.email}}</strong></div>
+                </div>
+            </div>
+            <hr>
             <form class="user" [formGroup]='profileForm'>
-                <hr>
-                <div class="form-group row mt-4">
-                    <label class="col-sm-3 col-form-label text-right text-right">Username</label>
-                    <div class="col-sm-9 text-left">
-                        <div class="mt-2"><strong>{{profile.userName}}</strong></div>
-                    </div>
-                </div>
-                <div class="form-group row mt-4">
-                    <label class="col-sm-3 col-form-label text-right">Email</label>
-                    <div class="col-sm-9 text-left">
-                        <div class="mt-2"><strong>{{profile.email}}</strong></div>
-                    </div>
-                </div>
-                <hr>
                 <div class="form-group row mt-4">
                     <label class="col-sm-3 col-form-label text-right">Name</label>
                     <div class="col-sm-9 text-left">
@@ -50,16 +50,21 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <input hidden type="text" class="form-control" formControlName="userId">
+                    <input hidden type="text" class="form-control" formControlName="UserId">
                 </div>
-                <div class="text-center mt-4">
-                    <button class="btn btn-outline-info" title="View Unchanged" routerLink="/profile/user/{{profile.userId}}">
-                        <fa-icon [icon]="faEye"></fa-icon>
-                    </button>
-                    <button type="submit" class="btn btn-outline-success ml-4" title="Save Changes"
-                        (click)="confirmEdit()">
-                        <fa-icon [icon]="faSave"></fa-icon>
-                    </button>
+                <div class="text-center row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-outline-success btn-user btn-block my-4"
+                            title="Save Changes" (click)="confirmEdit()">
+                            <fa-icon [icon]="faSave"></fa-icon> Save Changes
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-outline-secondary btn-user btn-block my-4"
+                            routerLink="/profile/user/{{profile.userId}}">
+                            <fa-icon [icon]="faEye"></fa-icon> View Profile
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -14,24 +14,26 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">User Info</div>
-                        <div class="h5 my-3 font-weight-bold text-gray-800">{{profile.userName}}</div>
+                        <div class="h5 my-3 font-weight-bold text-gray-800">{{profile?.userName}}</div>
                         <p class="text-sm">
-                            Name: <strong>{{profile.name}}</strong><br>
-                            Email: <strong>{{profile.email}}</strong><br>
-                            Position: <strong>{{profile.position}}</strong><br>
-                            Department: <strong>{{profile.department}}</strong>
+                            Name: <strong>{{profile?.name}}</strong><br>
+                            Email: <strong>{{profile?.email}}</strong><br>
+                            Position: <strong>{{profile?.position}}</strong><br>
+                            Department: <strong>{{profile?.department}}</strong>
                         </p>
+                        <!-- Circle Buttons (Small) -->
+                        <div *ngIf="currentUser?.id == profile?.userId">
+                            <a routerLink="/profile/edit" class="btn btn-outline-warning btn-circle ml-4 mb-2"
+                                title="Edit">
+                                <fa-icon [icon]="faUserEdit"></fa-icon>
+                            </a>
+                        </div>
                     </div>
                     <div class="col-auto">
                         <fa-icon [icon]="faUserTag" class="fa-10x text-gray-300"></fa-icon>
                     </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="currentUser.id == profile.userId" class="text-center mt-4">
-            <button routerLink="/profile/edit" class="btn btn-lg btn-outline-warning" title="Edit">
-                <fa-icon [icon]="faUserEdit"></fa-icon>
-            </button>
         </div>
     </div>
 </div>
