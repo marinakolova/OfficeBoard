@@ -10258,7 +10258,6 @@
   
   .sidebar #sidebarToggle::after {
     font-weight: 900;
-    content: '\f104';
     font-family: 'Font Awesome 5 Free';
     margin-right: 0.1rem;
   }
@@ -10277,7 +10276,6 @@
   }
   
   .sidebar.toggled #sidebarToggle::after {
-    content: '\f105';
     font-family: 'Font Awesome 5 Free';
     margin-left: 0.25rem;
   }
@@ -10344,7 +10342,7 @@
       padding: 1rem;
       width: 14rem;
     }
-    .sidebar .nav-item .nav-link i {
+    .sidebar .nav-item .nav-link fa-icon {
       font-size: 0.85rem;
       margin-right: 0.25rem;
     }
@@ -10414,7 +10412,7 @@
       font-size: 0.65rem;
       display: block;
     }
-    .sidebar.toggled .nav-item .nav-link i {
+    .sidebar.toggled .nav-item .nav-link fa-icon {
       margin-right: 0;
     }
     .sidebar.toggled .nav-item .nav-link[data-toggle="collapse"]::after {
@@ -10447,7 +10445,7 @@
     color: #858796;
   }
   
-  .sidebar-light .nav-item .nav-link i {
+  .sidebar-light .nav-item .nav-link fa-icon {
     color: #d1d3e2;
   }
   
@@ -10455,7 +10453,7 @@
     color: #6e707e;
   }
   
-  .sidebar-light .nav-item .nav-link:active i, .sidebar-light .nav-item .nav-link:focus i, .sidebar-light .nav-item .nav-link:hover i {
+  .sidebar-light .nav-item .nav-link:active fa-icon, .sidebar-light .nav-item .nav-link:focus fa-icon, .sidebar-light .nav-item .nav-link:hover fa-icon {
     color: #6e707e;
   }
   
@@ -10467,7 +10465,7 @@
     color: #6e707e;
   }
   
-  .sidebar-light .nav-item.active .nav-link i {
+  .sidebar-light .nav-item.active .nav-link fa-icon {
     color: #6e707e;
   }
   
@@ -10499,7 +10497,7 @@
     color: rgba(255, 255, 255, 0.8);
   }
   
-  .sidebar-dark .nav-item .nav-link i {
+  .sidebar-dark .nav-item .nav-link fa-icon {
     color: rgba(255, 255, 255, 0.3);
   }
   
@@ -10507,7 +10505,7 @@
     color: #fff;
   }
   
-  .sidebar-dark .nav-item .nav-link:active i, .sidebar-dark .nav-item .nav-link:focus i, .sidebar-dark .nav-item .nav-link:hover i {
+  .sidebar-dark .nav-item .nav-link:active fa-icon, .sidebar-dark .nav-item .nav-link:focus fa-icon, .sidebar-dark .nav-item .nav-link:hover fa-icon {
     color: #fff;
   }
   
@@ -10519,7 +10517,7 @@
     color: #fff;
   }
   
-  .sidebar-dark .nav-item.active .nav-link i {
+  .sidebar-dark .nav-item.active .nav-link fa-icon {
     color: #fff;
   }
   

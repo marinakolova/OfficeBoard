@@ -3,7 +3,8 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" [ngClass]="{'toggled': toggled}"
+            id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/">
@@ -46,7 +47,7 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/messages/create">
                         <fa-icon [icon]="faPlusCircle"></fa-icon>
-                        <span> Create New Message</span>
+                        <span> Create Message</span>
                     </a>
                 </li>
 
@@ -70,7 +71,7 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/tasks/create">
                         <fa-icon [icon]="faPlusCircle"></fa-icon>
-                        <span> Create New Task</span>
+                        <span> Create Task</span>
                     </a>
                 </li>
 
@@ -86,7 +87,7 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/profile/edit">
                         <fa-icon [icon]="faUserEdit"></fa-icon>
-                        <span> Edit User Profile</span>
+                        <span> Edit Profile</span>
                     </a>
                 </li>
 
@@ -121,6 +122,15 @@
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
+            </div>
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle" (click)="onToggle()">
+                    <fa-icon [icon]="faChevronLeft" style="color: white;"></fa-icon>
+                    <span> </span>
+                    <fa-icon [icon]="faChevronRight" style="color: white;"></fa-icon>
+                </button>
             </div>
 
         </ul>

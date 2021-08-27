@@ -12,6 +12,8 @@ import {
   faSignOutAlt,
   faTachometerAlt,
   faTasks,
+  faChevronLeft,
+  faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -21,7 +23,7 @@ import {
 })
 export class AppComponent {
   title = 'office-board';
-  
+
   faLaughWink = faLaughWink;
   faList = faList;
   faPlusCircle = faPlusCircle;
@@ -32,6 +34,14 @@ export class AppComponent {
   faSignOutAlt = faSignOutAlt;
   faTachometerAlt = faTachometerAlt;
   faTasks = faTasks;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
+
+  toggled = false;
+
+  onToggle() {
+    this.toggled = !this.toggled;
+  }
 
   constructor(private authService: AuthService, private router: Router) { }
 
