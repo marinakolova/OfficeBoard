@@ -60,12 +60,24 @@ Web application for office communication:
   - edit or delete own comments;
 
 ## :eyes: Screenshots
+#### Dashboard
+![OfficeBoard-MessagesBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-dashboard.png)
 #### Messages Board
-![OfficeBoard-MessagesBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-messages-board.png)
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-messages.png)
+#### Messages Create
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-messages-create.png)
 #### Tasks Board
-![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-tasks-board.png)
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-tasks.png)
+#### Tasks Edit
+![OfficeBoard-TasksBoard-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-tasks-edit.png)
 #### Task Details With Comments
-![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screenshot-task-details-with-comments.png)
+![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-tasks-details.png)
+#### Task Comment Create
+![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-tasks-comments-create.png)
+#### Edit User Profile
+![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-profile-edit.png)
+#### 404
+![OfficeBoard-TaskDetailsWithComments-Screenshot](https://raw.githubusercontent.com/marinakolova/OfficeBoard/main/screenshots/screencapture-404.png)
 
 ## License
 
