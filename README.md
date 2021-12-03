@@ -1,5 +1,7 @@
 # OfficeBoard
 
+:dart:  My project for the Angular course at SoftUni. (August 2021) 
+
 Web application for office communication: 
 - Messages board for sharing important messages with team members. 
 - Tasks board for keeping track of tasks which should be done inside the team.
@@ -9,7 +11,7 @@ Web application for office communication:
 
 | Back-end  | Data access technology | Database system  | Client-side |
 | :---: | :---: | :---: | :---: |
-| ASP.NET Core 5.0  | Entity Framework (EF) Core 5.0  | MS SQL Server Express  | Angular  |
+| ASP.NET Core 5.0, SwaggerUI  | Entity Framework (EF) Core 5.0  | MS SQL Server Express  | Angular  |
 
 ## :warning: Prerequisites
 - [.NET 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
